@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
+import React, { Suspense, lazy } from 'react';
+import { Switch, Route } from 'react-router-dom';
+// import Spinner from './components/Spinner';
 
-import './App.css';
+const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 
-class App extends Component {
-  render() {
-    return (
-      <>
-
-        <h1>Hello Maxim!</h1>
-
-        <h2>Hello world!!!</h2>
-        <h3>Hello world, motherfucker`s!!!</h3>
-
-      </>
-    );
-  }
-}
+const App = () => {
+  return (
+    <>
+      <Suspense fallback={<h1>Грузим</h1>}>
+        <Switch>
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/dashboard" component={DashboardPage} />
+        </Switch>
+      </Suspense>
+    </>
+  );
+};
 
 export default App;
