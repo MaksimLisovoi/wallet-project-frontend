@@ -3,8 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 import s from './styles/base.module.css';
 // import Spinner from './components/Spinner';
 
-const RegisterPage = lazy(() => import('./pages/RegisterPage'));
-const LoginPage = lazy(() => import('./pages/LoginPage'));
+const RegisterPage = lazy(() =>
+  import('./pages/views/registration/RegisterPage'),
+);
+const LoginPage = lazy(() => import('./pages/views/login/LoginPage'));
 const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 
 const App = () => {
