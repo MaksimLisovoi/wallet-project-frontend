@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.logo_container {
+  display: flex;
+  align-items: center;
+}
+
+.logoname {
+  margin-left: 15px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 45px;
+
+  color: #000000;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  background-image: url('./data/Wallet.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (min-width: 768px) {
+  .logoname {
+    font-size: 30px;
+    line-height: 45px;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+}
