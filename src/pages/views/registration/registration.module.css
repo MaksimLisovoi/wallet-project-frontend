@@ -1,0 +1,78 @@
+.head {
+  margin-bottom: 30px;
+  height: 16px;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  width: 150px;
+  margin-left: auto;
+}
+.email {
+  width: 280px;
+  border: 0 solid #fff;
+  border-bottom: 1px solid #e0e0e0;
+  /* Gray 5 */
+}
+.password {
+  width: 280px;
+  border: 0 solid #fff;
+  border-bottom: 1px solid #e0e0e0;
+  margin-top: 40px;
+}
+.enter {
+  margin-top: 20px;
+
+  border: none;
+  outline: none;
+  width: 280px;
+  height: 50px;
+  background: #24cca7;
+  border-radius: 20px;
+}
+
+.text {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.registration {
+  border: none;
+  outline: none;
+
+  width: 280px;
+  height: 50px;
+  margin-top: 20px;
+
+  background: #ffffff;
+  border: 1px solid #4a56e2;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.textRegistration {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a56e2;
+}
+
+.wrraper {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin: auto;
+}
