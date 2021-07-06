@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import s from './styles/base.module.css';
+import BtnAddTransc from './components/BtnAddTransc/BtnAddTransc';
 // import Spinner from './components/Spinner';
 
 const RegisterPage = lazy(() =>
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/register" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/dashboard" component={DashboardPage} />
+            <BtnAddTransc />
           </Switch>
         </Suspense>
       </div>

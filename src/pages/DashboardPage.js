@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/Header';
+import BtnAddTransc from '../components/BtnAddTransc/BtnAddTransc';
 
 const DashboardPage = () => {
   return (
