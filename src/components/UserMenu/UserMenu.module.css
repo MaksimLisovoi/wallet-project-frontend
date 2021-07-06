@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+.user_menu_container {
+  display: flex;
+  align-items: center;
+}
+.user_name {
+  font-family: 'PT Sans', sans-serif;
+  color: #bdbdbd;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  margin-right: 10px;
+}
+
+.user_name_2 {
+  font-family: 'PT Sans', sans-serif;
+  color: #bdbdbd;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 27px;
+  margin-right: 15px;
+  display: none;
+}
+
+.user_out {
+  font-family: 'PT Sans', sans-serif;
+  color: #bdbdbd;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  display: none;
+}
+
+.out_icon {
+  font-family: 'PT Sans', sans-serif;
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  background-image: url('./data/exit.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (min-width: 768px) {
+  .user_name {
+    margin-right: 15px;
+  }
+  .user_out {
+    display: block;
+  }
+  .user_name_2 {
+    display: block;
+  }
+}

@@ -1,0 +1,12 @@
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .header {
+    height: 80px;
+  }
+}
