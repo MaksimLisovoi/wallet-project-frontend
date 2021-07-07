@@ -37,7 +37,8 @@
 body {
   margin: 0;
   font-family: Circe;
-  color: black;
+  background-color: #a6a6a6;
+  /* color: black; */
 }
 
 img {
@@ -80,7 +81,7 @@ button {
 }
 
 .container {
-  background: rgba(255, 255, 255, 0.4);
+  /* background: rgba(255, 255, 255, 0.4); */
   width: 100%;
   text-align: center;
   padding-left: 20px;

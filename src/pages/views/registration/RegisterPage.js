@@ -2,15 +2,6 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import BasicFormSchema from './schemRegistration';
 import s from './registration.module.css';
-// import s from '../styles/base.module.css';
-
-// const RegisterPage = () => {
-//   return (
-//     <>
-//       <h1>This is RegisterPage</h1>
-//     </>
-//   );
-// };
 
 const RegisterPage = () => (
   <div className="container">
@@ -37,7 +28,15 @@ const RegisterPage = () => (
       //errors-ошибки валидации формы
       //touched-поля формы, которые мы "затронули",
       //то есть, в которых что-то ввели
-      render={({ errors, touched }) => (
+
+      render={({
+        errors,
+        touched,
+        isSubmitting,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+      }) => (
         <Form className={s.wrraper}>
           {/* <label htmlFor="email">Email</label> */}
           <Field
@@ -45,6 +44,8 @@ const RegisterPage = () => (
             placeholder="E-mail "
             type="email"
             className={s.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
           {/* <img src={like} alt="like" /> */}
           {

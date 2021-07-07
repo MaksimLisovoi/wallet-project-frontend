@@ -14,7 +14,8 @@ const BasicFormSchema = Yup.object().shape({
   //     .max(20, "Nice try, nobody has a first name that long")
   //     .required("Required"),
   password: Yup.string()
-    .min(8, 'Must be longer than 8 characters')
+    .min(6, 'Must be longer than 6 characters')
+    .max(12, 'Must less than 12 characters')
     .required('Please Enter your Password'),
 });
 export default BasicFormSchema;
