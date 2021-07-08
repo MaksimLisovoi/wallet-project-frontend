@@ -3,10 +3,7 @@
   height: 16px;
 }
 .formContainer {
-  /* display: flex; */
   flex-direction: column;
-  /* margin-right: auto;
-  width: 150px; */
   margin-left: auto;
 }
 .email {
@@ -72,7 +69,7 @@
 
 /* Адаптивку пробую сделать ============================================== */
 .container {
-  width: 320px;
+  min-width: 320px;
   height: 568px;
   background-color: #ffff;
 }
@@ -81,6 +78,7 @@
   .contForHead {
     padding-top: 110px;
     padding-bottom: 25px;
+    /* padding: 0, 0; */
   }
 }
 
@@ -88,6 +86,8 @@
   .container {
     width: 540px;
     height: 468px;
+    margin-top: 50px;
+    margin-left: 100px;
 
     background: #ffffff;
     border-radius: 20px;
@@ -100,5 +100,21 @@
   .contForHead {
     padding-top: 110px;
     padding-bottom: 25px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    width: 540px;
+    height: 468px;
+    margin-top: 50px;
+    margin-left: 100px;
+
+    background: #ffffff;
+    border-radius: 20px;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    z-index: 100;
   }
 }

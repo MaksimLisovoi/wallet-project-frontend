@@ -1,11 +1,14 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import BasicFormSchema from './schemRegistration';
+import Logos from '../../../components/Logos/Logos';
 import s from './registration.module.css';
 
 const RegisterPage = () => (
-  <div className="container">
-    <h1>Wallet</h1>
+  <div className={s.container}>
+    <div className={s.headRegistr}>
+      <Logos />
+    </div>
     <Formik
       //инициализируем значения input-ов
       initialValues={{

@@ -6,12 +6,13 @@ function MainPhoto() {
   return (
     <div className={styles.stainContainer}>
       <img
-        width="260px"
-        height="250px"
+        // width="260px"
+        // height="250px"
         className={styles.position}
         src={main}
         alt={'main'}
       />
+      <span className={styles.text}>Finance App</span>
     </div>
   );
 }

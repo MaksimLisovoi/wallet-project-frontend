@@ -4,6 +4,7 @@ import s from './styles/base.module.css';
 import BlueStain from './icons/blueStain/blueStain';
 import PinkStain from './icons/pinkStain/pinkStain';
 import MainPhoto from './icons/mainPhotoComp/mainPhotoComp';
+
 // import Spinner from './components/Spinner';
 
 const RegisterPage = lazy(() =>
@@ -22,7 +23,7 @@ const App = () => {
         <Suspense fallback={<h1>Грузим</h1>}>
           <Switch>
             <Route path="/register" component={RegisterPage} />
-            <Route path="/login" component={LoginPage} />
+            <Route path="/" component={LoginPage} />
             <Route path="/dashboard" component={DashboardPage} />
           </Switch>
         </Suspense>

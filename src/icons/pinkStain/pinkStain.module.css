@@ -3,3 +3,9 @@
   top: 0;
   right: 0;
 }
+
+@media (min-width: 1280px) {
+  div > img {
+    width: 618px;
+  }
+}

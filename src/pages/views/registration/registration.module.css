@@ -71,8 +71,59 @@
 }
 
 .wrraper {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
-  width: 250px;
+  /* width: 250px; */
   margin: auto;
 }
+
+/*? Адаптивка началась */
+@media (min-width: 320px) {
+  .container {
+    background-color: #ffffff;
+    width: 320px;
+    height: 568px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .wrraper {
+    /* display: flex; */
+    flex-direction: column;
+    /* width: 0px; */
+    margin: auto;
+  }
+  .headRegistr {
+    padding-top: 36px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    position: absolute;
+    left: 25%;
+    z-index: 50;
+    width: 540px;
+    border-radius: 20px;
+    height: 616px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    z-index: 50;
+    width: 540px;
+    border-radius: 20px;
+    height: 616px;
+  }
+}
+/* width: 540px;
+    height: 468px;
+    margin-top: 50px;
+    margin-left: 100px;
+    background: #ffffff;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 100; */
