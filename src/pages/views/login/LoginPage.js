@@ -3,11 +3,18 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import BasicFormSchema from './schemaForForm';
 // import like from '../../icons/email.svg';
+import Logos from '../../../components/Logos/Logos';
+// import BlueStain from '../../../icons/blueStain/blueStain';
 import s from './login.module.css';
+//console.log(logo());
 
 const LoginPage = () => (
-  <div className="container">
-    <h1 className={s.head}>Wallet</h1>
+  <div className={s.container}>
+    <div className={s.contForHead}>
+      <Logos />
+      {/* <BlueStain /> */}
+    </div>
+
     <Formik
       //инициализируем значения input-ов
       initialValues={{

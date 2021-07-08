@@ -37,7 +37,8 @@
 body {
   margin: 0;
   font-family: Circe;
-  color: black;
+  background-color: #a6a6a6;
+  /* color: black; */
 }
 
 img {

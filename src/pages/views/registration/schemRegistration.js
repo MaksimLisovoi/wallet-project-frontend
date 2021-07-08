@@ -14,13 +14,14 @@ const BasicFormSchema = Yup.object().shape({
   //     .max(20, "Nice try, nobody has a first name that long")
   //     .required("Required"),
   password: Yup.string()
-    .min(8, 'Must be longer than 8 characters')
+    .min(6, 'Must be longer than 6 characters')
+    .max(12, 'Must less than 12 characters')
     .required('Please Enter your password'),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'Passwords must match',
-  ),
+  confirmPassword: Yup.string()
+    .required('Введите пароль')
+    .oneOf([Yup.ref('password'), null], 'Пароли должны совпадать'),
 
-  firstName: Yup.string().required('Please Enter your name'),
+  firstName: Yup.string()
+  .required('Please Enter your name'),
 });
 export default BasicFormSchema;
