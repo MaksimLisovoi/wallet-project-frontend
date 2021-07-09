@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import s from './BtnAddTransc.module.css';
+import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
 
 Modal.setAppElement('#root');
 
@@ -17,9 +18,7 @@ const BtnAddTransc = () => {
         className={s.modalContent}
         overlayClassName={s.modalOverlay}
       >
-        <h2>Добавить транзакцию</h2>
-        <p>здесь будет форма</p>
-        <h3>цвет окна - рабочая версия</h3>
+        <AddTransactionForm />
       </Modal>
     </div>
   );
