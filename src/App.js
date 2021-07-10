@@ -4,6 +4,7 @@ import s from './styles/base.module.css';
 import BtnAddTransc from './components/BtnAddTransc/BtnAddTransc';
 // import Spinner from './components/Spinner';
 
+
 const RegisterPage = lazy(() =>
   import('./pages/views/registration/RegisterPage'),
 );

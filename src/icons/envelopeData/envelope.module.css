@@ -1,0 +1,11 @@
+.envelope {
+  height: 16px;
+  width: 20px;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  background-image: url('../svg/envelope.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* background-color: rgba(224, 224, 224, 1); */
+}

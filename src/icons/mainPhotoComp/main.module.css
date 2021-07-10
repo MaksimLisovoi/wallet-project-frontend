@@ -1,0 +1,52 @@
+.text {
+  display: none;
+}
+.stainContainer {
+  display: flex;
+  margin-left: 55px;
+}
+
+@media (min-width: 768px) {
+  .text {
+    display: block;
+    z-index: 1;
+    margin-top: 100px;
+    margin-left: 40px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+
+    color: #000000;
+  }
+  .position {
+    width: 260px;
+  }
+}
+@media (min-width: 1280px) {
+  .stainContainer {
+    position: absolute;
+    bottom: 15%;
+    z-index: 15;
+    display: block;
+  }
+  .position {
+    width: 435px;
+  }
+
+  .text {
+    display: block;
+    z-index: 1;
+    margin-top: 20px;
+    margin-left: 40px;
+    text-align: center;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+
+    color: #000000;
+  }
+}
