@@ -1,11 +1,16 @@
 import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import s from './styles/base.module.css';
+
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import authOps from './redux/auth/auth-operations';
 import ProtectedRoute from './components/ProtectedRoute';
+
+import BtnAddTransc from './components/BtnAddTransc/BtnAddTransc';
+
 // import Spinner from './components/Spinner';
+
 
 const RegisterPage = lazy(() =>
   import('./pages/views/registration/RegisterPage'),
@@ -28,6 +33,8 @@ const App = () => {
             <Route path="/register" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />
             <ProtectedRoute path="/dashboard">{DashboardPage}</ProtectedRoute>
+            <BtnAddTransc />
+
           </Switch>
         </Suspense>
       </div>

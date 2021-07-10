@@ -1,0 +1,47 @@
+@media (min-width: 320px) {
+  img {
+    opacity: 0;
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  img {
+    display: block;
+    opacity: 1;
+    /* width: 618px; */
+  }
+  .blueStain {
+    width: 618px;
+    height: 512px;
+  }
+  .stainContainer {
+    display: flex;
+    width: 618px;
+    height: 547px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media (min-width: 1280px) {
+  .stainContainer {
+    /* width: 1280px;
+    padding-left: 0px; */
+    /* padding-right: 85px;  */
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    padding-left: 0;
+  }
+  img {
+    display: block;
+    opacity: 1;
+    /* width: 435px; */
+    /* height: 419px; */
+  }
+}

@@ -3,20 +3,21 @@
   height: 16px;
 }
 .formContainer {
-  display: flex;
   flex-direction: column;
-  margin-right: auto;
-  width: 150px;
   margin-left: auto;
 }
 .email {
   width: 280px;
+  height: 34px;
   border: 0 solid #fff;
+  padding-left: 30px;
   border-bottom: 1px solid #e0e0e0;
   /* Gray 5 */
 }
 .password {
   width: 280px;
+  height: 34px;
+  padding-left: 30px;
   border: 0 solid #fff;
   border-bottom: 1px solid #e0e0e0;
   margin-top: 40px;
@@ -68,4 +69,59 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #4a56e2;
+}
+.posRelative {
+  position: relative;
+}
+
+/* Адаптивку пробую сделать ============================================== */
+.container {
+  min-width: 320px;
+  height: 568px;
+  background-color: #ffff;
+}
+
+@media (min-width: 320px) {
+  .contForHead {
+    padding-top: 110px;
+    padding-bottom: 25px;
+    /* padding: 0, 0; */
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 540px;
+    height: 468px;
+    margin-top: 50px;
+    margin-left: 100px;
+
+    background: #ffffff;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 100;
+  }
+  .head {
+    margin-top: 40px;
+  }
+  .contForHead {
+    padding-top: 110px;
+    padding-bottom: 25px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    width: 540px;
+    height: 468px;
+    margin-top: 50px;
+    margin-left: 100px;
+
+    background: #ffffff;
+    border-radius: 20px;
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    z-index: 100;
+  }
 }

@@ -1,28 +1,9 @@
 @font-face {
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Circe Bold'),
-    url('../assets/fonts/Circe-Bold-Regular.woff2') format('woff2'),
-    url('../assets/fonts/Circe-Bold-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Circe Regular'),
-    url('../assets/fonts/Circe-Regular.woff2') format('woff2'),
-    url('../assets/fonts/Circe-Regular.woff') format('woff');
-}
-
-@font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;
   src: local('Poppins Bold'),
-    url('../assets/fonts/Poppins-Bold.woff2') format('woff2'),
-    url('../assets/fonts/Poppins-Bold.woff') format('woff');
+    url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
 }
 
 @font-face {
@@ -30,14 +11,16 @@
   font-style: normal;
   font-weight: 400;
   src: local('Poppins Regular'),
-    url('../assets/fonts/Poppins-Regular.woff2') format('woff2'),
-    url('../assets/fonts/Poppins-Regular.woff') format('woff');
+    url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
 }
 
 body {
   margin: 0;
-  font-family: Circe;
+  font-family: Poppins;
   color: black;
+  font-family: Circe;
+  background-color: #e5e5e5;
+  /* color: black; */
 }
 
 img {
@@ -80,12 +63,12 @@ button {
 }
 
 .container {
-  background: rgba(255, 255, 255, 0.4);
+  /* background-color: rgba(255, 255, 255, 0.4); */
   width: 100%;
   text-align: center;
   padding-left: 20px;
   padding-right: 20px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 @media (min-width: 320px) {
   .container {

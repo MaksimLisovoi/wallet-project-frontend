@@ -11,15 +11,27 @@
 }
 .email {
   width: 280px;
+  height: 34px;
   border: 0 solid #fff;
   border-bottom: 1px solid #e0e0e0;
+  padding-left: 30px;
+  /* position: relative; */
   /* Gray 5 */
 }
+.envelopePos,
+.passwordPhoto,
+.confPasswordPh,
+.namPh {
+  position: relative;
+}
+
 .password {
   width: 280px;
+  height: 34px;
   border: 0 solid #fff;
   border-bottom: 1px solid #e0e0e0;
   margin-top: 40px;
+  padding-left: 30px;
 }
 .enter {
   margin-top: 20px;
@@ -71,8 +83,57 @@
 }
 
 .wrraper {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
-  width: 250px;
+  /* width: 250px; */
   margin: auto;
+}
+
+/*? Адаптивка началась */
+@media (min-width: 320px) {
+  .container {
+    background-color: #ffffff;
+
+    /* justify-content: unset; */
+    display: inline-block;
+    width: 320px;
+    height: 568px;
+    padding-left: 0px;
+    padding-right: 0px;
+    left: 10%;
+  }
+  .wrraper {
+    /* display: flex; */
+    flex-direction: column;
+    /* width: 0px; */
+    margin: auto;
+  }
+  .headRegistr {
+    padding-top: 36px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    position: absolute;
+    left: 25%;
+    top: 35%;
+    z-index: 50;
+    width: 540px;
+    border-radius: 20px;
+    height: 616px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    bottom: 10%;
+    z-index: 50;
+    width: 540px;
+    border-radius: 20px;
+    height: 616px;
+  }
 }
