@@ -1,52 +1,49 @@
 .text {
   display: none;
 }
-.stainContainer {
-  display: flex;
-  margin-left: 55px;
-}
-
 @media (min-width: 768px) {
-  .text {
-    display: block;
-    z-index: 1;
-    margin-top: 100px;
-    margin-left: 40px;
-
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 45px;
-
-    color: #000000;
-  }
-  .position {
-    width: 260px;
-  }
-}
-@media (min-width: 1280px) {
-  .stainContainer {
+  .size {
+    width: 273px;
     position: absolute;
-    bottom: 15%;
-    z-index: 15;
-    display: block;
+    top: 5%;
+    left: 20%;
   }
-  .position {
-    width: 435px;
-  }
-
   .text {
-    display: block;
+    display: flex;
+    position: absolute;
     z-index: 1;
     margin-top: 20px;
     margin-left: 40px;
     text-align: center;
-
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
     line-height: 45px;
+    min-width: 100%;
+    left: 80%;
+    top: 30%;
+    color: #000000;
+  }
+}
 
+@media (min-width: 1280px) {
+  .size {
+    width: 452px;
+    position: absolute;
+    bottom: 15%;
+    top: 40%;
+    left: 10%;
+  }
+  .text {
+    display: contents;
+    z-index: 1;
+    margin-top: 20px;
+    margin-left: 40px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
     color: #000000;
   }
 }
