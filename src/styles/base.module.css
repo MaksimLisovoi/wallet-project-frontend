@@ -1,4 +1,20 @@
 @font-face {
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Circe Bold'),
+    url('../assets/fonts/circe-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Circe Regular'),
+    url('../assets/fonts/circe.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;
