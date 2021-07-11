@@ -3,12 +3,7 @@ import Chart from '../Chart/Chart';
 import Table from '../Table/Table';
 import styles from './DiagramTab.module.css';
 
-// --- Написать логику запроса с Апи и отправить данные в Таблицу
-// --- Написть функцию которая принимает и переделывает обьект для Чарта
 // сделать подписку на Редакс
-
-// ---(плохой вариант) можно сделать фильтр по определенной категории и создать массив конкретно под эту категорию.
-// --- И splice"ом подставить под определенный индекс в массив для отрисовки.
 
 class DiagramTab extends Component {
   state = {
@@ -18,46 +13,11 @@ class DiagramTab extends Component {
   };
 
   componentDidMount() {
-    this.getChartData();
-    this.overallSumPlus(this.getDataFromApi());
-    this.overallSumMinus(this.getDataFromApi());
+    this.trasformDataForChart(this.getDataFromApi());
+    this.overallSum(this.getDataFromApi());
   }
 
-  async getChartData() {
-    const dataFromAPI = {
-      labels: [
-        'Основные',
-        'Еда',
-        'Авто',
-        'Развитие',
-        'Дети',
-        'Дом',
-        'Образование',
-        'Остальное',
-      ],
-      datasets: [
-        {
-          label: 'Population',
-          data: [8700, 3800, 1500, 800, 2000, 300, 3400, 1230],
-          backgroundColor: [
-            'rgba(254, 208, 87, 1)',
-            'rgba(255, 216, 208, 1)',
-            'rgba(253, 148, 152, 1)',
-            'rgba(197, 186, 255, 1)',
-            'rgba(110, 120, 232, 1)',
-            'rgba(74, 86, 226, 1)',
-            'rgba(129, 225, 255, 1)',
-            'rgba(0, 173, 132, 1)',
-          ],
-          cutout: '70%',
-        },
-      ],
-    };
-    if (dataFromAPI) {
-      return await this.setState({ chartForData: dataFromAPI });
-    }
-  }
-
+  // Функция которая делает запрос на бэк.
   getDataFromApi = () => {
     const dataFromApi = {
       status: 'success',
@@ -80,53 +40,8 @@ class DiagramTab extends Component {
             updatedAt: '2021-07-06T21:59:15.256Z',
           },
           {
-            category: 'Доход',
-            _id: '60e4d245429d7d2f286ad960',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: '+',
-            sum: 1000,
-            balance: 2000,
-            createdAt: '2021-07-06T21:59:33.220Z',
-            updatedAt: '2021-07-06T21:59:33.220Z',
-          },
-          {
-            category: 'Доход',
-            _id: '60e4d246429d7d2f286ad961',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: '+',
-            sum: 1000,
-            balance: 3000,
-            createdAt: '2021-07-06T21:59:34.155Z',
-            updatedAt: '2021-07-06T21:59:34.155Z',
-          },
-          {
-            category: 'Машина',
-            _id: '60e5d9f380beac2c50d4a9ce',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 1000,
-            balance: 2000,
-            createdAt: '2021-07-07T16:44:35.204Z',
-            updatedAt: '2021-07-07T16:44:35.204Z',
-          },
-          {
-            category: 'Дети',
-            _id: '60e5d9f380beac2c50d4a9ce',
+            category: 'Основные расходы',
+            _id: '60e4d233429d7d2f286ad95f',
             owner: {
               name: "C'thun",
               _id: '60e4c99e174f432c74022fdc',
@@ -136,12 +51,12 @@ class DiagramTab extends Component {
             type: 'minus',
             sum: 1000,
             balance: 1000,
-            createdAt: '2021-07-07T16:44:35.204Z',
-            updatedAt: '2021-07-07T16:44:35.204Z',
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
           },
           {
-            category: 'Дом',
-            _id: '60e5d9f380beac2c50d4a9ce',
+            category: 'Продукты',
+            _id: '60e4d233429d7d2f286ad95f',
             owner: {
               name: "C'thun",
               _id: '60e4c99e174f432c74022fdc',
@@ -149,29 +64,14 @@ class DiagramTab extends Component {
             },
             date: '1971-09-25T13:50:54.564Z',
             type: 'minus',
-            sum: 1500,
+            sum: 888,
             balance: 1000,
-            createdAt: '2021-07-07T16:44:35.204Z',
-            updatedAt: '2021-07-07T16:44:35.204Z',
-          },
-          {
-            category: 'Развитие',
-            _id: '60e5d9f380beac2c50d4a9ce',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 800,
-            balance: 1000,
-            createdAt: '2021-07-07T16:44:35.204Z',
-            updatedAt: '2021-07-07T16:44:35.204Z',
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
           },
           {
             category: 'Доход',
-            _id: '60e4d246429d7d2f286ad961',
+            _id: '60e4d233429d7d2f286ad95f',
             owner: {
               name: "C'thun",
               _id: '60e4c99e174f432c74022fdc',
@@ -179,14 +79,14 @@ class DiagramTab extends Component {
             },
             date: '1971-09-25T13:50:54.564Z',
             type: '+',
-            sum: 5000,
-            balance: 3000,
-            createdAt: '2021-07-06T21:59:34.155Z',
-            updatedAt: '2021-07-06T21:59:34.155Z',
+            sum: 25000,
+            balance: 1000,
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
           },
           {
             category: 'Образование',
-            _id: '60e5d9f380beac2c50d4a9ce',
+            _id: '60e4d233429d7d2f286ad95f',
             owner: {
               name: "C'thun",
               _id: '60e4c99e174f432c74022fdc',
@@ -194,13 +94,104 @@ class DiagramTab extends Component {
             },
             date: '1971-09-25T13:50:54.564Z',
             type: 'minus',
-            sum: 2000,
+            sum: 1778,
             balance: 1000,
-            createdAt: '2021-07-07T16:44:35.204Z',
-            updatedAt: '2021-07-07T16:44:35.204Z',
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
+          },
+          {
+            category: 'Дом',
+            _id: '60e4d233429d7d2f286ad95f',
+            owner: {
+              name: "C'thun",
+              _id: '60e4c99e174f432c74022fdc',
+              email: 'Chtun@i.ua',
+            },
+            date: '1971-09-25T13:50:54.564Z',
+            type: 'minus',
+            sum: 2640,
+            balance: 1000,
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
+          },
+
+          {
+            category: 'Дети',
+            _id: '60e4d233429d7d2f286ad95f',
+            owner: {
+              name: "C'thun",
+              _id: '60e4c99e174f432c74022fdc',
+              email: 'Chtun@i.ua',
+            },
+            date: '1971-09-25T13:50:54.564Z',
+            type: 'minus',
+            sum: 3500,
+            balance: 1000,
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
+          },
+          {
+            category: 'Авто',
+            _id: '60e4d233429d7d2f286ad95f',
+            owner: {
+              name: "C'thun",
+              _id: '60e4c99e174f432c74022fdc',
+              email: 'Chtun@i.ua',
+            },
+            date: '1971-09-25T13:50:54.564Z',
+            type: 'minus',
+            sum: 5000,
+            balance: 1000,
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
+          },
+          {
+            category: 'Забота о себе',
+            _id: '60e4d233429d7d2f286ad95f',
+            owner: {
+              name: "C'thun",
+              _id: '60e4c99e174f432c74022fdc',
+              email: 'Chtun@i.ua',
+            },
+            date: '1971-09-25T13:50:54.564Z',
+            type: 'minus',
+            sum: 900,
+            balance: 1000,
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
+          },
+          {
+            category: 'Досуг',
+            _id: '60e4d233429d7d2f286ad95f',
+            owner: {
+              name: "C'thun",
+              _id: '60e4c99e174f432c74022fdc',
+              email: 'Chtun@i.ua',
+            },
+            date: '1971-09-25T13:50:54.564Z',
+            type: 'minus',
+            sum: 2200,
+            balance: 1000,
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
+          },
+          {
+            category: 'Другие расходы',
+            _id: '60e4d233429d7d2f286ad95f',
+            owner: {
+              name: "C'thun",
+              _id: '60e4c99e174f432c74022fdc',
+              email: 'Chtun@i.ua',
+            },
+            date: '1971-09-25T13:50:54.564Z',
+            type: 'minus',
+            sum: 1050,
+            balance: 1000,
+            createdAt: '2021-07-06T21:59:15.256Z',
+            updatedAt: '2021-07-06T21:59:15.256Z',
           },
         ],
-        totalDocs: 9,
+        totalDocs: 10,
         offset: 0,
         limit: 20,
         totalPages: 1,
@@ -216,61 +207,103 @@ class DiagramTab extends Component {
     return dataFromApi;
   };
 
-  overallSumPlus = data => {
-    let arr = [];
-    let overall = 0;
+  // Функция которая берёт сумму всех доходов и расходов.
+  overallSum = data => {
+    let overallPlus = 0;
+    let overallMinus = 0;
 
     data.data.transactions.map(({ type, sum }) => {
-      if (type === '+') {
-        arr.push(sum);
-        overall = arr.reduce((acc, value) => acc + value, 0);
+      switch (type) {
+        case '+':
+          overallPlus = overallPlus + sum;
+          break;
+        case 'minus':
+          overallMinus = overallMinus + sum;
+          break;
+        default:
+          console.log('Нет такого типа');
       }
     });
-
-    this.setState({ overallPlus: overall });
-  };
-
-  overallSumMinus = data => {
-    let arr = [];
-    let overall = 0;
-
-    data.data.transactions.map(({ type, sum }) => {
-      if (type === 'minus') {
-        arr.push(sum);
-        overall = arr.reduce((acc, value) => acc + value, 0);
-      }
-    });
-
-    this.setState({ overallMinus: overall });
+    this.setState({ overallPlus: overallPlus });
+    this.setState({ overallMinus: overallMinus });
   };
 
   trasformDataForChart = data => {
     const labels = [];
+    let sumOsnov = 0;
+    let sumProducts = 0;
+    let sumCar = 0;
+    let sumSelf = 0;
+    let sumChild = 0;
+    let sumHome = 0;
+    let sumEducation = 0;
+    let sumLeisure = 0;
+    let sumOther = 0;
 
     data.data.transactions.map(({ category, type, sum }) => {
-      console.log({ category, type, sum });
       if (!labels.includes(category)) {
         labels.push(category);
       }
+
+      switch (category) {
+        case 'Основные расходы':
+          sumOsnov = sumOsnov + sum;
+          break;
+        case 'Продукты':
+          sumProducts = sumProducts + sum;
+          break;
+        case 'Авто':
+          sumCar = sumCar + sum;
+          break;
+        case 'Забота о себе':
+          sumSelf = sumSelf + sum;
+          break;
+        case 'Дети':
+          sumChild = sumChild + sum;
+          break;
+        case 'Дом':
+          sumHome = sumHome + sum;
+          break;
+        case 'Образование':
+          sumEducation = sumEducation + sum;
+          break;
+        case 'Досуг':
+          sumLeisure = sumLeisure + sum;
+          break;
+        case 'Другие расходы':
+          sumOther = sumOther + sum;
+          break;
+        default:
+          console.log('Этой категории нет из представленных');
+      }
     });
 
-    console.log(labels);
-
-    const dataForChart = {
+    const chartForData = {
       labels: [
-        'Основные',
-        'Еда',
+        'Основные расходы',
+        'Продукты',
         'Авто',
-        'Развитие',
+        'Забота о себе',
         'Дети',
         'Дом',
         'Образование',
-        'Остальное',
+        'Досуг',
+        'Другие расходы',
       ],
       datasets: [
         {
           label: 'Statistics',
-          data: [8700, 3800, 1500, 800, 2008, 300, 3400, 1230],
+          data: [
+            `${sumOsnov}`,
+            `${sumProducts}`,
+            `${sumCar}`,
+            `${sumSelf}`,
+            `${sumChild}`,
+            `${sumHome}`,
+            `${sumEducation}`,
+            `${sumLeisure}`,
+            `${sumOther}`,
+          ],
           backgroundColor: [
             'rgba(254, 208, 87, 1)',
             'rgba(255, 216, 208, 1)',
@@ -279,19 +312,18 @@ class DiagramTab extends Component {
             'rgba(110, 120, 232, 1)',
             'rgba(74, 86, 226, 1)',
             'rgba(129, 225, 255, 1)',
+            'rgba(36, 204, 167, 1)',
             'rgba(0, 173, 132, 1)',
           ],
           cutout: '70%',
         },
       ],
     };
-    console.log(dataForChart);
-    return dataForChart;
+
+    return this.setState({ chartForData: chartForData });
   };
 
   render() {
-    this.trasformDataForChart(this.getDataFromApi());
-
     return (
       <>
         <h2 className={styles.diagram_tab_heading}>Statistics</h2>
