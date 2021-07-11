@@ -1,11 +1,12 @@
 import React from 'react';
-//import styles from './girl.module.css';
+import st from './girl.module.css';
 import PhotoGirl from './Frame.png';
 
 const Girl = () => {
   return (
-    <div>
-      <PhotoGirl />
+    <div className={st.size}>
+      <img src={PhotoGirl} alt="photoGirl" />
+      <span className={st.text}>Finance App</span>
     </div>
   );
 };
