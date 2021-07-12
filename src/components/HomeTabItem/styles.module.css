@@ -1,0 +1,87 @@
+.table__wrapper {
+  border-left: 5px solid #ff6596;
+  border-radius: 10px;
+  overflow: hidden;
+  padding-right: 20px;
+}
+
+.table__wrapper.income {
+  border-left: 5px solid #24cca7;
+}
+
+.table {
+  min-width: 280px;
+  border-collapse: collapse;
+
+  background-color: #fff;
+}
+
+.trow:not(:last-child) {
+  border-bottom: 1px solid #dcdcdf;
+}
+
+.thead {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: left;
+  padding-left: 20px;
+
+  color: #000000;
+}
+
+.trow > .tdata {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  padding-right: 20px;
+
+  color: #000000;
+}
+
+.trow > .tsum {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  padding-right: 20px;
+  color: #ff6596;
+}
+
+.tsum.income {
+  color: #24cca7;
+}
+
+.td__tablet {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.13;
+  color: #000000;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.td__date {
+  composes: td__tablet;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.td__sum {
+  composes: td__tablet;
+
+  color: #ff6596;
+}
+
+.td__sum.income {
+  color: #24cca7;
+}
