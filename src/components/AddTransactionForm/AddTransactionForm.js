@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import Select from 'react-select';
-import TransCategory from '../SelectTransacCategory/TransCategory';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import style from './AddTransactionForm.module.css';
 
 const AddTransactionForm = () => {
-  const [amount, setAnmount] = useState('');
+  const [category, setCategory] = useState('');
+  const updateCategory = e => {
+    setCategory(e.target.value);
+  };
+
+  const [amount, setAmount] = useState('');
   const updateAnmount = e => {
-    setAnmount(e.target.value);
+    setAmount(e.target.value);
   };
 
   const currentDate = new Date()
@@ -27,7 +30,8 @@ const AddTransactionForm = () => {
   };
 
   const updateTypeOfTransiction = e => {
-    setAnmount('');
+    setCategory('');
+    setAmount('');
     setDate(currentDate);
     setComment('');
   };
@@ -55,7 +59,7 @@ const AddTransactionForm = () => {
               id="date"
               type="date"
               className={style.inputDate}
-              min={new Date().toISOString().slice(0, -14)}
+              // min={new Date().toISOString().slice(0, -14)}
               value={date}
               onChange={updateDate}
             />
