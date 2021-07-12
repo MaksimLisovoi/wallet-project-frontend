@@ -4,13 +4,12 @@ import s from './styles/base.module.css';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import authOps from './redux/auth/auth-operations';
+import * as authOps from './redux/auth/auth-operations';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import BtnAddTransc from './components/BtnAddTransc/BtnAddTransc';
 
 // import Spinner from './components/Spinner';
-
 
 const RegisterPage = lazy(() =>
   import('./pages/views/registration/RegisterPage'),
@@ -32,9 +31,9 @@ const App = () => {
           <Switch>
             <Route path="/register" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />
-            <ProtectedRoute path="/dashboard">{DashboardPage}</ProtectedRoute>
+            <Route path="/dashboard" component={DashboardPage} />
+            {/* <ProtectedRoute path="/dashboard">{DashboardPage}</ProtectedRoute> */}
             <BtnAddTransc />
-
           </Switch>
         </Suspense>
       </div>

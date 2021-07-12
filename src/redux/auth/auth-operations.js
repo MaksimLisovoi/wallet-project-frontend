@@ -1,5 +1,5 @@
 import axios from 'axios';
-import authActions from './auth-action';
+import * as authActions from './auth-action';
 
 axios.defaults.baseURL = '';
 
@@ -12,7 +12,7 @@ const token = {
   },
 };
 
-const getCurrentUser = () => async (dispatch, getState) => {
+export const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
@@ -31,5 +31,3 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserError(error.message));
   }
 };
-
-export default { getCurrentUser };
