@@ -18,11 +18,17 @@
   font-family: 'PT Sans', sans-serif;
   color: #bdbdbd;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 200;
   font-size: 30px;
   line-height: 27px;
+  margin-bottom: 5px;
   margin-right: 15px;
   display: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
 }
 
 .user_out {

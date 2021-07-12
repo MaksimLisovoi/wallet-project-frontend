@@ -1,0 +1,50 @@
+.select_wrapper {
+  position: relative;
+  margin-top: 20px;
+}
+
+.select_wrapper:first-child {
+  margin-top: 30px;
+}
+
+.select {
+  background-color: transparent;
+  width: 280px;
+  height: 50px;
+  border-radius: 30px;
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
+  outline: none;
+  appearance: none;
+  border: 1px #000 solid;
+}
+
+.select_arrow {
+  width: 18px;
+  height: 9px;
+  position: absolute;
+
+  right: 20px;
+  bottom: 20px;
+  background-image: url('./data/arrow.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (min-width: 768px) {
+  .select_wrapper {
+    margin-top: 0px;
+  }
+  .select {
+    width: 166px;
+  }
+  .select_wrapper:first-child {
+    margin-top: 0px;
+    margin-right: 19px;
+  }
+}
