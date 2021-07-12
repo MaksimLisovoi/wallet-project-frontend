@@ -8,12 +8,16 @@
 }
 .email {
   width: 280px;
+  height: 34px;
   border: 0 solid #fff;
+  padding-left: 30px;
   border-bottom: 1px solid #e0e0e0;
   /* Gray 5 */
 }
 .password {
   width: 280px;
+  height: 34px;
+  padding-left: 30px;
   border: 0 solid #fff;
   border-bottom: 1px solid #e0e0e0;
   margin-top: 40px;
@@ -66,6 +70,9 @@
   text-transform: uppercase;
   color: #4a56e2;
 }
+.posRelative {
+  position: relative;
+}
 
 /* Адаптивку пробую сделать ============================================== */
 .container {
@@ -113,7 +120,7 @@
     background: #ffffff;
     border-radius: 20px;
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 45%;
     z-index: 100;
   }
