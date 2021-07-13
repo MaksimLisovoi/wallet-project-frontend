@@ -17,11 +17,10 @@ const BasicFormSchema = Yup.object().shape({
     .min(6, 'Must be longer than 6 characters')
     .max(12, 'Must less than 12 characters')
     .required('Please Enter your password'),
-  confirmPassword: Yup.string()
-    .required('Введите пароль')
-    .oneOf([Yup.ref('password'), null], 'Пароли должны совпадать'),
+  // confirmPassword: Yup.string()
+  //   .required('Введите пароль')
+  //   .oneOf([Yup.ref('password'), null], 'Пароли должны совпадать'),
 
-  firstName: Yup.string()
-  .required('Please Enter your name'),
+  name: Yup.string().required('Please Enter your name'),
 });
 export default BasicFormSchema;
