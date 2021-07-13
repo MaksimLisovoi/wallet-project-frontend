@@ -4,7 +4,7 @@ import s from './styles/base.module.css';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import * as authOps from './redux/auth/auth-operations';
+import authOps from './redux/auth/auth-operations';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import BtnAddTransc from './components/BtnAddTransc/BtnAddTransc';

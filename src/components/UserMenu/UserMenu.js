@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getNameUser } from '../../redux/auth/auth-selectors';
+
+import authSelectors from '../../redux/auth/auth-selectors';
 import { isModalLogoutOpen } from '../../redux/global/global-action';
 import styles from './UserMenu.module.css';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
-  const name = useSelector(getNameUser);
+  const name = useSelector(authSelectors.getUserName);
   const ModalLogoutOpen = () => dispatch(isModalLogoutOpen());
 
   return (

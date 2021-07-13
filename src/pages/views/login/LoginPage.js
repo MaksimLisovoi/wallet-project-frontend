@@ -4,7 +4,7 @@ import { Formik, Field, Form, useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import BasicFormSchema from './schemaForForm';
 import * as yup from 'yup';
-import { authOperations } from '../../../redux/auth';
+import authOperations from '../../../redux/auth/auth-operations';
 import s from './login.module.css';
 
 import Logos from '../../../components/Logos/Logos';

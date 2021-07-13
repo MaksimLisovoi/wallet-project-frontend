@@ -1,7 +1,7 @@
 import { React, Component } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { authOperations } from '../../../redux/auth';
+import authOperations from '../../../redux/auth/auth-operations';
 import { Formik, Field, Form, useFormik } from 'formik';
 import BasicFormSchema from './schemRegistration';
 import Logos from '../../../components/Logos/Logos';
