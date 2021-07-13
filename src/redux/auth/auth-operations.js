@@ -1,5 +1,5 @@
 import axios from 'axios';
-import authActions from './auth-action';
+import * as authActions from './auth-action';
 
 axios.defaults.baseURL = 'http://localhost:4000/api';
 
@@ -11,6 +11,7 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
+
 
 const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
@@ -26,7 +27,6 @@ const register = credentials => async dispatch => {
   }
 };
 
-//=====================================================================
 const logIn = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
@@ -52,6 +52,7 @@ const logOut = () => async dispatch => {
 };
 
 const getCurrentUser = () => async (dispatch, getState) => {
+
   const {
     auth: { token: persistedToken },
   } = getState();
@@ -69,5 +70,6 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserError(error.message));
   }
 };
+
 
 export default { register, logIn, logOut, getCurrentUser };
