@@ -9,6 +9,11 @@ const SwitchToggle = () => {
     setExpense(nextExpense);
   };
 
+  const [category, setCategory] = useState('');
+  const updateCategory = e => {
+    setCategory(e.target.value);
+  };
+
   return (
     <>
       <div className={style.container}>
@@ -42,7 +47,20 @@ const SwitchToggle = () => {
           <strong>Расход</strong>
         </p>
       </div>
-      {expense === true ? <TransCategory /> : ''}
+      {expense === true ? (
+        <TransCategory
+          onChange={updateCategory}
+          value={category}
+          // style={{
+          //   background: 'tomato',
+          //   boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
+          //   backdropFilter: 'blur(50px)',
+          //   borderRadius: '20px',
+          // }}
+        />
+      ) : (
+        ''
+      )}
     </>
   );
 };
