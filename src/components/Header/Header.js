@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
   const modalLogout = useSelector(getModalLogout);
+
   return (
     <header className={styles.header}>
       <Logos />

@@ -10,9 +10,11 @@ import {
   addNewTransactionRequest,
   addNewTransactionSuccess,
   addNewTransactionError,
+  isModalLogoutOpen,
+  isModalAddTransactionOpen,
 } from './global-action';
 
-// --- нужно переделать на транзакцию
+// --- нужно доделать добавление транзакции
 
 // const addNew = (state, payload) => {
 //   const uniaqueName = state.find(
@@ -50,24 +52,12 @@ const balanceReducer = createReducer(0, {
   [fetchBalanceSuccess]: (_, { payload }) => payload,
 });
 
-// тут надо подумать
 const modalLogoutOpenReducer = createReducer(false, {
-  //   [fetchTransactionsRequest]: () => true,
-  //   [fetchTransactionsSuccess]: () => false,
-  //   [fetchTransactionsError]: () => false,
-  //   [addNewTransactionRequest]: () => true,
-  //   [addNewTransactionSuccess]: () => false,
-  //   [addNewTransactionError]: () => false,
+  [isModalLogoutOpen]: () => true,
 });
 
-// тут надо подумать
 const modalAddTransactionOpenReducer = createReducer(false, {
-  [fetchTransactionsRequest]: () => true,
-  [fetchTransactionsSuccess]: () => false,
-  [fetchTransactionsError]: () => false,
-  [addNewTransactionRequest]: () => true,
-  [addNewTransactionSuccess]: () => false,
-  [addNewTransactionError]: () => false,
+  [isModalAddTransactionOpen]: () => true,
 });
 
 const errorReducer = createReducer(false, {
