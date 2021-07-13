@@ -5,7 +5,7 @@ export const fetchTransactions = () => dispatch => {
   dispatch(actions.fetchTransactionsRequest());
 
   axios
-    .get('/api/transactions')
+    .get('https://wallet-team-project.herokuapp.com/api/transactions')
     .then(({ data }) => dispatch(actions.fetchTransactionsSuccess(data)))
     .catch(error => dispatch(actions.fetchTransactionsError(error.message)));
 };
@@ -14,7 +14,7 @@ export const fetchBalance = () => dispatch => {
   dispatch(actions.fetchBalanceRequest());
 
   axios
-    .get('/api/transactions/balance')
+    .get('https://wallet-team-project.herokuapp.com/api/transactions/balance')
     .then(({ data }) => dispatch(actions.fetchBalanceSuccess(data)))
     .catch(error => dispatch(actions.fetchBalanceError(error.message)));
 };
@@ -31,7 +31,10 @@ export const addNewTransaction = transaction => dispatch => {
   dispatch(actions.addNewTransactionRequest());
 
   axios
-    .post('/api/transactions', newTransaction)
+    .post(
+      'https://wallet-team-project.herokuapp.com/api/transactions',
+      newTransaction,
+    )
     .then(({ data }) => dispatch(actions.addNewTransactionSuccess(data)))
     .catch(error => dispatch(actions.addNewTransactionError(error.message)));
 };

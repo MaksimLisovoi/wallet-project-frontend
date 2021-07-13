@@ -12,8 +12,7 @@ const token = {
   },
 };
 
-
-const register = credentials => async dispatch => {
+export const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
 
   try {
@@ -27,7 +26,7 @@ const register = credentials => async dispatch => {
   }
 };
 
-const logIn = credentials => async dispatch => {
+export const logIn = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
     const response = await axios.post('/users/login', credentials);
@@ -39,7 +38,7 @@ const logIn = credentials => async dispatch => {
   }
 };
 
-const logOut = () => async dispatch => {
+export const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
   try {
     await axios.post('/users/logout');
@@ -51,8 +50,7 @@ const logOut = () => async dispatch => {
   }
 };
 
-const getCurrentUser = () => async (dispatch, getState) => {
-
+export const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
@@ -70,6 +68,3 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserError(error.message));
   }
 };
-
-
-export default { register, logIn, logOut, getCurrentUser };

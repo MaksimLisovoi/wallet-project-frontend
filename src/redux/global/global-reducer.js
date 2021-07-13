@@ -31,10 +31,13 @@ import {
 //   }
 // };
 
-const transactionsReducer = createReducer([], {
-  [fetchTransactionsSuccess]: (_, { payload }) => payload,
-  //   [addNewTransactionSuccess]: (state, { payload }) => addNew(state, payload),
-});
+const transactionsReducer = createReducer(
+  {},
+  {
+    [fetchTransactionsSuccess]: (_, { payload }) => payload,
+    //   [addNewTransactionSuccess]: (state, { payload }) => addNew(state, payload),
+  },
+);
 
 const loadingReducer = createReducer(false, {
   [fetchTransactionsRequest]: () => true,
