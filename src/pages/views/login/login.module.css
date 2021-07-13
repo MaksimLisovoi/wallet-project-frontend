@@ -75,10 +75,19 @@
 }
 
 /* Адаптивку пробую сделать ============================================== */
-.container {
-  min-width: 320px;
-  height: 568px;
-  background-color: #ffff;
+
+@media (max-width: 767px) {
+  .container {
+    width: 320px;
+    height: 568px;
+    background-color: #ffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
 }
 
 @media (min-width: 320px) {
@@ -120,7 +129,7 @@
     background: #ffffff;
     border-radius: 20px;
     position: absolute;
-    top: 25%;
+    top: 35%;
     left: 45%;
     z-index: 100;
   }

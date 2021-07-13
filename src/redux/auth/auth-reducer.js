@@ -2,12 +2,16 @@ import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import authAction from './auth-action';
 
-const initialUserState = { name: null, email: null };
+const initialUserState = {
+  name: null,
+  email: null,
+  password: null,
+};
 
 const user = createReducer(initialUserState, {
   [authAction.getCurrentUserSuccess]: (_, { payload }) => payload,
 });
-
+// console.log(user());
 const token = createReducer(null, {});
 
 const error = createReducer(null, {
