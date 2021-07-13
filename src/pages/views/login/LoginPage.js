@@ -1,18 +1,54 @@
-import React from 'react';
+// import React from 'react';
 
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 import BasicFormSchema from './schemaForForm';
-
-import Logos from '../../../components/Logos/Logos';
+import * as yup from 'yup';
+import { authOperations } from '../../../redux/auth';
 import s from './login.module.css';
 
+import Logos from '../../../components/Logos/Logos';
 import BlueStain from '../../../icons/blueStain/blueStain';
 import PinkStain from '../../../icons/pinkStain/pinkStain';
 import MainPhoto from '../../../icons/mainPhotoComp/mainPhotoComp';
 import Envelope from '../../../icons/envelopeData/envelope';
 import Lock from '../../../icons/lock/lock';
 
-function LoginPage() {
+export default function LoginPage() {
+  const dispatch = useDispatch();
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+
+    validation: yup.object({
+      username: yup.string().required('Пожалуйста, введите имя пользователя'),
+      email: yup
+        .string()
+        .email()
+        .required('Пожалуйста, введите свой адрес электронной почты'),
+
+      password: yup
+        .string('Пожалуйста, введите пароль')
+        .min(7, 'Пароль должен состоять не менее чем из 6 символов')
+        .max(26, 'Пароль должен содержать до 12 символов')
+        .required('Требуется пароль'),
+    }),
+
+    //   onSubmit: ({ email, password, name }) => {
+    //     dispatch(authOperations.register({ name, email, password }));
+    //   },
+    // });
+    onSubmit: (values, { resetForm }) => {
+      const { email, password, name } = values;
+      dispatch(authOperations.logIn({ email, password, name }));
+      resetForm();
+      //resetForm({});
+    },
+  });
+
   return (
     <>
       <BlueStain />
@@ -20,81 +56,48 @@ function LoginPage() {
       <MainPhoto />
       <div className={s.container}>
         <div className={s.contForHead}>
-          {/* <MainPhoto />
-      <BlueStain />
-      <PinkStain /> */}
           <Logos />
-          {/* <BlueStain /> */}
         </div>
 
-        <Formik
-          //инициализируем значения input-ов
-          initialValues={{
-            email: '',
-            password: '',
-          }}
-          //подключаем схему валидации, которую описали выше
-          validationSchema={BasicFormSchema}
-          //определяем, что будет происходить при вызове onsubmit
+        <form className={s.formContainer} onSubmit={formik.handleSubmit}>
+          <label className={s.posRelative}>
+            <input
+              name="email"
+              placeholder="E-mail "
+              type="email"
+              className={s.email}
+              value={formik.email}
+              onChange={formik.handleChange}
+            />
+            {formik.touched.email && formik.errors.email
+              ? formik.errors.email
+              : ''}
+            <Envelope />
+          </label>
 
-          onSubmit={(values, { resetForm }) => {
-            setTimeout(() => {
-              console.log(JSON.stringify(values, null, 2));
-              resetForm();
-            }, 500);
-          }}
-          //свойство, где описывыем нашу форму
-          //errors-ошибки валидации формы
-          //touched-поля формы, которые мы "затронули",
-          //то есть, в которых что-то ввели
-          render={({ errors, touched }) => (
-            <Form className={s.formContainer}>
-              {/* <label htmlFor="email">Email</label> */}
-              <label className={s.posRelative}>
-                <Field
-                  name="email"
-                  placeholder="E-mail "
-                  type="email"
-                  className={s.email}
-                />
-                <Envelope />
-              </label>
-              {/* <img src={like} alt="like" /> */}
-              {
-                //если в этом поле возникла ошибка и
-                //если это поле "затронуто, то выводим ошибку
-                errors.email && touched.email && (
-                  <div className="field-error">{errors.email}</div>
-                )
-              }
+          <label className={s.posRelative}>
+            <input
+              name="password"
+              placeholder="Пароль"
+              type="password"
+              className={s.password}
+              value={formik.password}
+              onChange={formik.handleChange}
+            />
+            {formik.touched.password && formik.errors.password
+              ? formik.errors.password
+              : ''}
+            <Lock />
+          </label>
 
-              {/* <label htmlFor="password">Password</label> */}
-              <label className={s.posRelative}>
-                <Field
-                  name="password"
-                  placeholder="Пароль"
-                  type="password"
-                  className={s.password}
-                />
-                <Lock />
-              </label>
-
-              {errors.password && touched.password && (
-                <div className="field-error">{errors.password}</div>
-              )}
-
-              <button type="submit" className={s.enter}>
-                <span className={s.text}>Вход</span>
-              </button>
-              <button type="submit" className={s.registration}>
-                <span className={s.textRegistration}>Регистрация</span>
-              </button>
-            </Form>
-          )}
-        />
+          <button type="submit" className={s.enter}>
+            <span className={s.text}>Вход</span>
+          </button>
+          <button type="submit" className={s.registration}>
+            <span className={s.textRegistration}>Регистрация</span>
+          </button>
+        </form>
       </div>
     </>
   );
 }
-console.log(LoginPage());
-export default LoginPage;

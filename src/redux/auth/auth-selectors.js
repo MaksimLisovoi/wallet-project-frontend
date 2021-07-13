@@ -1,3 +1,6 @@
-export const getIsAuth = state => state.auth.isAuth;
 
-export const getNameUser = state => state.auth.user.name;
+const getisAuthenticated = state => state.auth.isAuthenticated;
+//console.log(this.props.state);
+const getUserName = state => state.auth.user.name;
+export default { getisAuthenticated, getUserName };
+

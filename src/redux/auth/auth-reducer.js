@@ -15,12 +15,18 @@ import {
   getCurrentUserError,
 } from './auth-action';
 
-const initialUserState = { name: '', email: '' };
+
+const initialUserState = {
+  name: null,
+  email: null,
+  password: null,
+};
+
 
 const user = createReducer(initialUserState, {
   [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
-
+// console.log(user());
 const token = createReducer(null, {});
 
 const error = createReducer(null, {
