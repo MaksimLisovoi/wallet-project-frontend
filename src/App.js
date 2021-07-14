@@ -27,14 +27,16 @@ const App = () => {
   return (
     <>
       <div className={s.container}>
-        <Suspense fallback={<h1>Грузим</h1>}>
+        <Suspense fallback={<h1>Загружаем...</h1>}>
           <Switch>
             <Route path="/register" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/dashboard" component={DashboardPage} />
+
             {/* <ProtectedRoute path="/dashboard">
               <DashboardPage />
             </ProtectedRoute> */}
+
             <BtnAddTransc />
           </Switch>
         </Suspense>
