@@ -1,10 +1,13 @@
 // import React from 'react';
 
-import { Formik, Field, Form, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import BasicFormSchema from './schemaForForm';
-import * as yup from 'yup';
+
+
+import * as Yup from 'yup';
 import authOperations from '../../../redux/auth/auth-operations';
+
+
 import s from './login.module.css';
 
 import Logos from '../../../components/Logos/Logos';
@@ -14,41 +17,29 @@ import MainPhoto from '../../../icons/mainPhotoComp/mainPhotoComp';
 import Envelope from '../../../icons/envelopeData/envelope';
 import Lock from '../../../icons/lock/lock';
 
-export default function LoginPage() {
+const LoginPage = () => {
   const dispatch = useDispatch();
-
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
-
-    validation: yup.object({
-      username: yup.string().required('Пожалуйста, введите имя пользователя'),
-      email: yup
-        .string()
+    validationSchema: Yup.object({
+      email: Yup.string()
         .email()
-        .required('Пожалуйста, введите свой адрес электронной почты'),
+        .required('Введите свой адрес электронной почты'),
 
-      password: yup
-        .string('Пожалуйста, введите пароль')
-        .min(7, 'Пароль должен состоять не менее чем из 6 символов')
-        .max(26, 'Пароль должен содержать до 12 символов')
+      password: Yup.string('Введите пароль')
+        .min(6, 'Пароль должен состоять не менее чем из 6 символов')
+        .max(12, 'Пароль должен содержать до 12 символов')
         .required('Требуется пароль'),
     }),
-
-    //   onSubmit: ({ email, password, name }) => {
-    //     dispatch(authOperations.register({ name, email, password }));
-    //   },
-    // });
     onSubmit: (values, { resetForm }) => {
       const { email, password, name } = values;
       dispatch(authOperations.logIn({ email, password, name }));
-      resetForm();
-      //resetForm({});
+      resetForm({});
     },
   });
-
   return (
     <>
       <BlueStain />
@@ -58,35 +49,37 @@ export default function LoginPage() {
         <div className={s.contForHead}>
           <Logos />
         </div>
-
-        <form className={s.formContainer} onSubmit={formik.handleSubmit}>
-          <label className={s.posRelative}>
+        <form onSubmit={formik.handleSubmit}>
+          <label htmlFor="email" className={s.posRelative}>
             <input
+              id="email"
               name="email"
-              placeholder="E-mail "
-              type="email"
+              type="text"
+              placeholder="E-mail"
               className={s.email}
-              value={formik.email}
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
             />
-            {formik.touched.email && formik.errors.email
-              ? formik.errors.email
-              : ''}
+            {formik.touched.email && formik.errors.email ? (
+              <div className={s.textStyleError}>{formik.errors.email}</div>
+            ) : null}
             <Envelope />
           </label>
-
-          <label className={s.posRelative}>
+          <label htmlFor="password" className={s.posRelative}>
             <input
+              id="password"
               name="password"
-              placeholder="Пароль"
               type="password"
+              placeholder="Пароль"
               className={s.password}
-              value={formik.password}
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
             />
-            {formik.touched.password && formik.errors.password
-              ? formik.errors.password
-              : ''}
+            {formik.touched.password && formik.errors.password ? (
+              <div className={s.textStyleError}>{formik.errors.password}</div>
+            ) : null}
             <Lock />
           </label>
 
@@ -100,4 +93,6 @@ export default function LoginPage() {
       </div>
     </>
   );
-}
+};
+
+export default LoginPage;
