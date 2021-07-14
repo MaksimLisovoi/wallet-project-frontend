@@ -1,9 +1,7 @@
 import axios from 'axios';
 import authActions from './auth-action';
 
-
 axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com/api';
-
 
 const token = {
   set(token) {
@@ -14,9 +12,7 @@ const token = {
   },
 };
 
-
-export const register = credentials => async dispatch => {
-
+const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
 
   try {
@@ -30,7 +26,7 @@ export const register = credentials => async dispatch => {
   }
 };
 
-export const logIn = credentials => async dispatch => {
+const logIn = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
     const response = await axios.post('/users/login', credentials);
@@ -42,7 +38,7 @@ export const logIn = credentials => async dispatch => {
   }
 };
 
-export const logOut = () => async dispatch => {
+const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
   try {
     await axios.post('/users/logout');
@@ -54,9 +50,7 @@ export const logOut = () => async dispatch => {
   }
 };
 
-
-export const getCurrentUser = () => async (dispatch, getState) => {
-
+const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
@@ -75,3 +69,4 @@ export const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
+export default { register, logIn, logOut, getCurrentUser };

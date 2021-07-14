@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import DiagramTab from '../components/DiagramTab/DiagramTab';
+import DiagramTab from '../components/DiagramTab/DiagramTab';
 import Header from '../components/Header/Header';
 
-import Currency from '../components/Currency/Currensy'
+import Currency from '../components/Currency/Currensy';
 
 import HomeTab from '../components/HomeTab';
 import { fetchTransactions } from '../redux/global/global-operation';
-
 
 //---Решить что-то с шрифтом и цветом бэкграунда
 
@@ -27,7 +26,6 @@ const DashboardPage = () => {
 
       {/* <DiagramTab /> */}
       <HomeTab />
-
     </>
   );
 };
