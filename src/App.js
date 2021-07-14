@@ -31,7 +31,8 @@ const App = () => {
           <Switch>
             <Route path="/register" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />
-            <ProtectedRoute path="/dashboard">{DashboardPage}</ProtectedRoute>
+            <Route path="/dashboard" component={DashboardPage} />
+            {/* <ProtectedRoute path="/dashboard">{DashboardPage}</ProtectedRoute> */}
             <BtnAddTransc />
           </Switch>
         </Suspense>

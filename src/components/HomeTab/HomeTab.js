@@ -1,15 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import GetTableScreen from '../../helpers/getTableScreen';
 import getSortedData from '../../helpers/getSortedData';
 import TabletHomeTabItem from '../HomeTabItem/TabletHomeTabItem';
 import MobileHomeTabItem from '../HomeTabItem/MobileHomeTabItem';
 import styles from './styles.module.css';
-import transactions from './data';
+import { getAllTransactions } from '../../redux/global/global-selectors';
+// import { fetchTransactions } from '../../redux/global/global-operation';
+
+// import transactions from './data';
 
 const HomeTab = () => {
-  const tableScreen = GetTableScreen();
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchTransactions());
+  // }, [dispatch]);
 
+  const transactions = useSelector(getAllTransactions);
+  const tableScreen = GetTableScreen();
+  console.log(transactions);
   const sortedData = transactions.sort(getSortedData);
 
   return (
@@ -23,7 +33,7 @@ const HomeTab = () => {
           ))}
         </ul>
       )}
-      ,
+
       {tableScreen >= 767 && (
         <div className={styles.table__wrapper}>
           <table cellPadding="16" className={styles.table}>

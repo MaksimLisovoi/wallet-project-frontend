@@ -1,7 +1,9 @@
 import axios from 'axios';
 import authActions from './auth-action';
 
+
 axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com/api';
+
 
 const token = {
   set(token) {
@@ -26,7 +28,6 @@ const register = credentials => async dispatch => {
   }
 };
 
-//=====================================================================
 const logIn = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
