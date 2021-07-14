@@ -8,23 +8,21 @@ const initialUserState = {
 };
 
 const user = createReducer(initialUserState, {
-
-  [authAction.getCurrentUserSuccess]: (_, { payload }) => payload,
-  [authAction.logoutSuccess]: () => initialUserState,
-  [authAction.getCurrentUserSuccess]: (_, { payload }) => payload,
+  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  [authActions.logoutSuccess]: () => initialUserState,
+  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 // console.log(user());
 const token = createReducer(null, {
-  [authAction.logoutSuccess]: () => null,
+  [authActions.logoutSuccess]: () => null,
 });
 
 const setError = (_, { payload }) => payload;
 
 const error = createReducer(null, {
-  [authAction.getCurrentUserError]: setError,
-  [authAction.logoutError]: setError,
-  [authAction.getCurrentUserError]: setError,
-
+  [authActions.getCurrentUserError]: setError,
+  [authActions.logoutError]: setError,
+  [authActions.getCurrentUserError]: setError,
 });
 
 const isAuth = createReducer(false, {
