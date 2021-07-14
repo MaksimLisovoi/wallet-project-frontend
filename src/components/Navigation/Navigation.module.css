@@ -1,0 +1,50 @@
+/* .link {
+display: inline-block;
+padding: 13px 47px;
+font-weight: 700;
+color: '#2A363B';
+  }
+
+.activeLink {
+    color: '#E84A5F';
+} */
+
+.navigation {
+  display: flex;
+  justify-content: space-between;  
+}
+
+
+
+.logoHome { 
+margin-right: 33px; 
+  background-image: url('./data/home.svg');
+  background-repeat: no-repeat;
+background-size: contain;  
+}
+
+.logoStatistic {
+  margin-right: 33px;
+background-image: url('./data/statistic.svg');
+background-repeat: no-repeat;
+background-size: contain;
+}
+
+.logoCurrency {
+  margin-right: 33px;
+background-image: url('./data/currency.svg');
+background-repeat: no-repeat;
+background-size: contain;  
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    flex-direction:column;
+    
+  }
+  .navigationTable{
+     justify-content: flex-start;
+  }
+}
+
+
