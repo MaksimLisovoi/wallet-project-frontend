@@ -1,7 +1,7 @@
 import React from 'react';
 import DiagramTab from '../components/DiagramTab/DiagramTab';
 import Header from '../components/Header/Header';
-import CurrencyTable from '../components/CurrencyTable/CurrencyTable'
+import Currency from '../components/Currency/Currensy'
 
 //---Решить что-то с шрифтом и цветом бэкграунда
 
@@ -10,7 +10,7 @@ const DashboardPage = () => {
     <>
       <h1>This is DashboardPage</h1>
       <Header />
-      <CurrencyTable />
+      <Currency />
       <DiagramTab />
     </>
   );
