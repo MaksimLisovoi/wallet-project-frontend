@@ -1,214 +1,210 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chart from '../Chart/Chart';
 import Table from '../Table/Table';
 import styles from './DiagramTab.module.css';
+import { getTransactions } from '../../redux/global/global-selectors';
+import { useSelector } from 'react-redux';
 
-// сделать подписку на Редакс
-
-class DiagramTab extends Component {
-  state = {
-    chartForData: {},
-    overallPlus: 0,
-    overallMinus: 0,
-  };
-
-  componentDidMount() {
-    this.trasformDataForChart(this.getDataFromApi());
-    this.overallSum(this.getDataFromApi());
-  }
-
-  // Функция которая делает запрос на бэк.
-  getDataFromApi = () => {
-    const dataFromApi = {
-      status: 'success',
-      code: 200,
-      data: {
-        transactions: [
-          {
-            category: 'Доход',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: '+',
-            sum: 1000,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-          {
-            category: 'Основные расходы',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 1000,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-          {
-            category: 'Продукты',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 888,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-          {
-            category: 'Доход',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: '+',
-            sum: 25000,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-          {
-            category: 'Образование',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 1778,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-          {
-            category: 'Дом',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 2640,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-
-          {
-            category: 'Дети',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 3500,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-          {
-            category: 'Авто',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 5000,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-          {
-            category: 'Забота о себе',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 900,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-          {
-            category: 'Досуг',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 2200,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-          {
-            category: 'Другие расходы',
-            _id: '60e4d233429d7d2f286ad95f',
-            owner: {
-              name: "C'thun",
-              _id: '60e4c99e174f432c74022fdc',
-              email: 'Chtun@i.ua',
-            },
-            date: '1971-09-25T13:50:54.564Z',
-            type: 'minus',
-            sum: 1050,
-            balance: 1000,
-            createdAt: '2021-07-06T21:59:15.256Z',
-            updatedAt: '2021-07-06T21:59:15.256Z',
-          },
-        ],
-        totalDocs: 10,
-        offset: 0,
-        limit: 20,
-        totalPages: 1,
-        page: 1,
-        pagingCounter: 1,
-        hasPrevPage: false,
-        hasNextPage: false,
-        prevPage: null,
-        nextPage: null,
+const dataFromApi = {
+  status: 'success',
+  code: 200,
+  data: {
+    transactions: [
+      {
+        category: 'Доход',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: '+',
+        sum: 1000,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
       },
-    };
+      {
+        category: 'Основные расходы',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: 'minus',
+        sum: 1000,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
+      {
+        category: 'Продукты',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: 'minus',
+        sum: 888,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
+      {
+        category: 'Доход',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: '+',
+        sum: 25000,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
+      {
+        category: 'Образование',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: 'minus',
+        sum: 1778,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
+      {
+        category: 'Дом',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: 'minus',
+        sum: 2640,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
 
-    return dataFromApi;
-  };
+      {
+        category: 'Дети',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: 'minus',
+        sum: 3500,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
+      {
+        category: 'Авто',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: 'minus',
+        sum: 5000,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
+      {
+        category: 'Забота о себе',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: 'minus',
+        sum: 900,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
+      {
+        category: 'Досуг',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: 'minus',
+        sum: 2200,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
+      {
+        category: 'Другие расходы',
+        _id: '60e4d233429d7d2f286ad95f',
+        owner: {
+          name: "C'thun",
+          _id: '60e4c99e174f432c74022fdc',
+          email: 'Chtun@i.ua',
+        },
+        date: '1971-09-25T13:50:54.564Z',
+        type: 'minus',
+        sum: 1050,
+        balance: 1000,
+        createdAt: '2021-07-06T21:59:15.256Z',
+        updatedAt: '2021-07-06T21:59:15.256Z',
+      },
+    ],
+    totalDocs: 10,
+    offset: 0,
+    limit: 20,
+    totalPages: 1,
+    page: 1,
+    pagingCounter: 1,
+    hasPrevPage: false,
+    hasNextPage: false,
+    prevPage: null,
+    nextPage: null,
+  },
+};
+
+export default function DiagramTab() {
+  const [dataForChart, setChartData] = useState({});
+  const [overallPlus, setOverallPlus] = useState(0);
+  const [overallMinus, setOverallMinus] = useState(0);
+
+  // Селектор на забор всех транзакций из Store
+  const stateTransactions = useSelector(getTransactions);
+
+  useEffect(() => {
+    trasformDataForChart(dataFromApi);
+    overallSum(dataFromApi);
+  }, [dataFromApi]);
 
   // Функция которая берёт сумму всех доходов и расходов.
-  overallSum = data => {
+  const overallSum = data => {
     let overallPlus = 0;
     let overallMinus = 0;
 
@@ -224,11 +220,11 @@ class DiagramTab extends Component {
           console.log('Нет такого типа');
       }
     });
-    this.setState({ overallPlus: overallPlus });
-    this.setState({ overallMinus: overallMinus });
+    setOverallPlus(overallPlus);
+    setOverallMinus(overallMinus);
   };
-
-  trasformDataForChart = data => {
+  // Функция которая делает объект для Chart и записывает его в локальный стейт.
+  const trasformDataForChart = data => {
     const labels = [];
     let sumOsnov = 0;
     let sumProducts = 0;
@@ -273,12 +269,14 @@ class DiagramTab extends Component {
         case 'Другие расходы':
           sumOther = sumOther + sum;
           break;
+        case 'Доход':
+          break;
         default:
           console.log('Этой категории нет из представленных');
       }
     });
 
-    const chartForData = {
+    const dataForChart = {
       labels: [
         'Основные расходы',
         'Продукты',
@@ -320,24 +318,20 @@ class DiagramTab extends Component {
       ],
     };
 
-    return this.setState({ chartForData: chartForData });
+    setChartData(dataForChart);
   };
 
-  render() {
-    return (
-      <>
-        <h2 className={styles.diagram_tab_heading}>Statistics</h2>
-        <div className={styles.diagram_tab_container}>
-          <Chart chartData={this.state.chartForData} />
-          <Table
-            chartData={this.state.chartForData}
-            sumPlus={this.state.overallPlus}
-            sumMinus={this.state.overallMinus}
-          />
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <h2 className={styles.diagram_tab_heading}>Statistics</h2>
+      <div className={styles.diagram_tab_container}>
+        <Chart chartData={dataForChart} />
+        <Table
+          chartData={dataForChart}
+          sumPlus={overallPlus}
+          sumMinus={overallMinus}
+        />
+      </div>
+    </>
+  );
 }
-
-export default DiagramTab;
