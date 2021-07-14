@@ -11,7 +11,6 @@ import BtnAddTransc from './components/BtnAddTransc/BtnAddTransc';
 
 // import Spinner from './components/Spinner';
 
-
 const RegisterPage = lazy(() =>
   import('./pages/views/registration/RegisterPage'),
 );
@@ -34,7 +33,6 @@ const App = () => {
             <Route path="/login" component={LoginPage} />
             <ProtectedRoute path="/dashboard">{DashboardPage}</ProtectedRoute>
             <BtnAddTransc />
-
           </Switch>
         </Suspense>
       </div>

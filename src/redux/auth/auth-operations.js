@@ -1,7 +1,7 @@
 import axios from 'axios';
 import authActions from './auth-action';
 
-axios.defaults.baseURL = 'http://localhost:4000/api';
+axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com/api';
 
 const token = {
   set(token) {
