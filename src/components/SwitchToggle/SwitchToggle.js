@@ -1,29 +1,53 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
-import TransCategory from '../../components/SelectTransacCategory/TransCategory';
 import style from './SwitchToggle.module.css';
+import Select from 'react-select';
 
 const SwitchToggle = () => {
-  const [expense, setExpense] = useState(false);
-  const handleChange = nextExpense => {
-    setExpense(nextExpense);
+  const [category, setCategory] = useState(false);
+  const updateCategory = nextcategory => {
+    setCategory(nextcategory);
   };
 
-  // const [category, setCategory] = useState('');
-  // const updateCategory = e => {
-  //   setCategory(e.target.value);
-  // };
+  const [type, setType] = useState('');
+  const updateType = e => {
+    setType(e.target.value);
+  };
+
+  const options = [
+    { value: 'Основные расходы', label: 'Основные расходы' },
+    { value: 'Продукты', label: 'Продукты' },
+    { value: 'Авто', label: 'Авто' },
+    { value: 'Забота о себе', label: 'Забота о себе' },
+    { value: 'Дети', label: 'Дети' },
+    { value: 'Дом', label: 'Дом' },
+    { value: 'Образование', label: 'Образование' },
+    { value: 'Досуг', label: 'Досуг' },
+    { value: 'Другие расходы', label: 'Другие расходы' },
+  ];
+
+  const TransCategory = () => (
+    <Select options={options} formatGroupLabel={formatGroupLabel} />
+  );
+
+  const formatGroupLabel = data => (
+    <div>
+      <span>{data.label}</span>
+    </div>
+  );
 
   return (
     <>
       <div className={style.container}>
-        <p style={{ color: expense ? '' : '#24CCA7' }}>
+        <p style={{ color: category ? '' : '#24CCA7' }}>
           <strong>Доход</strong>
         </p>
-        <label htmlFor="small-radius-switch">
+        <label htmlFor="small-radius-switch" onChange={updateType}>
           <Switch
-            checked={expense}
-            onChange={handleChange}
+            value
+            {...type}
+            checked={category}
+            onChange={updateCategory}
             offColor="#E0E0E0"
             onColor="#E0E0E0"
             onHandleColor="#FF6596"
@@ -43,17 +67,11 @@ const SwitchToggle = () => {
             }
           />
         </label>
-        <p style={{ color: expense ? '#FF6596' : '' }}>
+        <p style={{ color: category ? '#FF6596' : '' }}>
           <strong>Расход</strong>
         </p>
       </div>
-      {expense === true ? (
-        <TransCategory
-        // onChange={updateCategory} value={category}
-        />
-      ) : (
-        ''
-      )}
+      {category === true ? TransCategory() : ''}
     </>
   );
 };

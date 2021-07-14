@@ -2,39 +2,18 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import style from './AddTransactionForm.module.css';
-import Select from 'react-select';
-
-// const options = [
-//   { value: 'Основные расходы', label: 'Основные расходы' },
-//   { value: 'Продукты', label: 'Продукты' },
-//   { value: 'Авто', label: 'Авто' },
-//   { value: 'Забота о себе', label: 'Забота о себе' },
-//   { value: 'Дети', label: 'Дети' },
-//   { value: 'Дом', label: 'Дом' },
-//   { value: 'Образование', label: 'Образование' },
-//   { value: 'Досуг', label: 'Досуг' },
-//   { value: 'Другие расходы', label: 'Другие расходы' },
-// ];
-
-// const TransCategory = () => (
-//   <Select options={options} formatGroupLabel={formatGroupLabel} />
-// );
-
-// const formatGroupLabel = data => (
-//   <div>
-//     <span>{data.label}</span>
-//   </div>
-// );
+import { addNewTransaction } from '../../redux/global/global-operation';
+// import { SwitchToggle } from '../SwitchToggle/SwitchToggle';
 
 const AddTransactionForm = () => {
-  const [category, setCategory] = useState('');
-  const updateCategory = e => {
-    setCategory(e.target.value);
-  };
+  // const [category, setCategory] = useState('');
+  // const updateCategory = e => {
+  //   setCategory(e.target.value);
+  // };
 
-  const [amount, setAmount] = useState('');
-  const updateAnmount = e => {
-    setAmount(e.target.value);
+  const [sum, setSum] = useState('');
+  const updateSum = e => {
+    setSum(e.target.value);
   };
 
   const currentDate = new Date()
@@ -52,17 +31,12 @@ const AddTransactionForm = () => {
     setComments(e.target.value);
   };
 
-  const [type, setType] = useState('');
-  const updateType = e => {
-    setType(e.target.value);
-  };
-
   const updateTypeOfTransiction = e => {
-    setAmount('');
+    setSum('');
     setDate(currentDate);
     setComments('');
-    setCategory('');
-    setType('');
+    // setCategory('');
+    // setType('');
   };
 
   return (
@@ -81,8 +55,9 @@ const AddTransactionForm = () => {
               pattern="\d+"
               maxLength="12"
               required
-              value={amount}
-              onChange={updateAnmount}
+              value={sum}
+              onChange={updateSum}
+              required
             />
             <Field
               id="date"
@@ -91,6 +66,7 @@ const AddTransactionForm = () => {
               // min={new Date().toISOString().slice(0, -14)}
               value={date}
               onChange={updateDate}
+              required
             />
             <Field
               placeholder="Комментарий"
@@ -111,7 +87,11 @@ const AddTransactionForm = () => {
               >
                 Add transaction
               </button>
-              <button type="submit" className={style.cancel}>
+              <button
+                type="submit"
+                className={style.cancel}
+                onClick={addNewTransaction}
+              >
                 Cancel
               </button>
             </div>
