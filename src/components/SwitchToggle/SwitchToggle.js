@@ -9,11 +9,6 @@ const SwitchToggle = () => {
     setCategory(nextcategory);
   };
 
-  const [type, setType] = useState('');
-  const updateType = e => {
-    setType(e.target.value);
-  };
-
   const options = [
     { value: 'Основные расходы', label: 'Основные расходы' },
     { value: 'Продукты', label: 'Продукты' },
@@ -42,10 +37,8 @@ const SwitchToggle = () => {
         <p style={{ color: category ? '' : '#24CCA7' }}>
           <strong>Доход</strong>
         </p>
-        <label htmlFor="small-radius-switch" onChange={updateType}>
+        <label htmlFor="small-radius-switch">
           <Switch
-            value
-            {...type}
             checked={category}
             onChange={updateCategory}
             offColor="#E0E0E0"

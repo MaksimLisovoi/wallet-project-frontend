@@ -31,18 +31,22 @@ const AddTransactionForm = () => {
     setComments(e.target.value);
   };
 
-  const updateTypeOfTransiction = e => {
+  const [type, setType] = useState('+');
+  const updateType = e => {
     setSum('');
     setDate(currentDate);
     setComments('');
     // setCategory('');
-    // setType('');
+    setType(e.target.value);
   };
 
   return (
     <div className={style.container}>
       <h2 className={style.title}>Добавить транзакцию</h2>
-      <SwitchToggle onChange={updateTypeOfTransiction} />
+      <SwitchToggle
+        // {...(checked === true ? type === '-' : '+')}
+        onChange={updateType}
+      />
 
       <Formik>
         {({ isSubmitting }) => (
