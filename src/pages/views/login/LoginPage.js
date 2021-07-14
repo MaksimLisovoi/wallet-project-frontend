@@ -1,18 +1,45 @@
-import React from 'react';
+// import React from 'react';
 
-import { Formik, Field, Form } from 'formik';
-import BasicFormSchema from './schemaForForm';
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 
-import Logos from '../../../components/Logos/Logos';
+
+import * as Yup from 'yup';
+import authOperations from '../../../redux/auth/auth-operations';
+
+
 import s from './login.module.css';
 
+import Logos from '../../../components/Logos/Logos';
 import BlueStain from '../../../icons/blueStain/blueStain';
 import PinkStain from '../../../icons/pinkStain/pinkStain';
 import MainPhoto from '../../../icons/mainPhotoComp/mainPhotoComp';
 import Envelope from '../../../icons/envelopeData/envelope';
 import Lock from '../../../icons/lock/lock';
 
-function LoginPage() {
+const LoginPage = () => {
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email()
+        .required('Введите свой адрес электронной почты'),
+
+      password: Yup.string('Введите пароль')
+        .min(6, 'Пароль должен состоять не менее чем из 6 символов')
+        .max(12, 'Пароль должен содержать до 12 символов')
+        .required('Требуется пароль'),
+    }),
+    onSubmit: (values, { resetForm }) => {
+      const { email, password, name } = values;
+      dispatch(authOperations.logIn({ email, password, name }));
+      resetForm({});
+    },
+  });
   return (
     <>
       <BlueStain />
@@ -20,81 +47,52 @@ function LoginPage() {
       <MainPhoto />
       <div className={s.container}>
         <div className={s.contForHead}>
-          {/* <MainPhoto />
-      <BlueStain />
-      <PinkStain /> */}
           <Logos />
-          {/* <BlueStain /> */}
         </div>
+        <form onSubmit={formik.handleSubmit}>
+          <label htmlFor="email" className={s.posRelative}>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              placeholder="E-mail"
+              className={s.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+            />
+            {formik.touched.email && formik.errors.email ? (
+              <div className={s.textStyleError}>{formik.errors.email}</div>
+            ) : null}
+            <Envelope />
+          </label>
+          <label htmlFor="password" className={s.posRelative}>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Пароль"
+              className={s.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+            />
+            {formik.touched.password && formik.errors.password ? (
+              <div className={s.textStyleError}>{formik.errors.password}</div>
+            ) : null}
+            <Lock />
+          </label>
 
-        <Formik
-          //инициализируем значения input-ов
-          initialValues={{
-            email: '',
-            password: '',
-          }}
-          //подключаем схему валидации, которую описали выше
-          validationSchema={BasicFormSchema}
-          //определяем, что будет происходить при вызове onsubmit
-
-          onSubmit={(values, { resetForm }) => {
-            setTimeout(() => {
-              console.log(JSON.stringify(values, null, 2));
-              resetForm();
-            }, 500);
-          }}
-          //свойство, где описывыем нашу форму
-          //errors-ошибки валидации формы
-          //touched-поля формы, которые мы "затронули",
-          //то есть, в которых что-то ввели
-          render={({ errors, touched }) => (
-            <Form className={s.formContainer}>
-              {/* <label htmlFor="email">Email</label> */}
-              <label className={s.posRelative}>
-                <Field
-                  name="email"
-                  placeholder="E-mail "
-                  type="email"
-                  className={s.email}
-                />
-                <Envelope />
-              </label>
-              {/* <img src={like} alt="like" /> */}
-              {
-                //если в этом поле возникла ошибка и
-                //если это поле "затронуто, то выводим ошибку
-                errors.email && touched.email && (
-                  <div className="field-error">{errors.email}</div>
-                )
-              }
-
-              {/* <label htmlFor="password">Password</label> */}
-              <label className={s.posRelative}>
-                <Field
-                  name="password"
-                  placeholder="Пароль"
-                  type="password"
-                  className={s.password}
-                />
-                <Lock />
-              </label>
-
-              {errors.password && touched.password && (
-                <div className="field-error">{errors.password}</div>
-              )}
-
-              <button type="submit" className={s.enter}>
-                <span className={s.text}>Вход</span>
-              </button>
-              <button type="submit" className={s.registration}>
-                <span className={s.textRegistration}>Регистрация</span>
-              </button>
-            </Form>
-          )}
-        />
+          <button type="submit" className={s.enter}>
+            <span className={s.text}>Вход</span>
+          </button>
+          <button type="submit" className={s.registration}>
+            <span className={s.textRegistration}>Регистрация</span>
+          </button>
+        </form>
       </div>
     </>
   );
-}
-console.log(LoginPage());
+};
+
 export default LoginPage;

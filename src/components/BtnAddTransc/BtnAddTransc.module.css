@@ -42,6 +42,17 @@
   .btnAdd {
     left: 90%;
   }
+
+  .modalContent {
+    position: absolute;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 100%;
+    left: 0px;
+    top: 60px;
+  }
 }
 @media (min-width: 768px) {
   .btnAdd {
@@ -59,7 +70,4 @@
     top: 90px;
     text-align: center;
   }
-}
-
-@media (min-width: 1280px) {
 }
