@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { getUserName } from '../../redux/auth/auth-selectors';
 import { isModalLogoutOpen } from '../../redux/global/global-action';
 import styles from './UserMenu.module.css';

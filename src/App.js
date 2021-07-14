@@ -4,8 +4,8 @@ import s from './styles/base.module.css';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import * as authOps from './redux/auth/auth-operations';
-import ProtectedRoute from './components/ProtectedRoute';
+import authOps from './redux/auth/auth-operations';
+// import ProtectedRoute from './components/ProtectedRoute';
 
 import BtnAddTransc from './components/BtnAddTransc/BtnAddTransc';
 
@@ -27,12 +27,16 @@ const App = () => {
   return (
     <>
       <div className={s.container}>
-        <Suspense fallback={<h1>Грузим</h1>}>
+        <Suspense fallback={<h1>Загружаем...</h1>}>
           <Switch>
             <Route path="/register" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/dashboard" component={DashboardPage} />
-            {/* <ProtectedRoute path="/dashboard">{DashboardPage}</ProtectedRoute> */}
+
+            {/* <ProtectedRoute path="/dashboard">
+              <DashboardPage />
+            </ProtectedRoute> */}
+
             <BtnAddTransc />
           </Switch>
         </Suspense>
