@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
-import TransCategory from '../SelectTransacCategory/TransCategory';
+import TransCategory from '../../components/SelectTransacCategory/TransCategory';
 import style from './SwitchToggle.module.css';
 
 const SwitchToggle = () => {
@@ -9,10 +9,10 @@ const SwitchToggle = () => {
     setExpense(nextExpense);
   };
 
-  const [category, setCategory] = useState('');
-  const updateCategory = e => {
-    setCategory(e.target.value);
-  };
+  // const [category, setCategory] = useState('');
+  // const updateCategory = e => {
+  //   setCategory(e.target.value);
+  // };
 
   return (
     <>
@@ -49,14 +49,7 @@ const SwitchToggle = () => {
       </div>
       {expense === true ? (
         <TransCategory
-          onChange={updateCategory}
-          value={category}
-          // style={{
-          //   background: 'tomato',
-          //   boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
-          //   backdropFilter: 'blur(50px)',
-          //   borderRadius: '20px',
-          // }}
+        // onChange={updateCategory} value={category}
         />
       ) : (
         ''

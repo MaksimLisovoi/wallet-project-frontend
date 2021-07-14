@@ -14,16 +14,7 @@ const options = [
 ];
 
 const TransCategory = () => (
-  <Select
-    options={options}
-    formatGroupLabel={formatGroupLabel}
-    // style={{
-    //   background: 'tomato',
-    //   boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
-    //   backdropFilter: 'blur(50px)',
-    //   borderRadius: '20px',
-    // }}
-  />
+  <Select options={options} formatGroupLabel={formatGroupLabel} />
 );
 
 const formatGroupLabel = data => (

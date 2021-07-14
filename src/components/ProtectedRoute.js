@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import * as authSelectors from '../redux/auth/auth-selectors';
 
 const ProtectedRoute = ({ children, ...routeProps }) => {
-  const isAuthenticated = useSelector(authSelectors.getIsAuth);
+  const isAuthenticated = useSelector(authSelectors.getisAuthenticated);
 
   return (
     <Route {...routeProps}>

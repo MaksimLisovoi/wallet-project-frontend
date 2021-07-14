@@ -2,6 +2,29 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import style from './AddTransactionForm.module.css';
+import Select from 'react-select';
+
+// const options = [
+//   { value: 'Основные расходы', label: 'Основные расходы' },
+//   { value: 'Продукты', label: 'Продукты' },
+//   { value: 'Авто', label: 'Авто' },
+//   { value: 'Забота о себе', label: 'Забота о себе' },
+//   { value: 'Дети', label: 'Дети' },
+//   { value: 'Дом', label: 'Дом' },
+//   { value: 'Образование', label: 'Образование' },
+//   { value: 'Досуг', label: 'Досуг' },
+//   { value: 'Другие расходы', label: 'Другие расходы' },
+// ];
+
+// const TransCategory = () => (
+//   <Select options={options} formatGroupLabel={formatGroupLabel} />
+// );
+
+// const formatGroupLabel = data => (
+//   <div>
+//     <span>{data.label}</span>
+//   </div>
+// );
 
 const AddTransactionForm = () => {
   const [category, setCategory] = useState('');
@@ -24,16 +47,22 @@ const AddTransactionForm = () => {
     setDate(e.target.value);
   };
 
-  const [comments, setComment] = useState('');
+  const [comments, setComments] = useState('');
   const updateComment = e => {
-    setComment(e.target.value);
+    setComments(e.target.value);
+  };
+
+  const [type, setType] = useState('');
+  const updateType = e => {
+    setType(e.target.value);
   };
 
   const updateTypeOfTransiction = e => {
-    setCategory('');
     setAmount('');
     setDate(currentDate);
-    setComment('');
+    setComments('');
+    setCategory('');
+    setType('');
   };
 
   return (
