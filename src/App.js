@@ -13,7 +13,7 @@ import authOperations from './redux/auth/auth-operations';
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivateRoute';
 
-// import Spinner from './components/Spinner';
+import Spinner from './components/Spinner/Spinner';
 
 const RegisterPage = lazy(() =>
   import('./pages/views/registration/RegisterPage'),
@@ -39,7 +39,7 @@ const App = () => {
         <AuthNav />
         {/*   <AppBar /> */}
 
-        <Suspense fallback={<h1>Грузим</h1>}>
+        <Suspense fallback={Spinner}>
           <Switch>
             <PublicRoute exact path="/">
               <LoginPage />
