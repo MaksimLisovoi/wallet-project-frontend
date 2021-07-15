@@ -52,11 +52,11 @@
   line-height: 1.5;
   text-align: right;
   padding-right: 20px;
-  color: #ff6596;
+  color: #24cca7;
 }
 
-.tsum.income {
-  color: #24cca7;
+.tsum.expense {
+  color: #ff6596;
 }
 
 .td__tablet {
@@ -79,9 +79,25 @@
 .td__sum {
   composes: td__tablet;
 
+  color: #24cca7;
+}
+
+.td__sum.expense {
   color: #ff6596;
 }
 
-.td__sum.income {
-  color: #24cca7;
+.text__wrapper {
+  padding-top: 25px;
+}
+
+@media (min-width: 768px) {
+  .text__wrapper {
+    width: 688px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .text__wrapper {
+    width: 700px;
+  }
 }

@@ -7,16 +7,18 @@ const HomeTabItem = ({ transaction }) => {
 
   const formatedDate = dateFormat(date, 'dd.mm.yy');
   const sumStyle = [styles.td__sum];
+  let modernType = '+';
 
-  if (type === '+') {
-    sumStyle.push(styles.income);
+  if (type === 'minus') {
+    sumStyle.push(styles.expense);
+    modernType = '-';
   }
 
   return (
     <>
       <tr>
         <td className={styles.td__date}>{formatedDate}</td>
-        <td className={styles.td__tablet}>{type}</td>
+        <td className={styles.td__tablet}>{modernType}</td>
         <td className={styles.td__tablet}>{category}</td>
         <td className={styles.td__tablet}>{comments}</td>
         <td className={sumStyle.join(' ')}>{sum}</td>

@@ -9,10 +9,12 @@ const MobileHomeTabItem = ({ transaction }) => {
 
   const sumStyle = [styles.tsum];
   const wrapperStyle = [styles.table__wrapper];
+  let modernType = '+';
 
-  if (type === '+') {
-    sumStyle.push(styles.income);
-    wrapperStyle.push(styles.income);
+  if (type === 'minus') {
+    sumStyle.push(styles.expense);
+    wrapperStyle.push(styles.expense);
+    modernType = '-';
   }
 
   return (
@@ -26,7 +28,7 @@ const MobileHomeTabItem = ({ transaction }) => {
             </tr>
             <tr className={styles.trow}>
               <td className={styles.thead}>Тип</td>
-              <td className={styles.tdata}>{type}</td>
+              <td className={styles.tdata}>{modernType}</td>
             </tr>
             <tr className={styles.trow}>
               <td className={styles.thead}>Категория</td>
