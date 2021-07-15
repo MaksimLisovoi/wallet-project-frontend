@@ -1,12 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-// import Navigation from './Navigation';
-// import UserMenu from './UserMenu/UserMenu';
-// import AuthNav from './AuthNav';
-import LoginPage from '../pages/views/login/LoginPage';
-import RegisterPage from '../pages/views/registration/RegisterPage';
-import { authSelectors } from '../redux/auth';
-// import { authSelectors } from "../redux/auth";
+import { useSelector } from 'react-redux';
+import Navigation from './Navigation';
+
+import AuthNav from './AuthNav';
+import { getisAuthenticated } from '../redux/auth/auth-selectors';
+import DashboardPage from '../pages/views/dashboard/DashboardPage';
 
 const styles = {
   header: {
@@ -17,14 +15,13 @@ const styles = {
   },
 };
 
-const AppBar = ({ isAuthenticated }) => (
-  <header style={styles.header}>
-    {/* <Navigation /> */}
-    {isAuthenticated ? <LoginPage /> : <RegisterPage />}
-  </header>
-);
-const mapStateToProps = state => ({
-  isAuthenticated: authSelectors.getisAuthenticated(state),
-});
+export default function AppBar() {
+  const isLoggedIn = useSelector(getisAuthenticated);
 
-export default connect(mapStateToProps)(AppBar);
+  return (
+    <div>
+      {/* <Navigation /> */}
+      {isLoggedIn ? <DashboardPage /> : <AuthNav />}
+    </div>
+  );
+}
