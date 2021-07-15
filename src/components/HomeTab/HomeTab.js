@@ -7,7 +7,7 @@ import TabletHomeTabItem from '../HomeTabItem/TabletHomeTabItem';
 import MobileHomeTabItem from '../HomeTabItem/MobileHomeTabItem';
 import NoTransactions from '../HomeTabItem/NoTransactions';
 import styles from './styles.module.css';
-import { getAllTransactions } from '../../redux/global/global-selectors';
+import { getTransactions } from '../../redux/global/global-selectors';
 import { fetchTransactions } from '../../redux/global/global-operation';
 
 // import transactions from './data';
@@ -18,20 +18,27 @@ const HomeTab = () => {
     dispatch(fetchTransactions());
   }, [dispatch]);
 
-  const transactions = useSelector(getAllTransactions);
+  const transactions = useSelector(getTransactions);
   const tableScreen = GetTableScreen();
 
-  const sortedData = transactions.sort(getSortedData);
+  const sortedData = transactions => {
+    if (transactions) {
+      console.log(transactions);
+      return transactions;
+      // return transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+  };
+  const newSortData = sortedData(transactions);
 
   return (
     <>
-      {sortedData.length === 0 ? (
+      {newSortData.length === 0 ? (
         <NoTransactions />
       ) : (
         <>
           {tableScreen <= 767 && (
             <ul className={styles.list}>
-              {sortedData.map(transaction => (
+              {newSortData.map(transaction => (
                 <li className={styles.item} key={transaction._id.$oid}>
                   <MobileHomeTabItem transaction={transaction} />
                 </li>
@@ -53,7 +60,7 @@ const HomeTab = () => {
                 </thead>
 
                 <tbody>
-                  {sortedData.map(transaction => (
+                  {newSortData.map(transaction => (
                     <TabletHomeTabItem
                       transaction={transaction}
                       key={transaction._id.$oid}
