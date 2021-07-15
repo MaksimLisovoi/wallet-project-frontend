@@ -32,7 +32,7 @@ import {
 // };
 
 const transactionsReducer = createReducer([], {
-  [fetchTransactionsSuccess]: (_, { payload }) => payload.data.trasactions,
+  [fetchTransactionsSuccess]: (_, { payload }) => payload.data.transactions,
   //   [addNewTransactionSuccess]: (state, { payload }) => addNew(state, payload),
 });
 

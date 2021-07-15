@@ -3,7 +3,11 @@ import Chart from '../Chart/Chart';
 import Table from '../Table/Table';
 import styles from './DiagramTab.module.css';
 import { getTransactions } from '../../redux/global/global-selectors';
-import { useSelector } from 'react-redux';
+import {
+  addNewTransaction,
+  fetchTransactions,
+} from '../../redux/global/global-operation';
+import { useDispatch, useSelector } from 'react-redux';
 
 const dataFromApi = {
   status: 'success',
@@ -195,9 +199,28 @@ export default function DiagramTab() {
   const [overallPlus, setOverallPlus] = useState(0);
   const [overallMinus, setOverallMinus] = useState(0);
 
+  // ---------- Рома смотри сюда ------------------
+
+  const localNewTransaction = {
+    category: 'Основные расходы',
+    comments: 'Пиво',
+    date: '2021-07-15',
+    type: 'minus',
+    sum: 25,
+  };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(addNewTransaction(localNewTransaction));
+    dispatch(fetchTransactions());
+  }, [dispatch]);
+
   // Селектор на забор всех транзакций из Store
   const stateTransactions = useSelector(getTransactions);
+  console.log(stateTransactions);
 
+  // ---------- Рома смотри сюда ------------------
   useEffect(() => {
     trasformDataForChart(dataFromApi);
     overallSum(dataFromApi);
