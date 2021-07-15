@@ -55,39 +55,7 @@ export default function CurrencyTable() {
                         })}
 
                     </div>
-    
             </div>
-            // <div className={style.container}>
-            //     <div className={style.bcg}>
-            //         <table className={style.table}>
-            //         <thead>
-            //             <tr>
-            //                 <th>Валюта</th>
-            //                 <th>Покупка</th>
-            //                 <th>Продажа</th>
-            //             </tr>
-            //         </thead>
-
-
-            //         <tbody>
-                        // {currencyFilter.map(({ ccy, buy, sale }) => {
-                        //     const buyParse = parseFloat(buy).toFixed(2)
-                        //     const saleParse = parseFloat(sale).toFixed(2)
-                        //     return(
-                        // <tr key={ccy}>
-                        //         <td >{ccy}</td>
-                        //         <td>{buyParse}</td>
-                        //         <td>{saleParse}</td>
-                        //     </tr>
-                        //     )
-                        // })}
-                    
-            //         </tbody>
-
-            //     </table>
-
-            //     </div>
-            // </div>
         )
     }
 }
