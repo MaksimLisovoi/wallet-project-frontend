@@ -8,6 +8,7 @@
   margin-right: -20px;
   padding-left: 20px;
   padding-right: 20px;
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -17,6 +18,7 @@
     margin-right: -40px;
     padding-left: 40px;
     padding-right: 40px;
+    position: relative;
   }
 }
 
@@ -26,5 +28,6 @@
     margin-right: -85px;
     padding-left: 85px;
     padding-right: 85px;
+    position: relative;
   }
 }
