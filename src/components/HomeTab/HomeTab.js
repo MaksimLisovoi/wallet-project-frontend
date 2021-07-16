@@ -10,10 +10,9 @@ import styles from './styles.module.css';
 import { getTransactions } from '../../redux/global/global-selectors';
 import { fetchTransactions } from '../../redux/global/global-operation';
 
-// import transactions from './data';
-
 const HomeTab = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);
@@ -23,9 +22,7 @@ const HomeTab = () => {
 
   const sortedData = transactions => {
     if (transactions) {
-      console.log(transactions);
-      return transactions;
-      // return transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+      return transactions.slice().sort(getSortedData);
     }
   };
   const newSortData = sortedData(transactions);
@@ -39,7 +36,7 @@ const HomeTab = () => {
           {tableScreen <= 767 && (
             <ul className={styles.list}>
               {newSortData.map(transaction => (
-                <li className={styles.item} key={transaction._id.$oid}>
+                <li className={styles.item} key={transaction._id}>
                   <MobileHomeTabItem transaction={transaction} />
                 </li>
               ))}
@@ -63,7 +60,7 @@ const HomeTab = () => {
                   {newSortData.map(transaction => (
                     <TabletHomeTabItem
                       transaction={transaction}
-                      key={transaction._id.$oid}
+                      key={transaction._id}
                     />
                   ))}
                 </tbody>
