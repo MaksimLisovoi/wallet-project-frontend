@@ -16,6 +16,15 @@ export const fetchBalanceRequest = createAction('global/fetchBalanceRequest');
 export const fetchBalanceSuccess = createAction('global/fetchBalanceSuccess');
 export const fetchBalanceError = createAction('global/fetchBalanceError');
 
+// --- Екшены на получение транзакций за определенный период
+export const fetchStaticticRequest = createAction(
+  'global/fetchStaticticRequest',
+);
+export const fetchStaticticSuccess = createAction(
+  'global/fetchStaticticSuccess',
+);
+export const fetchStaticticError = createAction('global/fetchStaticticError');
+
 // --- Екшены на добавление транзакции
 export const addNewTransactionRequest = createAction(
   'global/addNewTransactionRequest',

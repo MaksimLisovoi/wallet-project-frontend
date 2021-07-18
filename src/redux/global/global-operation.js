@@ -19,6 +19,19 @@ export const fetchBalance = () => dispatch => {
     .catch(error => dispatch(actions.fetchBalanceError(error.message)));
 };
 
+export const fetchStatictic =
+  ({ month, year }) =>
+  dispatch => {
+    dispatch(actions.fetchStaticticRequest());
+
+    axios
+      .get(
+        `https://wallet-team-project.herokuapp.com/api/transactions/statistic?month=${month}&year=${year}`,
+      )
+      .then(({ data }) => dispatch(actions.fetchStaticticSuccess(data.data)))
+      .catch(error => dispatch(actions.fetchStaticticError(error.message)));
+  };
+
 export const addNewTransaction = transaction => dispatch => {
   const newTransaction = {
     date: transaction.date,
