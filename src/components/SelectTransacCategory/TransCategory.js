@@ -13,10 +13,11 @@ const options = [
   { value: 'Другие расходы', label: 'Другие расходы' },
 ];
 
-const TransCategory = () => (
+const TransCategory = ({ updateCategory }) => (
   <Select
     options={options}
     formatGroupLabel={formatGroupLabel}
+    onChange={updateCategory}
     // style={{
     //   background: 'tomato',
     //   boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',

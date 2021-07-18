@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import style from './AddTransactionForm.module.css';
+import { addNewTransaction } from '../../redux/global/global-operation';
 
 const AddTransactionForm = () => {
-  const [category, setCategory] = useState('');
-  const updateCategory = e => {
-    setCategory(e.target.value);
-  };
-
-  const [amount, setAmount] = useState('');
-  const updateAnmount = e => {
-    setAmount(e.target.value);
-  };
+  const [type, setType] = useState('+');
+  const [category, setCategory] = useState('Доход');
 
   const currentDate = new Date()
     .toLocaleDateString()
@@ -24,26 +19,44 @@ const AddTransactionForm = () => {
     setDate(e.target.value);
   };
 
+  const [sum, setSum] = useState('');
+  const updateSum = e => {
+    setSum(e.target.value);
+  };
+
   const [comments, setComment] = useState('');
   const updateComment = e => {
     setComment(e.target.value);
   };
 
   const updateTypeOfTransiction = e => {
-    setCategory('');
-    setAmount('');
-    setDate(currentDate);
-    setComment('');
+    setCategory(e.label);
+    setType('minus');
+  };
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    dispatch(addNewTransaction({ date, type, category, comments, sum }), [
+      dispatch,
+      sum,
+      category,
+      comments,
+      date,
+    ]);
   };
 
   return (
     <div className={style.container}>
       <h2 className={style.title}>Добавить транзакцию</h2>
-      <SwitchToggle onChange={updateTypeOfTransiction} />
+      <SwitchToggle updateSwitcher={updateTypeOfTransiction} />
 
       <Formik>
         {({ isSubmitting }) => (
-          <Form>
+          <Form onSubmit={handleSubmit}>
+            {' '}
             <Field
               className={style.inputNumber}
               type="number"
@@ -52,14 +65,14 @@ const AddTransactionForm = () => {
               pattern="\d+"
               maxLength="12"
               required
-              value={amount}
-              onChange={updateAnmount}
+              value={sum}
+              onChange={updateSum}
             />
             <Field
               id="date"
               type="date"
               className={style.inputDate}
-              // min={new Date().toISOString().slice(0, -14)}
+              min={new Date().toISOString().slice(0, -14)}
               value={date}
               onChange={updateDate}
             />
@@ -72,7 +85,6 @@ const AddTransactionForm = () => {
               value={comments}
               onChange={updateComment}
             />
-
             <ErrorMessage name="password" component="div" />
             <div>
               <button
