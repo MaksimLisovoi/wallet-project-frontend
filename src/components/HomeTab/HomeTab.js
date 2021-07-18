@@ -28,7 +28,7 @@ const HomeTab = () => {
   const newSortData = sortedData(transactions);
 
   return (
-    <>
+    <div className={styles.homeTabPosition}>
       {newSortData.length === 0 ? (
         <NoTransactions />
       ) : (
@@ -105,7 +105,7 @@ const HomeTab = () => {
           </table>
         </div>
       )} */}
-    </>
+    </div>
   );
 };
 

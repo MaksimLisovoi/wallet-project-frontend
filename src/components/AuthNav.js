@@ -24,23 +24,23 @@ const styles = {
 
 const AuthNav = () => (
   <div>
-    <NavLink
+    {/* <NavLink
       to="/register"
       exact
       style={styles.link}
       activeStyle={styles.activeLink}
     >
       Регистрация
-    </NavLink>
+    </NavLink> */}
 
-    <NavLink
+    {/* <NavLink
       to="/login"
       exact
       style={styles.link}
       activeStyle={styles.activeLink}
     >
       Логин
-    </NavLink>
+    </NavLink> */}
   </div>
 );
 // const mapStateToProps = state => ({

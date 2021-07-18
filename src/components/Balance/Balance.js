@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBalance } from '../../redux/global/global-operation';
+import { istotalBalance } from '../../redux/global/global-selectors';
 import style from './Balance.module.css';
 
-const Balance = () => {
+export default function Balance() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchBalance());
   }, [dispatch]);
-  const balance = useSelector(fetchBalance);
+  const balance = useSelector(istotalBalance);
 
   return (
     <div className={style.balance}>
@@ -16,6 +18,8 @@ const Balance = () => {
       <span className={style.amount}>₴ {balance} </span>
     </div>
   );
-};
+}
 
-export default Balance;
+Balance.propTypes = {
+  transactions: PropTypes.number.isRequired,
+};
