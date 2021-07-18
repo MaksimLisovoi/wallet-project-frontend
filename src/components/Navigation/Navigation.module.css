@@ -1,37 +1,99 @@
-/* .link {
-display: inline-block;
-padding: 13px 47px;
-font-weight: 700;
-color: '#2A363B';
+.navigation {
+  
+  /* text-align: center; */
+
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.link {
+  display: inline-block; 
+  text-decoration: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #000000;
+  max-width: 180px;
+ 
+  }
+  .link:not(:last-child) {
+  margin-right: 30px;
+}
+
+.link:first-child {
+  margin-left: 44px;
+
+}
+
+.link:last-child {
+  margin-right: 44px;
+}
+
+  .activeLink {
+    font-weight: bold;
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
 
-.activeLink {
-    color: '#E84A5F';
-} */
-
+  @media screen and (min-width: 768px){
 .navigation {
-  display: flex;
-  justify-content: space-between;  
+  position: relative;
+  width: 150px;
+  align-items: flex-start;
+margin-top: 30px;
+margin-bottom: 20px;
+margin-right: 0;
 }
+
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+.link:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+
+.link:first-child {
+  margin-left: 0;
+}
+
+.link:last-child {
+  margin-right: 0;
+}
+
+
+.activeLinkText {
+  margin-left: 20px;
+font-style: normal;
+font-size: 18px;
+line-height: 27px;   
+  }
+  }
+
+
 
 
 
 .logoHome { 
-margin-right: 33px; 
+
   background-image: url('./data/home.svg');
   background-repeat: no-repeat;
 background-size: contain;  
 }
 
 .logoStatistic {
-  margin-right: 33px;
+
 background-image: url('./data/statistic.svg');
 background-repeat: no-repeat;
 background-size: contain;
 }
 
 .logoCurrency {
-  margin-right: 33px;
+ 
 background-image: url('./data/currency.svg');
 background-repeat: no-repeat;
 background-size: contain;  
@@ -45,6 +107,29 @@ background-size: contain;
   .navigationTable{
      justify-content: flex-start;
   }
+
+  .logoHome {
+  width: 24px;
+  height: 24px;
+}
+
+.logoStatistic {
+  width: 24px;
+height: 24px;
+
+}
+
+.logoCurrency {
+  width: 24px;
+height: 24px;
+
+}
+
+.link:hover {
+  color:  #4A56E2;
+}
+
+
 }
 
 

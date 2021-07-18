@@ -345,7 +345,7 @@ export default function DiagramTab() {
   };
 
   return (
-    <>
+    <div className={styles.diagramPosition}>
       <h2 className={styles.diagram_tab_heading}>Statistics</h2>
       <div className={styles.diagram_tab_container}>
         <Chart chartData={dataForChart} />
@@ -355,6 +355,6 @@ export default function DiagramTab() {
           sumMinus={overallMinus}
         />
       </div>
-    </>
+    </div>
   );
 }

@@ -9,3 +9,6 @@ export const getisModalAddTransaction = state =>
   state.global.isModalAddTransactionOpen;
 // --- Селектор на взятие из State isLoading
 export const isLoading = state => state.global.isLoading;
+
+// --- Селектор на взятие из State totalBalance
+export const istotalBalance = state => state.global.totalBalance;

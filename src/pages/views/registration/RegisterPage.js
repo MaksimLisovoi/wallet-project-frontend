@@ -1,11 +1,10 @@
 import { React } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
-
 import authOperations from '../../../redux/auth/auth-operations';
 import { useFormik } from 'formik';
-
 
 import Logos from '../../../components/Logos/Logos';
 import BlueStain from '../../../icons/blueStain/blueStain';
@@ -124,12 +123,17 @@ const RegisterPage = () => {
             ) : null}
             <Name />
           </label>
-          <button type="submit" className={s.enter}>
-            <span className={s.text}> Регистрация</span>
-          </button>
+          {/* <NavLink exact to="/register"> */}
           <button type="submit" className={s.registration}>
-            <span className={s.textRegistration}>Вход</span>
+            <span className={s.textRegistration}> Регистрация</span>
           </button>
+          {/* </NavLink> */}
+
+          {/* <NavLink exact to="/login"> */}
+          <button type="submit" className={s.enter}>
+            <span className={s.text}>Вход</span>
+          </button>
+          {/* </NavLink> */}
         </form>
       </div>
     </>

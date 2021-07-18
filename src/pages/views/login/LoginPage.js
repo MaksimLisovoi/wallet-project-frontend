@@ -1,12 +1,11 @@
 // import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 
-
 import * as Yup from 'yup';
 import authOperations from '../../../redux/auth/auth-operations';
-
 
 import s from './login.module.css';
 
@@ -83,12 +82,17 @@ const LoginPage = () => {
             <Lock />
           </label>
 
+          {/* <NavLink exact to="/login"> */}
           <button type="submit" className={s.enter}>
             <span className={s.text}>Вход</span>
           </button>
+          {/* </NavLink> */}
+
+          {/* <NavLink exact to="/register"> */}
           <button type="submit" className={s.registration}>
-            <span className={s.textRegistration}>Регистрация</span>
+            <span className={s.textRegistration}> Регистрация</span>
           </button>
+          {/* </NavLink> */}
         </form>
       </div>
     </>
