@@ -37,7 +37,10 @@ export const addNewTransactionError = createAction(
 );
 
 // --- Екшены на открытие ModalLogout
-export const isModalLogoutOpen = createAction('global/getModalLogout');
+export const isModalLogoutOpen = createAction('global/isModalLogoutOpen');
+
+// --- Екшены на закрытие ModalLogout
+export const isModalLogoutClose = createAction('global/isModalLogoutClose');
 
 // --- Екшены на открытие ModalAddTransaction
 export const isModalAddTransactionOpen = createAction(

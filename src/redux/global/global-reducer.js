@@ -15,6 +15,7 @@ import {
   addNewTransactionError,
   isModalLogoutOpen,
   isModalAddTransactionOpen,
+  isModalLogoutClose,
 } from './global-action';
 
 // --- нужно доделать добавление транзакции
@@ -64,6 +65,7 @@ const getStaticticReducer = createReducer([], {
 
 const modalLogoutOpenReducer = createReducer(false, {
   [isModalLogoutOpen]: () => true,
+  [isModalLogoutClose]: () => false,
 });
 
 const modalAddTransactionOpenReducer = createReducer(false, {
