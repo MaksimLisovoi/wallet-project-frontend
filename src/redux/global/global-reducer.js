@@ -20,21 +20,6 @@ import {
 
 // --- нужно доделать добавление транзакции
 
-// const addNew = (state, payload) => {
-//   const uniaqueName = state.find(
-//     contact => contact.name.toLowerCase() === payload.name.toLowerCase(),
-//   );
-//   if (payload.name === '') {
-//     alert('Вы забыли ввести имя контакта');
-//   } else if (payload.number === '') {
-//     alert('Вы забыли ввести номер контакта');
-//   } else if (uniaqueName) {
-//     alert(`${payload.name} уже есть в списке`);
-//   } else {
-//     return [...state, payload];
-//   }
-// };
-
 const transactionsReducer = createReducer([], {
   [fetchTransactionsSuccess]: (_, { payload }) => payload.data.transactions,
   [addNewTransactionSuccess]: (state, { payload }) => [

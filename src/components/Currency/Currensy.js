@@ -1,37 +1,34 @@
 import { useEffect, useState } from "react";
-import axios from 'axios'
+import { Ellipsis } from 'react-spinners-css';
 import style from './Currency.module.css'
 
-export default function CurrencyTable() {
+export default function Currency() {
     const [currency, setCurrency] = useState([])
     const [error, setError] = useState(null)
-    const [isLoaded, setIsLoaded] = useState(false)
-
-    async function getCurrency() {
-        try {
-            const {data} = await axios.get('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11');
-            const result = await data;
-            setIsLoaded(true);
-            setCurrency(result)
-    } catch (e) {
-        setIsLoaded(true);
-        setError(error)
-        }
-    }
+    const [isLoading, setIsLoading] = useState(false)
         
-    useEffect(() => {
-        getCurrency()
-    }, [])
+    async function getCurrency() {
+    try {
+      const data = await fetch(
+        'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
+      );
+      const result = await data.json();
+      setIsLoading(true);
+      setCurrency(result);
+    } catch (e) {
+      setIsLoading(true);
+      setError(error);
+    }
+  }
+
+  useEffect(() => {
+    getCurrency();
+  }, []);
 
     const currencyFilter = currency.filter(el => {
         return el.ccy !== 'BTC'
     })
-        
-    if (error) {
-        return <div>Error: { error.message }</div>
-    } else if (!isLoaded) {
-        return <div>Загружаем...</div>
-    } else {
+
         return (
             <div className={style.container}>
                 <div className={style.background}>
@@ -41,7 +38,9 @@ export default function CurrencyTable() {
                         <p>Продажа</p>
                     </div>
                     </div>
-                    <div>
+                <div>
+                    {!isLoading && (<div><Ellipsis color="rgba(255, 255, 255, 0.2)" /></div>)}
+                    {error && (<div><p className={style.warning}>Повторите запрос через несколько минут</p></div>)}
                         {currencyFilter.map(({ ccy, buy, sale }) => {
                             const buyParse = parseFloat(buy).toFixed(2)
                             const saleParse = parseFloat(sale).toFixed(2)
@@ -57,5 +56,4 @@ export default function CurrencyTable() {
                     </div>
             </div>
         )
-    }
 }
