@@ -26,7 +26,7 @@ export default function Currency() {
   }, []);
 
     const currencyFilter = currency.filter(el => {
-        return el.ccy !== 'BTC'
+        return el.ccy !== 'RUR'
     })
 
         return (
