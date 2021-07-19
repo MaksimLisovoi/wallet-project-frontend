@@ -4,8 +4,10 @@ import * as actions from './global-action';
 export const fetchTransactions = () => dispatch => {
   dispatch(actions.fetchTransactionsRequest());
 
+  axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com';
+
   axios
-    .get('https://wallet-team-project.herokuapp.com/api/transactions')
+    .get('/transactions')
     .then(({ data }) => dispatch(actions.fetchTransactionsSuccess(data)))
     .catch(error => dispatch(actions.fetchTransactionsError(error.message)));
 };
@@ -14,7 +16,7 @@ export const fetchBalance = () => dispatch => {
   dispatch(actions.fetchBalanceRequest());
 
   axios
-    .get('https://wallet-team-project.herokuapp.com/api/transactions/balance')
+    .get('/transactions/balance')
     .then(({ data }) => dispatch(actions.fetchBalanceSuccess(data)))
     .catch(error => dispatch(actions.fetchBalanceError(error.message)));
 };
@@ -25,9 +27,7 @@ export const fetchStatictic =
     dispatch(actions.fetchStaticticRequest());
 
     axios
-      .get(
-        `https://wallet-team-project.herokuapp.com/api/transactions/statistic?month=${month}&year=${year}`,
-      )
+      .get(`/transactions/statistic?month=${month}&year=${year}`)
       .then(({ data }) => dispatch(actions.fetchStaticticSuccess(data.data)))
       .catch(error => dispatch(actions.fetchStaticticError(error.message)));
   };
@@ -44,10 +44,7 @@ export const addNewTransaction = transaction => dispatch => {
   dispatch(actions.addNewTransactionRequest());
 
   axios
-    .post(
-      'https://wallet-team-project.herokuapp.com/api/transactions',
-      newTransaction,
-    )
+    .post('/transactions', newTransaction)
     .then(({ data }) => dispatch(actions.addNewTransactionSuccess(data)))
     .catch(error => dispatch(actions.addNewTransactionError(error.message)));
 };
