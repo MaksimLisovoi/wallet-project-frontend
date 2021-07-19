@@ -46,3 +46,8 @@ export const isModalLogoutClose = createAction('global/isModalLogoutClose');
 export const isModalAddTransactionOpen = createAction(
   'global/isModalAddTransactionOpen',
 );
+
+// --- Екшены на закрытие ModalAddTransaction
+export const isModalAddTransactionClose = createAction(
+  'global/isModalAddTransactionClose',
+);
