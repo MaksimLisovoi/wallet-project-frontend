@@ -47,7 +47,7 @@ export default function App() {
             <PublicRoute path="/register" restricted redirectTo="/dashboard">
               <RegisterPage />
             </PublicRoute>
-            <PublicRoute path="/login" restricted redirectTo="/dashboard">
+            <PublicRoute path="/login" restricted redirectTo="/home">
               <LoginPage />
             </PublicRoute>
             <PrivateRoute path="/dashboard" redirectTo="/login">
