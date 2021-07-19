@@ -1,10 +1,10 @@
 import axios from 'axios';
 import * as actions from './global-action';
 
+axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com';
+
 export const fetchTransactions = () => dispatch => {
   dispatch(actions.fetchTransactionsRequest());
-
-  axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com';
 
   axios
     .get('/transactions')
@@ -17,7 +17,7 @@ export const fetchBalance = () => dispatch => {
 
   axios
     .get('/transactions/balance')
-    .then(({ data }) => dispatch(actions.fetchBalanceSuccess(data)))
+    .then(({ data }) => dispatch(actions.fetchBalanceSuccess(data.data)))
     .catch(error => dispatch(actions.fetchBalanceError(error.message)));
 };
 

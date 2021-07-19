@@ -5,7 +5,6 @@ import styles from './DiagramTab.module.css';
 import { getStatictic } from '../../redux/global/global-selectors';
 import {
   addNewTransaction,
-  fetchTransactions,
   fetchStatictic,
 } from '../../redux/global/global-operation';
 import { useDispatch, useSelector } from 'react-redux';
@@ -223,7 +222,7 @@ export default function DiagramTab() {
 
   useEffect(() => {
     // dispatch(addNewTransaction(localNewTransaction));
-    dispatch(fetchTransactions());
+
     dispatch(fetchStatictic({ month: 5, year: 2021 }));
   }, [dispatch]);
 
