@@ -1,24 +1,20 @@
-.out_icon {
-  font-family: 'PT Sans', sans-serif;
-  margin-right: 10px;
-  width: 18px;
-  height: 18px;
-  background-image: url('../UserMenu/data/exit.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  /* position: absolute; */
-  left: 61%;
+.positionBtn {
+  padding-left: 0;
+  text-align: center;
+  padding-right: 0;
 }
 .modalContent {
+  width: 320px;
+  height: 568px;
+  padding-top: 100px;
+  padding-left: 20px;
+  background-color: #ffff;
   position: absolute;
-  top: 60px;
-  width: 100%;
-  height: 600px;
-  padding: 20px;
-  background: white;
-  overflow: auto;
-  border-radius: 20px;
-  outline: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
 .modalOverlay {
@@ -53,14 +49,17 @@
   }
 
   .modalContent {
+    width: 320px;
+    height: 568px;
+    padding-top: 100px;
+    padding-left: 20px;
+    background-color: #ffff;
     position: absolute;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    height: 100%;
-    left: 0px;
-    top: 60px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
   }
 }
 @media (min-width: 768px) {
@@ -79,4 +78,59 @@
     top: 90px;
     text-align: center;
   }
+  .positionBtn {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.buttonCloseNo {
+  margin-top: 20px;
+
+  border: none;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  background: #24cca7;
+  border-radius: 20px;
+
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  margin-right: 15px;
+}
+.buttonCloseYes {
+  margin-top: 20px;
+
+  /* border: none; */
+  /* outline: none; */
+  width: 200px;
+  height: 50px;
+  /* background: #24cca7; */
+  border-radius: 10px;
+  /* outline: 1px solid #666; */
+
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: black;
+  margin-right: 15px;
+}
+
+.buttonCloseYes:hover {
+  background: #c1172c;
 }
