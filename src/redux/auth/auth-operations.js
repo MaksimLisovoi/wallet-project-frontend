@@ -1,7 +1,10 @@
 import axios from 'axios';
 import authActions from './auth-action';
+import { isModalLogoutClose } from '../global/global-action';
 
-axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com/';
+
+axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com';
+
 
 const token = {
   set(token) {
@@ -40,11 +43,14 @@ const logIn = credentials => async dispatch => {
 
 const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
+
   try {
     await axios.post('/users/logout');
 
     token.unset();
+
     dispatch(authActions.logoutSuccess());
+    dispatch(isModalLogoutClose());
   } catch (error) {
     dispatch(authActions.logoutError(error.message));
   }
@@ -69,4 +75,4 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export default { register, logIn, logOut, getCurrentUser };
+export default { register, logIn, logOut, getCurrentUser, logOut };

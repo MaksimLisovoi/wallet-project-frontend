@@ -16,6 +16,15 @@ export const fetchBalanceRequest = createAction('global/fetchBalanceRequest');
 export const fetchBalanceSuccess = createAction('global/fetchBalanceSuccess');
 export const fetchBalanceError = createAction('global/fetchBalanceError');
 
+// --- Екшены на получение транзакций за определенный период
+export const fetchStaticticRequest = createAction(
+  'global/fetchStaticticRequest',
+);
+export const fetchStaticticSuccess = createAction(
+  'global/fetchStaticticSuccess',
+);
+export const fetchStaticticError = createAction('global/fetchStaticticError');
+
 // --- Екшены на добавление транзакции
 export const addNewTransactionRequest = createAction(
   'global/addNewTransactionRequest',
@@ -28,7 +37,10 @@ export const addNewTransactionError = createAction(
 );
 
 // --- Екшены на открытие ModalLogout
-export const isModalLogoutOpen = createAction('global/getModalLogout');
+export const isModalLogoutOpen = createAction('global/isModalLogoutOpen');
+
+// --- Екшены на закрытие ModalLogout
+export const isModalLogoutClose = createAction('global/isModalLogoutClose');
 
 // --- Екшены на открытие ModalAddTransaction
 export const isModalAddTransactionOpen = createAction(

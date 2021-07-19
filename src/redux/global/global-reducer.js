@@ -7,11 +7,15 @@ import {
   fetchBalanceRequest,
   fetchBalanceSuccess,
   fetchBalanceError,
+  fetchStaticticRequest,
+  fetchStaticticSuccess,
+  fetchStaticticError,
   addNewTransactionRequest,
   addNewTransactionSuccess,
   addNewTransactionError,
   isModalLogoutOpen,
   isModalAddTransactionOpen,
+  isModalLogoutClose,
 } from './global-action';
 
 // --- нужно доделать добавление транзакции
@@ -46,14 +50,22 @@ const loadingReducer = createReducer(false, {
   [fetchBalanceRequest]: () => true,
   [fetchBalanceSuccess]: () => false,
   [fetchBalanceError]: () => false,
+  [fetchStaticticRequest]: () => true,
+  [fetchStaticticSuccess]: () => false,
+  [fetchStaticticError]: () => false,
 });
 
 const balanceReducer = createReducer(0, {
   [fetchBalanceSuccess]: (_, { payload }) => payload,
 });
 
+const getStaticticReducer = createReducer([], {
+  [fetchStaticticSuccess]: (_, { payload }) => payload,
+});
+
 const modalLogoutOpenReducer = createReducer(false, {
   [isModalLogoutOpen]: () => true,
+  [isModalLogoutClose]: () => false,
 });
 
 const modalAddTransactionOpenReducer = createReducer(false, {
@@ -63,12 +75,14 @@ const modalAddTransactionOpenReducer = createReducer(false, {
 const errorReducer = createReducer(false, {
   [fetchTransactionsError]: (_, { payload }) => payload,
   [addNewTransactionError]: (_, { payload }) => payload,
+  [fetchBalanceError]: (_, { payload }) => payload,
+  [fetchStaticticError]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
   data: transactionsReducer,
   totalBalance: balanceReducer,
-  //   filter: filterReducer,
+  getStatictic: getStaticticReducer,
   isLoading: loadingReducer,
   isModalLogoutOpen: modalLogoutOpenReducer,
   isModalAddTransactionOpen: modalAddTransactionOpenReducer,

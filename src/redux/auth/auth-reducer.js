@@ -10,6 +10,7 @@ const initialUserState = {
 const user = createReducer(initialUserState, {
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.data,
   [authActions.registerSuccess]: (_, { payload }) => payload.data,
+  // [authActions.loginSuccess]: (_, { payload }) => payload.data.name,
   [authActions.logoutSuccess]: () => initialUserState,
 });
 // console.log(user());
@@ -33,6 +34,7 @@ const isAuthenticated = createReducer(false, {
   [authActions.registerError]: () => false,
   [authActions.loginError]: () => false,
   [authActions.getCurrentUserError]: () => false,
+  [authActions.logoutSuccess]: () => false,
 });
 
 export default combineReducers({
