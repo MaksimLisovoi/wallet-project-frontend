@@ -4,10 +4,13 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import style from './AddTransactionForm.module.css';
 import { addNewTransaction } from '../../redux/global/global-operation';
+import { isModalAddTransactionClose } from '../../redux/global/global-action';
 
-const AddTransactionForm = () => {
+export default function AddTransactionForm() {
   const [type, setType] = useState('+');
   const [category, setCategory] = useState('Доход');
+
+  const dispatch = useDispatch();
 
   const currentDate = new Date()
     .toLocaleDateString()
@@ -34,8 +37,6 @@ const AddTransactionForm = () => {
     setType('minus');
   };
 
-  const dispatch = useDispatch();
-
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -46,6 +47,7 @@ const AddTransactionForm = () => {
       comments,
       date,
     ]);
+    dispatch(isModalAddTransactionClose());
   };
 
   return (
@@ -103,6 +105,4 @@ const AddTransactionForm = () => {
       </Formik>
     </div>
   );
-};
-
-export default AddTransactionForm;
+}
