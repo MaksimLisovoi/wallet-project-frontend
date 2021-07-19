@@ -56,7 +56,6 @@ const AddTransactionForm = () => {
       <Formik>
         {({ isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
-            {' '}
             <Field
               className={style.inputNumber}
               type="number"
