@@ -89,11 +89,13 @@ const LoginPage = () => {
           {/* </NavLink> */}
 
           {/* <NavLink exact to="/register"> */}
-          <button type="submit" className={s.registration}>
-            <span className={s.textRegistration}> Регистрация</span>
-          </button>
+
           {/* </NavLink> */}
         </form>
+        {/* onClick по клику поменять историю, history.push 'register' */}
+        <button type="button" className={s.registration}>
+          <span className={s.textRegistration}> Регистрация</span>
+        </button>
       </div>
     </>
   );

@@ -10,13 +10,13 @@ const initialUserState = {
 const user = createReducer(initialUserState, {
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.data,
   [authActions.registerSuccess]: (_, { payload }) => payload.data,
-  [authActions.loginSuccess]: (_, { payload }) => payload.data.user,
+  [authActions.loginSuccess]: (_, { payload }) => payload.user,
 
   [authActions.logoutSuccess]: () => initialUserState,
 });
 // console.log(user());
 const token = createReducer(null, {
-  [authActions.loginSuccess]: (_, { payload }) => payload.data.token,
+  [authActions.loginSuccess]: (_, { payload }) => payload.token,
   [authActions.logoutSuccess]: () => null,
 });
 

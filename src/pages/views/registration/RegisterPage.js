@@ -41,9 +41,10 @@ const RegisterPage = () => {
         .max(16, 'Пароль должен содержать до 12 символов')
         .required('Требуется имя'),
     }),
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       const { email, password, name } = values;
-      dispatch(authOperations.register({ email, password, name }));
+      await dispatch(authOperations.register({ email, password, name }));
+      dispatch(authOperations.logIn({ email, password }));
       resetForm({});
     },
   });
@@ -130,11 +131,12 @@ const RegisterPage = () => {
           {/* </NavLink> */}
 
           {/* <NavLink exact to="/login"> */}
-          <button type="submit" className={s.enter}>
-            <span className={s.text}>Вход</span>
-          </button>
+
           {/* </NavLink> */}
         </form>
+        <button type="button" className={s.enter}>
+          <span className={s.text}>Вход</span>
+        </button>
       </div>
     </>
   );
