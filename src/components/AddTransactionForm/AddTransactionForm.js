@@ -24,7 +24,7 @@ const AddTransactionForm = () => {
     setSum(e.target.value);
   };
 
-  const [comments, setComment] = useState('');
+  const [comments, setComment] = useState(' ');
   const updateComment = e => {
     setComment(e.target.value);
   };
