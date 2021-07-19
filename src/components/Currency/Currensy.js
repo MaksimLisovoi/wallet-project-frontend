@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from 'axios'
 import { Ellipsis } from 'react-spinners-css';
 import style from './Currency.module.css'
 
@@ -8,20 +7,23 @@ export default function Currency() {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
         
-    useEffect(() => {
-        async function getCurrency() {
-            try {
-                const result = await axios.get('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11');
-                setIsLoading(true);
-                setCurrency(result)
-            } catch (e) {
-                setIsLoading(true);
-                setError(e)
-            }
-        }
+    async function getCurrency() {
+    try {
+      const data = await fetch(
+        'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
+      );
+      const result = await data.json();
+      setIsLoading(true);
+      setCurrency(result);
+    } catch (e) {
+      setIsLoading(true);
+      setError(error);
+    }
+  }
 
-        getCurrency()
-    }, [])
+  useEffect(() => {
+    getCurrency();
+  }, []);
 
     const currencyFilter = currency.filter(el => {
         return el.ccy !== 'BTC'
