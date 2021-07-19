@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import s from './styles/base.module.css';
 
 import Container from './components/Container';
-import AuthNav from './components/AuthNav';
-// import AppBar from './components/AppBar';
+// import AuthNav from './components/AuthNav';
+import AppBar from './components/AppBar';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -26,24 +26,24 @@ const HomePageView = lazy(() => import('./pages/views/homepage'));
 const DiagramView = lazy(() => import('./pages/views/diagram'));
 const CurrencyView = lazy(() => import('./pages/views/currency'));
 
-const App = () => {
+export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authOperations.getCurrentUser());
+    dispatch(authOperations.getCurrentUser);
   }, [dispatch]);
 
   return (
     <Container>
       <div className={s.container}>
-        <AuthNav />
-        {/*   <AppBar /> */}
+        {/* <AuthNav /> */}
+        {/* <AppBar /> */}
 
         <Suspense fallback={Spinner}>
           <Switch>
-            <PublicRoute exact path="/">
+            {/* <PublicRoute exact path="/">
               <LoginPage />
-            </PublicRoute>
+            </PublicRoute> */}
             <PublicRoute path="/register" restricted redirectTo="/dashboard">
               <RegisterPage />
             </PublicRoute>
@@ -67,6 +67,4 @@ const App = () => {
       </div>
     </Container>
   );
-};
-
-export default App;
+}

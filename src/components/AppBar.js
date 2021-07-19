@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Navigation from './Navigation';
+// import Navigation from './Navigation';
 
-import AuthNav from './AuthNav';
+import LoginPage from '../pages/views/login/LoginPage';
 import { getisAuthenticated } from '../redux/auth/auth-selectors';
 import DashboardPage from '../pages/views/dashboard/DashboardPage';
 
@@ -21,7 +21,9 @@ export default function AppBar() {
   return (
     <div>
       {/* <Navigation /> */}
-      {isLoggedIn ? <DashboardPage /> : <AuthNav />}
+      {/* if({isLoggedIn}){<DashboardPage />}
+      else {<LoginPage />} */}
+      {isLoggedIn ? <DashboardPage /> : <LoginPage />}
     </div>
   );
 }

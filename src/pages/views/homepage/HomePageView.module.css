@@ -1,0 +1,16 @@
+@media screen and (min-width: 768px) {
+  .homePage {
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .homeTabPosition {
+    position: absolute;
+  }
+}
+
+
+
+
+

@@ -17,11 +17,11 @@ const DashboardPage = () => {
 
   return (
     <>
-      <Container>
-        <div className={styles.dashboard}>
-          {isAuthenticated ? <HomePageView /> : <AuthNav />}
-        </div>
-      </Container>
+      {/* <Container> */}
+      <div className={styles.dashboard}>
+        {isAuthenticated ? <HomePageView /> : <AuthNav />}
+      </div>
+      {/* </Container> */}
     </>
   );
 };

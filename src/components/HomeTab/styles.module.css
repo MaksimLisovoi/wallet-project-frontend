@@ -16,6 +16,13 @@
 }
 
 @media (min-width: 1280px) {
+.homeTabPosition{
+ position: absolute;
+top: 0px;
+right: 0px;
+
+}
+
   .table__wrapper {
     width: 700px;
     max-height: 60vh;
