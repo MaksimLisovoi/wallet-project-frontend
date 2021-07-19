@@ -21,5 +21,7 @@ export default function Balance() {
 }
 
 // Balance.propTypes = {
-//   transactions: PropTypes.number.isRequired,
+
+//   balance: PropTypes.number.isRequired,
+
 // };
