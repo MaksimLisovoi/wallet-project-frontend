@@ -28,7 +28,6 @@ export default function Currency() {
     const currencyFilter = currency.filter(el => {
         return el.ccy !== 'BTC'
     })
-        
 
         return (
             <div className={style.container}>
