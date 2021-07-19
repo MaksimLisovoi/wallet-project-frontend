@@ -62,7 +62,7 @@
 @media (min-width: 768px) {
   .container {
     position: absolute;
-    bottom: 45px;
+    top: 20px;
     left: 360px;
     width: 334px;
     background-image: url('./image/tablet.png');
@@ -80,7 +80,7 @@
 
 @media (min-width: 1280px) {
   .container {
-    top: 180px;
+    top: 220px;
     left: 0;
     width: 348px;
     height: 347px;
