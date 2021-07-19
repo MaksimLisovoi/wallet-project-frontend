@@ -41,27 +41,43 @@ export default function App() {
 
         <Suspense fallback={Spinner}>
           <Switch>
-            {/* <PublicRoute exact path="/">
-              <LoginPage />
-            </PublicRoute> */}
-            <PublicRoute path="/register" restricted redirectTo="/dashboard">
+            <PublicRoute path="/register" restricted redirectTo="/home">
               <RegisterPage />
             </PublicRoute>
             <PublicRoute path="/login" restricted redirectTo="/home">
               <LoginPage />
             </PublicRoute>
-            <PrivateRoute path="/dashboard" redirectTo="/login">
-              <DashboardPage />
-            </PrivateRoute>
-            <PrivateRoute path="/home" redirectTo="/dashboard">
+            <PrivateRoute exact path="/" redirectTo="/login">
               <HomePageView />
             </PrivateRoute>
-            <PrivateRoute path="/diagram" redirectTo="/dashboard">
+            <PrivateRoute path="/home" redirectTo="/login">
+              <DashboardPage />
+            </PrivateRoute>
+            <PrivateRoute path="/diagram" redirectTo="/login">
               <DiagramView />
             </PrivateRoute>
-            <PrivateRoute path="/currency" redirectTo="/dashboard">
+            <PrivateRoute path="/currency" redirectTo="/login">
               <CurrencyView />
             </PrivateRoute>
+
+            {/* <PublicRoute path="/register" restricted redirectTo="/home">
+              <RegisterPage />
+            </PublicRoute>
+            <PublicRoute path="/login" restricted redirectTo="/home">
+              <LoginPage />
+            </PublicRoute>
+            <PrivateRoute path="/" redirectTo="/login">
+              <HomePageView />
+            </PrivateRoute>
+            <PrivateRoute path="/home" redirectTo="/login">
+              <HomePageView />
+            </PrivateRoute>
+            <PrivateRoute path="/diagram" redirectTo="/login">
+              <DiagramView />
+            </PrivateRoute>
+            <PrivateRoute path="/currency" redirectTo="/login">
+              <CurrencyView />
+            </PrivateRoute> */}
           </Switch>
         </Suspense>
       </div>
