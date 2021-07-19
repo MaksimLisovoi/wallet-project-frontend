@@ -1,39 +1,38 @@
-// import React, { useState } from 'react';
-// import Modal from 'react-modal';
-// import s from './ModalLogout.module.css';
-//import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Modal from 'react-modal';
+import styles from '../UserMenu/UserMenu.module.css';
+import { getModalLogout } from '../../redux/global/global-selectors';
+import { isModalLogoutClose } from '../../redux/global/global-action';
+import operations from '../../redux/auth/auth-operations';
 
-// Modal.setAppElement('#root');
+Modal.setAppElement('#root');
 
-// const ModalLogout = () => {
-//   const [modaIsOpen, setModalisOpen] = useState(false);
-//   // const ModalLogoutOpen = () => dispatch(isModalLogoutOpen());
-//   return (
-//     <div>
-//       {/* <button
-//         className={styles.out_icon}
-//         type="button"
-//         onClick={ModalLogoutOpen}
-//       ></button> */}
-//       {/* <button className={s.btnAdd}>+</button> */}
-//       {/* <button
-//         className={s.out_icon}
-//         type="button"
-//         onClick={() => setModalisOpen(true)}
-//       ></button>
-//       <Modal
-//         isOpen={modaIsOpen}
-//         onRequestClose={() => setModalisOpen(false)}
-//         className={s.modalContent}
-//         overlayClassName={s.modalOverlay}
-//       >
-//         <p>Привет дружок , у тебя в голове не пусто</p>
-//         {/* <AddTransactionForm /> */}
-//       </Modal> */}
-//     </div>
-//   );
-// };
+export default function ModalLogout() {
+  const dispatch = useDispatch();
 
-//export default ModalLogout;
+  const ModalLogoutClose = () => dispatch(isModalLogoutClose());
 
-//====================================================================
+  const onLogout = useCallback(() => {
+    dispatch(operations.logOut());
+  }, [dispatch]);
+
+  const modalLogout = useSelector(getModalLogout);
+
+  return (
+    <Modal
+      isOpen={modalLogout}
+      onRequestClose={ModalLogoutClose}
+      className={styles.modalContent}
+      overlayClassName={styles.modalOverlay}
+    >
+      <h3>Вы действительно хотите выйти</h3>
+      <button onClick={ModalLogoutClose} className={styles.buttonClose}>
+        НЕТ
+      </button>
+      <button type="button" onClick={onLogout} className={styles.buttonClose}>
+        ДА
+      </button>
+    </Modal>
+  );
+}

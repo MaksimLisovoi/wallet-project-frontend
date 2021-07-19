@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Chart from '../Chart/Chart';
 import Table from '../Table/Table';
 import styles from './DiagramTab.module.css';
-import { getTransactions } from '../../redux/global/global-selectors';
+import { getStatictic } from '../../redux/global/global-selectors';
 import {
   addNewTransaction,
   fetchTransactions,
+  fetchStatictic,
 } from '../../redux/global/global-operation';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -199,52 +200,59 @@ export default function DiagramTab() {
   const [overallPlus, setOverallPlus] = useState(0);
   const [overallMinus, setOverallMinus] = useState(0);
 
+  // Селектор на забор всех транзакций из Store
+
+  const date = useSelector(getStatictic);
+
+  useEffect(() => {
+    trasformDataForChart(date);
+    overallSum(date);
+  }, [date]);
+
   // ---------- Рома смотри сюда ------------------
 
-  const localNewTransaction = {
-    category: 'Основные расходы',
-    comments: 'Пиво',
-    date: '2021-07-15',
-    type: 'minus',
-    sum: 25,
-  };
+  // const localNewTransaction = {
+  //   category: 'Доход',
+  //   // comments: '',
+  //   date: '2021-07-18',
+  //   type: '+',
+  //   sum: 25000,
+  // };
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     // dispatch(addNewTransaction(localNewTransaction));
     dispatch(fetchTransactions());
+    dispatch(fetchStatictic({ month: 5, year: 2021 }));
   }, [dispatch]);
 
-  // Селектор на забор всех транзакций из Store
-  const stateTransactions = useSelector(getTransactions);
-  console.log(stateTransactions);
+  if (date) {
+    console.log(date);
+  }
 
   // ---------- Рома смотри сюда ------------------
-  useEffect(() => {
-    trasformDataForChart(dataFromApi);
-    overallSum(dataFromApi);
-  }, [dataFromApi]);
 
   // Функция которая берёт сумму всех доходов и расходов.
   const overallSum = data => {
     let overallPlus = 0;
     let overallMinus = 0;
-
-    data.data.transactions.map(({ type, sum }) => {
-      switch (type) {
-        case '+':
-          overallPlus = overallPlus + sum;
-          break;
-        case 'minus':
-          overallMinus = overallMinus + sum;
-          break;
-        default:
-          console.log('Нет такого типа');
-      }
-    });
-    setOverallPlus(overallPlus);
-    setOverallMinus(overallMinus);
+    if (data) {
+      data.map(({ type, sum }) => {
+        switch (type) {
+          case '+':
+            overallPlus = overallPlus + sum;
+            break;
+          case 'minus':
+            overallMinus = overallMinus + sum;
+            break;
+          default:
+            console.log('Нет такого типа');
+        }
+      });
+      setOverallPlus(overallPlus);
+      setOverallMinus(overallMinus);
+    }
   };
   // Функция которая делает объект для Chart и записывает его в локальный стейт.
   const trasformDataForChart = data => {
@@ -258,90 +266,90 @@ export default function DiagramTab() {
     let sumEducation = 0;
     let sumLeisure = 0;
     let sumOther = 0;
+    if (data) {
+      data.map(({ category, sum }) => {
+        if (!labels.includes(category)) {
+          labels.push(category);
+        }
 
-    data.data.transactions.map(({ category, type, sum }) => {
-      if (!labels.includes(category)) {
-        labels.push(category);
-      }
+        switch (category) {
+          case 'Основные расходы':
+            sumOsnov = sumOsnov + sum;
+            break;
+          case 'Продукты':
+            sumProducts = sumProducts + sum;
+            break;
+          case 'Авто':
+            sumCar = sumCar + sum;
+            break;
+          case 'Забота о себе':
+            sumSelf = sumSelf + sum;
+            break;
+          case 'Дети':
+            sumChild = sumChild + sum;
+            break;
+          case 'Дом':
+            sumHome = sumHome + sum;
+            break;
+          case 'Образование':
+            sumEducation = sumEducation + sum;
+            break;
+          case 'Досуг':
+            sumLeisure = sumLeisure + sum;
+            break;
+          case 'Другие расходы':
+            sumOther = sumOther + sum;
+            break;
+          case 'Доход':
+            break;
+          default:
+            console.log('Этой категории нет из представленных');
+        }
+      });
 
-      switch (category) {
-        case 'Основные расходы':
-          sumOsnov = sumOsnov + sum;
-          break;
-        case 'Продукты':
-          sumProducts = sumProducts + sum;
-          break;
-        case 'Авто':
-          sumCar = sumCar + sum;
-          break;
-        case 'Забота о себе':
-          sumSelf = sumSelf + sum;
-          break;
-        case 'Дети':
-          sumChild = sumChild + sum;
-          break;
-        case 'Дом':
-          sumHome = sumHome + sum;
-          break;
-        case 'Образование':
-          sumEducation = sumEducation + sum;
-          break;
-        case 'Досуг':
-          sumLeisure = sumLeisure + sum;
-          break;
-        case 'Другие расходы':
-          sumOther = sumOther + sum;
-          break;
-        case 'Доход':
-          break;
-        default:
-          console.log('Этой категории нет из представленных');
-      }
-    });
-
-    const dataForChart = {
-      labels: [
-        'Основные расходы',
-        'Продукты',
-        'Авто',
-        'Забота о себе',
-        'Дети',
-        'Дом',
-        'Образование',
-        'Досуг',
-        'Другие расходы',
-      ],
-      datasets: [
-        {
-          label: 'Statistics',
-          data: [
-            `${sumOsnov}`,
-            `${sumProducts}`,
-            `${sumCar}`,
-            `${sumSelf}`,
-            `${sumChild}`,
-            `${sumHome}`,
-            `${sumEducation}`,
-            `${sumLeisure}`,
-            `${sumOther}`,
-          ],
-          backgroundColor: [
-            'rgba(254, 208, 87, 1)',
-            'rgba(255, 216, 208, 1)',
-            'rgba(253, 148, 152, 1)',
-            'rgba(197, 186, 255, 1)',
-            'rgba(110, 120, 232, 1)',
-            'rgba(74, 86, 226, 1)',
-            'rgba(129, 225, 255, 1)',
-            'rgba(36, 204, 167, 1)',
-            'rgba(0, 173, 132, 1)',
-          ],
-          cutout: '70%',
-        },
-      ],
-    };
-
-    setChartData(dataForChart);
+      const dataForChart = {
+        labels: [
+          'Основные расходы',
+          'Продукты',
+          'Авто',
+          'Забота о себе',
+          'Дети',
+          'Дом',
+          'Образование',
+          'Досуг',
+          'Другие расходы',
+        ],
+        datasets: [
+          {
+            label: 'Statistics',
+            data: [
+              `${sumOsnov}`,
+              `${sumProducts}`,
+              `${sumCar}`,
+              `${sumSelf}`,
+              `${sumChild}`,
+              `${sumHome}`,
+              `${sumEducation}`,
+              `${sumLeisure}`,
+              `${sumOther}`,
+            ],
+            backgroundColor: [
+              'rgba(254, 208, 87, 1)',
+              'rgba(255, 216, 208, 1)',
+              'rgba(253, 148, 152, 1)',
+              'rgba(197, 186, 255, 1)',
+              'rgba(110, 120, 232, 1)',
+              'rgba(74, 86, 226, 1)',
+              'rgba(129, 225, 255, 1)',
+              'rgba(36, 204, 167, 1)',
+              'rgba(0, 173, 132, 1)',
+            ],
+            cutout: '70%',
+          },
+        ],
+      };
+      setChartData(dataForChart);
+    }
   };
 
   return (
