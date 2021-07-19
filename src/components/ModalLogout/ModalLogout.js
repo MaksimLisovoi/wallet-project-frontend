@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
-import styles from '../UserMenu/UserMenu.module.css';
+import styles from './ModalLogout.module.css';
 import { getModalLogout } from '../../redux/global/global-selectors';
 import { isModalLogoutClose } from '../../redux/global/global-action';
 import operations from '../../redux/auth/auth-operations';
@@ -27,12 +27,18 @@ export default function ModalLogout() {
       overlayClassName={styles.modalOverlay}
     >
       <h3>Вы действительно хотите выйти</h3>
-      <button onClick={ModalLogoutClose} className={styles.buttonClose}>
-        НЕТ
-      </button>
-      <button type="button" onClick={onLogout} className={styles.buttonClose}>
-        ДА
-      </button>
+      <div className={styles.positionBtn}>
+        <button onClick={ModalLogoutClose} className={styles.buttonCloseNo}>
+          НЕТ
+        </button>
+        <button
+          type="button"
+          onClick={onLogout}
+          className={styles.buttonCloseYes}
+        >
+          ДА
+        </button>
+      </div>
     </Modal>
   );
 }
