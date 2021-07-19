@@ -20,6 +20,6 @@ export default function Balance() {
   );
 }
 
-Balance.propTypes = {
-  transactions: PropTypes.number.isRequired,
-};
+// Balance.propTypes = {
+//   balance: PropTypes.number.isRequired,
+// };

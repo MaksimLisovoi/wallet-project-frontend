@@ -37,7 +37,10 @@ import {
 
 const transactionsReducer = createReducer([], {
   [fetchTransactionsSuccess]: (_, { payload }) => payload.data.transactions,
-  //   [addNewTransactionSuccess]: (state, { payload }) => addNew(state, payload),
+  [addNewTransactionSuccess]: (state, { payload }) => [
+    ...state,
+    payload.data.transaction,
+  ],
 });
 
 const loadingReducer = createReducer(false, {
