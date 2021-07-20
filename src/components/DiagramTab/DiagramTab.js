@@ -3,196 +3,8 @@ import Chart from '../Chart/Chart';
 import Table from '../Table/Table';
 import styles from './DiagramTab.module.css';
 import { getStatictic } from '../../redux/global/global-selectors';
-import {
-  addNewTransaction,
-  fetchStatictic,
-} from '../../redux/global/global-operation';
+import { fetchStatictic } from '../../redux/global/global-operation';
 import { useDispatch, useSelector } from 'react-redux';
-
-const dataFromApi = {
-  status: 'success',
-  code: 200,
-  data: {
-    transactions: [
-      {
-        category: 'Доход',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: '+',
-        sum: 1000,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-      {
-        category: 'Основные расходы',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: 'minus',
-        sum: 1000,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-      {
-        category: 'Продукты',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: 'minus',
-        sum: 888,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-      {
-        category: 'Доход',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: '+',
-        sum: 25000,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-      {
-        category: 'Образование',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: 'minus',
-        sum: 1778,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-      {
-        category: 'Дом',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: 'minus',
-        sum: 2640,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-
-      {
-        category: 'Дети',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: 'minus',
-        sum: 3500,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-      {
-        category: 'Авто',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: 'minus',
-        sum: 5000,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-      {
-        category: 'Забота о себе',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: 'minus',
-        sum: 900,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-      {
-        category: 'Досуг',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: 'minus',
-        sum: 2200,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-      {
-        category: 'Другие расходы',
-        _id: '60e4d233429d7d2f286ad95f',
-        owner: {
-          name: "C'thun",
-          _id: '60e4c99e174f432c74022fdc',
-          email: 'Chtun@i.ua',
-        },
-        date: '1971-09-25T13:50:54.564Z',
-        type: 'minus',
-        sum: 1050,
-        balance: 1000,
-        createdAt: '2021-07-06T21:59:15.256Z',
-        updatedAt: '2021-07-06T21:59:15.256Z',
-      },
-    ],
-    totalDocs: 10,
-    offset: 0,
-    limit: 20,
-    totalPages: 1,
-    page: 1,
-    pagingCounter: 1,
-    hasPrevPage: false,
-    hasNextPage: false,
-    prevPage: null,
-    nextPage: null,
-  },
-};
 
 export default function DiagramTab() {
   const [dataForChart, setChartData] = useState({});
@@ -200,7 +12,6 @@ export default function DiagramTab() {
   const [overallMinus, setOverallMinus] = useState(0);
 
   // Селектор на забор всех транзакций из Store
-
   const date = useSelector(getStatictic);
 
   useEffect(() => {
@@ -208,29 +19,11 @@ export default function DiagramTab() {
     overallSum(date);
   }, [date]);
 
-  // ---------- Рома смотри сюда ------------------
-
-  // const localNewTransaction = {
-  //   category: 'Доход',
-  //   // comments: '',
-  //   date: '2021-07-18',
-  //   type: '+',
-  //   sum: 25000,
-  // };
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(addNewTransaction(localNewTransaction));
-
     dispatch(fetchStatictic({ month: 5, year: 2021 }));
   }, [dispatch]);
-
-  if (date) {
-    console.log(date);
-  }
-
-  // ---------- Рома смотри сюда ------------------
 
   // Функция которая берёт сумму всех доходов и расходов.
   const overallSum = data => {

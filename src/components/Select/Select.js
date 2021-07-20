@@ -5,15 +5,18 @@ import { v4 as uuidv4 } from 'uuid';
 const Select = ({ mainSelect, allSelects }) => {
   return (
     <div className={styles.select_wrapper}>
-      <select className={styles.select}>
-        <option value="current">{mainSelect}</option>
+      <form>
+        <select className={styles.select} required>
+          <option value="current">{mainSelect}</option>
 
-        {allSelects.name.map(i => (
-          <option key={uuidv4()} value={i.value}>
-            {i.nameOption}
-          </option>
-        ))}
-      </select>
+          {allSelects.name.map(i => (
+            <option key={uuidv4()} value={i.value}>
+              {i.nameOption}
+            </option>
+          ))}
+        </select>
+      </form>
+
       <div className={styles.select_arrow}></div>
     </div>
   );
