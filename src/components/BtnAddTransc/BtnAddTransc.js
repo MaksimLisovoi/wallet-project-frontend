@@ -8,6 +8,7 @@ import {
   isModalAddTransactionOpen,
   isModalAddTransactionClose,
 } from '../../redux/global/global-action';
+import plus from './+.png';
 
 Modal.setAppElement('#root');
 
@@ -20,8 +21,13 @@ export default function BtnAddTransc() {
   // const [modaIsOpen, setModalisOpen] = useState(false);
   return (
     <div>
-      <button className={s.btnAdd} onClick={ModalAddTransactionOpen}>
-        +
+      <button
+        className={s.btnAdd}
+        onClick={() => ModalAddTransactionOpen(true)}
+      >
+        <span>
+          <img src={plus} className={s.plus}></img>
+        </span>
       </button>
       <Modal
         isOpen={modalAddTransaction}
