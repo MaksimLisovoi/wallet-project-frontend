@@ -73,7 +73,7 @@ export default function AddTransactionForm() {
               id="date"
               type="date"
               className={style.inputDate}
-              // min={new Date().toISOString().slice(0, -14)}
+              min={new Date().toISOString().slice(0, -14)}
               value={date}
               onChange={updateDate}
             />
@@ -93,10 +93,10 @@ export default function AddTransactionForm() {
                 className={style.addTrans}
                 disabled={isSubmitting}
               >
-                ДОБАВИТЬ
+                Add transaction
               </button>
               <button type="submit" className={style.cancel}>
-                ОТМЕНА
+                Cancel
               </button>
             </div>
           </Form>
