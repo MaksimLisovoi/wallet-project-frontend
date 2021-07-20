@@ -51,3 +51,6 @@ export const isModalAddTransactionOpen = createAction(
 export const isModalAddTransactionClose = createAction(
   'global/isModalAddTransactionClose',
 );
+
+// --- Екшены на взятие value из Select`а
+export const valueSelect = createAction('global/valueSelect');

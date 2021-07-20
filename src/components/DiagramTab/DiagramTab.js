@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Chart from '../Chart/Chart';
 import Table from '../Table/Table';
 import styles from './DiagramTab.module.css';
-import { getStatictic } from '../../redux/global/global-selectors';
+import {
+  getStatictic,
+  statisticDate,
+} from '../../redux/global/global-selectors';
 import { fetchStatictic } from '../../redux/global/global-operation';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,18 +15,20 @@ export default function DiagramTab() {
   const [overallMinus, setOverallMinus] = useState(0);
 
   // Селектор на забор всех транзакций из Store
-  const date = useSelector(getStatictic);
+  const statistic = useSelector(getStatictic);
+  const date = useSelector(statisticDate);
+  console.log(date);
 
   useEffect(() => {
-    trasformDataForChart(date);
-    overallSum(date);
-  }, [date]);
+    trasformDataForChart(statistic);
+    overallSum(statistic);
+  }, [statistic]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchStatictic({ month: 5, year: 2021 }));
-  }, [dispatch]);
+    dispatch(fetchStatictic(date));
+  }, [date]);
 
   // Функция которая берёт сумму всех доходов и расходов.
   const overallSum = data => {

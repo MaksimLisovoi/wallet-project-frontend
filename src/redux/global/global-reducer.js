@@ -17,9 +17,8 @@ import {
   isModalLogoutClose,
   isModalAddTransactionOpen,
   isModalAddTransactionClose,
+  valueSelect,
 } from './global-action';
-
-// --- нужно доделать добавление транзакции
 
 const transactionsReducer = createReducer([], {
   [fetchTransactionsSuccess]: (_, { payload }) => payload.data.transactions,
@@ -52,6 +51,13 @@ const getStaticticReducer = createReducer([], {
   [fetchStaticticSuccess]: (_, { payload }) => payload,
 });
 
+const statisticDateReducer = createReducer(
+  {},
+  {
+    [valueSelect]: (state, { payload }) => ({ ...state, ...payload }),
+  },
+);
+
 const modalLogoutOpenReducer = createReducer(false, {
   [isModalLogoutOpen]: () => true,
   [isModalLogoutClose]: () => false,
@@ -73,6 +79,7 @@ export default combineReducers({
   data: transactionsReducer,
   totalBalance: balanceReducer,
   getStatictic: getStaticticReducer,
+  statisticDate: statisticDateReducer,
   isLoading: loadingReducer,
   isModalLogoutOpen: modalLogoutOpenReducer,
   isModalAddTransactionOpen: modalAddTransactionOpenReducer,
