@@ -93,9 +93,14 @@ const LoginPage = () => {
           {/* </NavLink> */}
         </form>
         {/* onClick по клику поменять историю, history.push 'register' */}
-        <button type="button" className={s.registration}>
+        <NavLink
+          to={{
+            pathname: '/register',
+          }}
+          className={s.registration}
+        >
           <span className={s.textRegistration}> Регистрация</span>
-        </button>
+        </NavLink>
       </div>
     </>
   );
