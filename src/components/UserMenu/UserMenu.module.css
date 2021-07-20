@@ -49,6 +49,13 @@
   background-image: url('./data/exit.svg');
   background-repeat: no-repeat;
   background-size: contain;
+  border: none;
+}
+
+.out {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
