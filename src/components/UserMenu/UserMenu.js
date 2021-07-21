@@ -16,6 +16,7 @@ export default function UserMenu() {
     <div className={styles.user_menu_container}>
       <span className={styles.user_name}>{name}</span>
       <span className={styles.user_name_2}>|</span>
+
       <div className={styles.out} onClick={ModalLogoutOpen}>
         <button className={styles.out_icon} type="button"></button>
         <span className={styles.user_out}>Выйти</span>

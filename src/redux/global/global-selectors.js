@@ -11,10 +11,14 @@ export const getisModalAddTransaction = state =>
 // --- Селектор на взятие из State isLoading
 export const isLoading = state => state.global.isLoading;
 
-
 // --- Селектор на взятие из State getStatictic
 export const getStatictic = state => state.global.getStatictic;
+
+// --- Селектор на взятие из State statisticDate
+export const statisticDate = state => state.global.statisticDate;
 
 // --- Селектор на взятие из State totalBalance
 export const istotalBalance = state => state.global.totalBalance;
 
+// --- Селектор на взятие из State error
+export const errorState = state => state.global.error;

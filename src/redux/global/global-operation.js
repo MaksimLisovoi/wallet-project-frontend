@@ -7,7 +7,7 @@ export const fetchTransactions = () => dispatch => {
   dispatch(actions.fetchTransactionsRequest());
 
   axios
-    .get('/transactions')
+    .get('/transactions?sortByDesc=date&limit=200')
     .then(({ data }) => dispatch(actions.fetchTransactionsSuccess(data)))
     .catch(error => dispatch(actions.fetchTransactionsError(error.message)));
 };
@@ -23,13 +23,20 @@ export const fetchBalance = () => dispatch => {
 
 export const fetchStatictic =
   ({ month, year }) =>
-  dispatch => {
-    dispatch(actions.fetchStaticticRequest());
-
-    axios
-      .get(`/transactions/statistic?month=${month}&year=${year}`)
-      .then(({ data }) => dispatch(actions.fetchStaticticSuccess(data.data)))
-      .catch(error => dispatch(actions.fetchStaticticError(error.message)));
+  async dispatch => {
+    if (month && year) {
+      dispatch(actions.fetchStaticticRequest());
+      axios
+        .get(`/transactions/statistic?month=${month}&year=${year}`)
+        .then(({ data }) => {
+          dispatch(actions.fetchStaticticSuccess(data.data));
+          dispatch(actions.errorUnset(false));
+        })
+        .catch(error => {
+          dispatch(actions.fetchStaticticError(error));
+          dispatch(actions.statisticUnset());
+        });
+    }
   };
 
 export const addNewTransaction = transaction => dispatch => {

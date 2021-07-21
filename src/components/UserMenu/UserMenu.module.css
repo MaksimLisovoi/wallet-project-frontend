@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
+button {
+  border: none;
+}
+
 .user_menu_container {
   display: flex;
   align-items: center;

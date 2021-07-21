@@ -28,7 +28,7 @@
   width: 18px;
   height: 9px;
   position: absolute;
-
+  pointer-events: none;
   right: 20px;
   bottom: 20px;
   background-image: url('./data/arrow.svg');

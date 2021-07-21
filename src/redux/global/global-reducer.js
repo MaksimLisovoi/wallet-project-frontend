@@ -10,6 +10,8 @@ import {
   fetchStaticticRequest,
   fetchStaticticSuccess,
   fetchStaticticError,
+  errorUnset,
+  statisticUnset,
   addNewTransactionRequest,
   addNewTransactionSuccess,
   addNewTransactionError,
@@ -17,9 +19,8 @@ import {
   isModalLogoutClose,
   isModalAddTransactionOpen,
   isModalAddTransactionClose,
+  valueSelect,
 } from './global-action';
-
-// --- нужно доделать добавление транзакции
 
 const transactionsReducer = createReducer([], {
   [fetchTransactionsSuccess]: (_, { payload }) => payload.data.transactions,
@@ -50,6 +51,29 @@ const balanceReducer = createReducer(0, {
 
 const getStaticticReducer = createReducer([], {
   [fetchStaticticSuccess]: (_, { payload }) => payload,
+  [statisticUnset]: () => [],
+});
+
+const inicialValueDate = {
+  month:
+    Number.parseInt(
+      new Date()
+        .toLocaleDateString()
+        .split('.')
+        .reverse()
+        .join('-')
+        .slice(5, 7),
+    ) - 1,
+  year: new Date()
+    .toLocaleDateString()
+    .split('.')
+    .reverse()
+    .join('-')
+    .slice(0, 4),
+};
+
+const statisticDateReducer = createReducer(inicialValueDate, {
+  [valueSelect]: (state, { payload }) => ({ ...state, ...payload }),
 });
 
 const modalLogoutOpenReducer = createReducer(false, {
@@ -67,12 +91,14 @@ const errorReducer = createReducer(false, {
   [addNewTransactionError]: (_, { payload }) => payload,
   [fetchBalanceError]: (_, { payload }) => payload,
   [fetchStaticticError]: (_, { payload }) => payload,
+  [errorUnset]: () => false,
 });
 
 export default combineReducers({
   data: transactionsReducer,
   totalBalance: balanceReducer,
   getStatictic: getStaticticReducer,
+  statisticDate: statisticDateReducer,
   isLoading: loadingReducer,
   isModalLogoutOpen: modalLogoutOpenReducer,
   isModalAddTransactionOpen: modalAddTransactionOpenReducer,

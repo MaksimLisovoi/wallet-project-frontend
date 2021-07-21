@@ -7,18 +7,18 @@ import styles from './Table.module.css';
 
 const monthSelects = {
   name: [
-    { nameOption: 'Январь', value: 1 },
-    { nameOption: 'Февраль', value: 2 },
-    { nameOption: 'Март', value: 3 },
-    { nameOption: 'Апрель', value: 4 },
-    { nameOption: 'Май', value: 5 },
-    { nameOption: 'Июнь', value: 6 },
-    { nameOption: 'Июль', value: 7 },
-    { nameOption: 'Август', value: 8 },
-    { nameOption: 'Сентябрь', value: 9 },
-    { nameOption: 'Октябрь', value: 10 },
-    { nameOption: 'Ноябрь', value: 11 },
-    { nameOption: 'Декабрь', value: 12 },
+    { nameOption: 'Январь', value: 0 },
+    { nameOption: 'Февраль', value: 1 },
+    { nameOption: 'Март', value: 2 },
+    { nameOption: 'Апрель', value: 3 },
+    { nameOption: 'Май', value: 4 },
+    { nameOption: 'Июнь', value: 5 },
+    { nameOption: 'Июль', value: 6 },
+    { nameOption: 'Август', value: 7 },
+    { nameOption: 'Сентябрь', value: 8 },
+    { nameOption: 'Октябрь', value: 9 },
+    { nameOption: 'Ноябрь', value: 10 },
+    { nameOption: 'Декабрь', value: 11 },
   ],
 };
 
