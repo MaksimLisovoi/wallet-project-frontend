@@ -3,10 +3,10 @@ import * as actions from './global-action';
 
 axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com';
 
-export const fetchTransactions = () => dispatch => {
+export const fetchTransactions = () => async dispatch => {
   dispatch(actions.fetchTransactionsRequest());
 
-  axios
+  await axios
     .get('/transactions?sortByDesc=date&limit=200')
     .then(({ data }) => dispatch(actions.fetchTransactionsSuccess(data)))
     .catch(error => dispatch(actions.fetchTransactionsError(error.message)));
@@ -39,7 +39,7 @@ export const fetchStatictic =
     }
   };
 
-export const addNewTransaction = transaction => dispatch => {
+export const addNewTransaction = transaction => async dispatch => {
   const newTransaction = {
     date: transaction.date,
     type: transaction.type,
@@ -50,7 +50,7 @@ export const addNewTransaction = transaction => dispatch => {
 
   dispatch(actions.addNewTransactionRequest());
 
-  axios
+  await axios
     .post('/transactions', newTransaction)
     .then(({ data }) => dispatch(actions.addNewTransactionSuccess(data)))
     .catch(error => dispatch(actions.addNewTransactionError(error.message)));

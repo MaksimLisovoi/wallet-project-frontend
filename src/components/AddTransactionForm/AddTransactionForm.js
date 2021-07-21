@@ -3,7 +3,11 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import style from './AddTransactionForm.module.css';
-import { addNewTransaction } from '../../redux/global/global-operation';
+import {
+  addNewTransaction,
+  fetchBalance,
+  fetchTransactions,
+} from '../../redux/global/global-operation';
 import { isModalAddTransactionClose } from '../../redux/global/global-action';
 
 export default function AddTransactionForm() {
@@ -37,17 +41,19 @@ export default function AddTransactionForm() {
     setType('minus');
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    dispatch(addNewTransaction({ date, type, category, comments, sum }), [
+    await dispatch(addNewTransaction({ date, type, category, comments, sum }), [
       dispatch,
       sum,
       category,
       comments,
       date,
     ]);
-    dispatch(isModalAddTransactionClose());
+    await dispatch(fetchTransactions());
+    await dispatch(fetchBalance());
+    await dispatch(isModalAddTransactionClose());
   };
 
   return (
@@ -73,7 +79,7 @@ export default function AddTransactionForm() {
               id="date"
               type="date"
               className={style.inputDate}
-              max={new Date().toISOString().slice(0, -14)}
+              // max={new Date().toISOString().slice(0, -14)}
               value={date}
               onChange={updateDate}
             />
