@@ -23,13 +23,19 @@ export const fetchBalance = () => dispatch => {
 
 export const fetchStatictic =
   ({ month, year }) =>
-  dispatch => {
+  async dispatch => {
     if (month && year) {
       dispatch(actions.fetchStaticticRequest());
       axios
         .get(`/transactions/statistic?month=${month}&year=${year}`)
-        .then(({ data }) => dispatch(actions.fetchStaticticSuccess(data.data)))
-        .catch(error => dispatch(actions.fetchStaticticError(error.message)));
+        .then(({ data }) => {
+          dispatch(actions.fetchStaticticSuccess(data.data));
+          dispatch(actions.errorUnset(false));
+        })
+        .catch(error => {
+          dispatch(actions.fetchStaticticError(error));
+          dispatch(actions.statisticUnset());
+        });
     }
   };
 

@@ -24,6 +24,8 @@ export const fetchStaticticSuccess = createAction(
   'global/fetchStaticticSuccess',
 );
 export const fetchStaticticError = createAction('global/fetchStaticticError');
+export const errorUnset = createAction('global/errorUnset');
+export const statisticUnset = createAction('global/statisticUnset');
 
 // --- Екшены на добавление транзакции
 export const addNewTransactionRequest = createAction(

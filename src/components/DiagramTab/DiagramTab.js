@@ -5,6 +5,7 @@ import styles from './DiagramTab.module.css';
 import {
   getStatictic,
   statisticDate,
+  errorState,
 } from '../../redux/global/global-selectors';
 import { fetchStatictic } from '../../redux/global/global-operation';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,8 +17,10 @@ export default function DiagramTab() {
 
   // Селектор на забор всех транзакций из Store
   const statistic = useSelector(getStatictic);
+  // Селектор на забор даты Store
   const date = useSelector(statisticDate);
-  console.log(date);
+  // Селектор на забор error Store
+  const error = useSelector(errorState);
 
   useEffect(() => {
     trasformDataForChart(statistic);
@@ -153,7 +156,13 @@ export default function DiagramTab() {
     <div className={styles.diagramPosition}>
       <h2 className={styles.diagram_tab_heading}>Statistics</h2>
       <div className={styles.diagram_tab_container}>
-        <Chart chartData={dataForChart} />
+        {error ? (
+          <h3 className={styles.error_message}>
+            У Вас нет транзакций в этом месяце
+          </h3>
+        ) : (
+          <Chart chartData={dataForChart} />
+        )}
         <Table
           chartData={dataForChart}
           sumPlus={overallPlus}

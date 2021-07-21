@@ -11,6 +11,12 @@
   text-align: left;
 }
 
+.error_message {
+  height: 280px;
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 768px) {
   .diagram_tab_container {
     display: flex;

@@ -5,37 +5,20 @@ import { valueSelect } from '../../redux/global/global-action';
 import { statisticDate } from '../../redux/global/global-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 
-//изначальное значени текущий месяц и год(прокинуть их сюда пропом)
-
 export default function Select({ mainSelect, allSelects }) {
   const dispatch = useDispatch();
-
-  const currentDate = new Date()
-    .toLocaleDateString()
-    .split('.')
-    .reverse()
-    .join('-');
-  console.log(currentDate);
-  console.log(currentDate.slice(0, 4)); //берёт текущий год
-  console.log(currentDate.slice(5, 7)); //берёт текущий месяц
 
   let value;
   const current = useSelector(statisticDate);
 
   if (mainSelect === 'Месяц') {
-    // value = currentDate.slice(5, 7);
     if (current.month) {
       value = current.month;
-      console.log('Месяц');
-      console.log(value);
     }
   }
   if (mainSelect === 'Год') {
-    // value = currentDate.slice(0, 4);
     if (current.year) {
       value = current.year;
-      console.log('Год');
-      console.log(value);
     }
   }
 

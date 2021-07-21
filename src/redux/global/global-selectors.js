@@ -19,3 +19,6 @@ export const statisticDate = state => state.global.statisticDate;
 
 // --- Селектор на взятие из State totalBalance
 export const istotalBalance = state => state.global.totalBalance;
+
+// --- Селектор на взятие из State error
+export const errorState = state => state.global.error;
