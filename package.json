@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "bootstrap": "^5.0.2",
     "chart.js": "^3.4.1",
     "dateformat": "^4.5.1",
     "formik": "^2.2.9",
@@ -33,7 +34,8 @@
     "shortid": "^2.2.16",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -2,6 +2,16 @@
   margin-bottom: 30px;
   height: 16px;
 }
+.error {
+  position: absolute;
+  top: 100%;
+  left: 10%;
+}
+.errorLock {
+  position: absolute;
+  top: 90%;
+  left: 10%;
+}
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -9,7 +19,8 @@
   width: 150px;
   margin-left: auto;
 }
-.email {
+.email,
+.password {
   width: 280px;
   height: 34px;
   border: 0 solid #fff;
@@ -31,6 +42,7 @@
   border: 0 solid #fff;
   border-bottom: 1px solid #e0e0e0;
   margin-top: 40px;
+  margin-bottom: 1px;
   padding-left: 30px;
 }
 .enter {
@@ -86,7 +98,9 @@
   text-transform: uppercase;
   color: #ffffff;
 }
-
+.strongPasswordText {
+  text-align: end;
+}
 .wrraper {
   /* display: flex; */
   flex-direction: column;
