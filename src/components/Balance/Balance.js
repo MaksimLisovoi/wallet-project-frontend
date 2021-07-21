@@ -7,10 +7,10 @@ import style from './Balance.module.css';
 
 export default function Balance() {
   const dispatch = useDispatch();
+  const balance = useSelector(istotalBalance);
   useEffect(() => {
     dispatch(fetchBalance());
   }, [dispatch]);
-  const balance = useSelector(istotalBalance);
 
   return (
     <div className={style.balance}>

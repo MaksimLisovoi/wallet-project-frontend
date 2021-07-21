@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import GetTableScreen from '../../helpers/getTableScreen';
 import getSortedData from '../../helpers/getSortedData';
@@ -8,15 +8,8 @@ import MobileHomeTabItem from '../HomeTabItem/MobileHomeTabItem';
 import NoTransactions from '../HomeTabItem/NoTransactions';
 import styles from './styles.module.css';
 import { getTransactions } from '../../redux/global/global-selectors';
-import { fetchTransactions } from '../../redux/global/global-operation';
 
 const HomeTab = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTransactions());
-  }, [dispatch]);
-
   const transactions = useSelector(getTransactions);
   const tableScreen = GetTableScreen();
 

@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import style from './AddTransactionForm.module.css';
-import { addNewTransaction } from '../../redux/global/global-operation';
+import {
+  addNewTransaction,
+  fetchBalance,
+} from '../../redux/global/global-operation';
 import { isModalAddTransactionClose } from '../../redux/global/global-action';
 
 export default function AddTransactionForm() {
@@ -41,12 +44,13 @@ export default function AddTransactionForm() {
     e.preventDefault();
 
     dispatch(addNewTransaction({ date, type, category, comments, sum }), [
-      dispatch,
+      // dispatch,
       sum,
       category,
       comments,
       date,
     ]);
+    setTimeout(dispatch(fetchBalance()), 1000);
     dispatch(isModalAddTransactionClose());
   };
 
