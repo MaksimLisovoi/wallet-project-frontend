@@ -77,7 +77,7 @@ const RegisterPage = () => {
                   onChange={handleChange}
                 />
                 {touched.email && errors.email ? (
-                  <div className={s.error}>{errors.email}</div>
+                  <div className={s.errorEmail}>{errors.email}</div>
                 ) : null}
                 <Envelope />
               </label>

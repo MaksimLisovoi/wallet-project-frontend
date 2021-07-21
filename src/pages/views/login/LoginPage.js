@@ -77,7 +77,9 @@ const LoginPage = () => {
               value={formik.values.password}
             />
             {formik.touched.password && formik.errors.password ? (
-              <div className={s.textStyleError}>{formik.errors.password}</div>
+              <div className={s.textStyleErrorPass}>
+                {formik.errors.password}
+              </div>
             ) : null}
             <Lock />
           </label>

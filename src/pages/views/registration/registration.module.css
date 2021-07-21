@@ -5,12 +5,20 @@
 .error {
   position: absolute;
   top: 100%;
-  left: 10%;
+  left: 20%;
+  color: red;
 }
 .errorLock {
   position: absolute;
   top: 90%;
+  left: 20%;
+  color: red;
+}
+.errorEmail {
+  position: absolute;
+  top: 90%;
   left: 10%;
+  color: red;
 }
 .formContainer {
   display: flex;
@@ -26,6 +34,7 @@
   border: 0 solid #fff;
   border-bottom: 1px solid #e0e0e0;
   padding-left: 30px;
+  outline: 0;
   /* position: relative; */
   /* Gray 5 */
 }
