@@ -12,6 +12,7 @@
   border: 0 solid #fff;
   padding-left: 30px;
   border-bottom: 1px solid #e0e0e0;
+  outline: 0;
   /* Gray 5 */
 }
 .password {
@@ -19,8 +20,9 @@
   height: 34px;
   padding-left: 30px;
   border: 0 solid #fff;
+  outline: 0;
   border-bottom: 1px solid #e0e0e0;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 .enter {
   margin-top: 20px;
@@ -77,6 +79,12 @@
   font-weight: bold;
   position: absolute;
 }
+.textStyleErrorPass {
+  color: red;
+  font-weight: bold;
+  position: absolute;
+  left: 30%;
+}
 .posRelative {
   position: relative;
 }
@@ -99,7 +107,7 @@
 
 @media (min-width: 320px) {
   .contForHead {
-    padding-top: 110px;
+    padding-top: 90px;
     padding-bottom: 25px;
     /* padding: 0, 0; */
   }
@@ -121,7 +129,7 @@
     margin-top: 40px;
   }
   .contForHead {
-    padding-top: 110px;
+    padding-top: 90px;
     padding-bottom: 25px;
   }
 }

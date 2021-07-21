@@ -29,6 +29,7 @@
     position: absolute;
     bottom: 15%;
     z-index: 15;
+    right: 70%;
     display: block;
   }
   .position {
