@@ -53,6 +53,9 @@
   .btnAdd {
     left: 90%;
   }
+  .plus {
+    opacity: unset;
+  }
 
   .modalContent {
     position: absolute;
@@ -73,7 +76,7 @@
   .modalContent {
     position: absolute;
     width: 540px;
-    height: 540px;
+    height: 600px;
     margin-left: auto;
     margin-right: auto;
     left: 0;
