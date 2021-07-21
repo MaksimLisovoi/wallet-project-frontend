@@ -73,6 +73,7 @@
 .textStyleError {
   color: red;
   font-weight: bold;
+  position: absolute;
 }
 .posRelative {
   position: relative;

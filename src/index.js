@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import 'modern-normalize/modern-normalize.css';
+import 'bootstrap/dist/css/bootstrap.css';
 // import s from './styles/base.module.css';
 import App from './App';
 import { Provider } from 'react-redux';
