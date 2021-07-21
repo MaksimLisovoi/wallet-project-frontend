@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import s from './BtnAddTransc.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
+import { getisModalAddTransaction } from '../../redux/global/global-selectors';
+import {
+  isModalAddTransactionOpen,
+  isModalAddTransactionClose,
+} from '../../redux/global/global-action';
 import plus from './+.png';
 
 Modal.setAppElement('#root');
 
-const BtnAddTransc = () => {
-  const [modaIsOpen, setModalisOpen] = useState(false);
+export default function BtnAddTransc() {
+  const dispatch = useDispatch();
+  const ModalAddTransactionClose = () => dispatch(isModalAddTransactionClose());
+  const ModalAddTransactionOpen = () => dispatch(isModalAddTransactionOpen());
+  const modalAddTransaction = useSelector(getisModalAddTransaction);
+
+  // const [modaIsOpen, setModalisOpen] = useState(false);
   return (
     <div>
-      <button className={s.btnAdd} onClick={() => setModalisOpen(true)}>
+      <button
+        className={s.btnAdd}
+        onClick={() => ModalAddTransactionOpen(true)}
+      >
         <span>
           <img src={plus} className={s.plus}></img>
         </span>
       </button>
       <Modal
-        isOpen={modaIsOpen}
-        onRequestClose={() => setModalisOpen(false)}
+        isOpen={modalAddTransaction}
+        onRequestClose={ModalAddTransactionClose}
         className={s.modalContent}
         overlayClassName={s.modalOverlay}
       >
@@ -25,6 +39,4 @@ const BtnAddTransc = () => {
       </Modal>
     </div>
   );
-};
-
-export default BtnAddTransc;
+}
