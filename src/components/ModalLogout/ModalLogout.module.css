@@ -5,9 +5,11 @@
 }
 .modalContent {
   width: 320px;
-  height: 568px;
+  height: 260px;
   padding-top: 100px;
   padding-left: 20px;
+  border-radius: 20px;
+
   background-color: #ffff;
   position: absolute;
   top: 0;
@@ -23,7 +25,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #e7eaf2;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .btnAdd {
@@ -50,9 +52,10 @@
 
   .modalContent {
     width: 320px;
-    height: 568px;
+    height: 350px;
     padding-top: 100px;
     padding-left: 20px;
+    border-radius: 20px;
     background-color: #ffff;
     position: absolute;
     top: 0;
@@ -70,7 +73,8 @@
   .modalContent {
     position: absolute;
     width: 540px;
-    height: 540px;
+    height: 260px;
+    border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -111,13 +115,10 @@
 .buttonCloseYes {
   margin-top: 20px;
 
-  /* border: none; */
-  /* outline: none; */
   width: 200px;
   height: 50px;
-  /* background: #24cca7; */
-  border-radius: 10px;
-  /* outline: 1px solid #666; */
+
+  border-radius: 20px;
 
   font-family: Circe;
   font-style: normal;
@@ -133,5 +134,5 @@
 }
 
 .buttonCloseYes:hover {
-  background: #c1172c;
+  background: #e32636;
 }
