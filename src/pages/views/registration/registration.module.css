@@ -56,6 +56,8 @@
 }
 .enter {
   margin-top: 20px;
+  padding-top: 10px;
+  display: inline-block;
 
   border: none;
   outline: none;
@@ -70,6 +72,7 @@
   font-family: Circe;
   font-style: normal;
   font-weight: normal;
+
   font-size: 18px;
   line-height: 27px;
   text-align: center;

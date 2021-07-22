@@ -132,17 +132,20 @@ const RegisterPage = () => {
               <button type="submit" className={s.registration}>
                 <span className={s.textRegistration}> Регистрация</span>
               </button>
-              {/* </NavLink> */}
-
-              {/* <NavLink exact to="/login"> */}
-
-              {/* </NavLink> */}
             </Form>
           )}
         </Formik>
-        <button type="button" className={s.enter}>
+        <NavLink
+          to={{
+            pathname: '/login',
+          }}
+          className={s.enter}
+        >
           <span className={s.text}>Вход</span>
-        </button>
+        </NavLink>
+        {/* <button type="button" className={s.enter}>
+          <span className={s.text}>Вход</span>
+        </button> */}
       </div>
     </>
   );
