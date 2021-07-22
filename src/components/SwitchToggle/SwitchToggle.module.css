@@ -45,3 +45,10 @@
   height: 2px;
   margin: 0;
 }
+
+@media (min-width: 320px) {
+  .plus,
+  .minus {
+    opacity: unset;
+  }
+}

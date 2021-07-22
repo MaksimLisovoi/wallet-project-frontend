@@ -73,7 +73,7 @@ export default function AddTransactionForm() {
               className={style.inputNumber}
               type="number"
               placeholder="0.00"
-              min="1"
+              // min="1"
               pattern="\d+"
               maxLength="12"
               required
@@ -84,7 +84,7 @@ export default function AddTransactionForm() {
               id="date"
               type="date"
               className={style.inputDate}
-              // max={new Date().toISOString().slice(0, -14)}
+              max={new Date().toISOString().slice(0, -14)}
               value={date}
               onChange={updateDate}
             />

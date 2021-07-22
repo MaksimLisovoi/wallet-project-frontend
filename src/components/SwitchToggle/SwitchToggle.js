@@ -20,7 +20,7 @@ class SwitchToggle extends Component {
     return (
       <>
         <div className={style.container}>
-          <p style={{ color: this.state.expense ? '' : '#24CCA7' }}>
+          <p style={{ color: this.state.checked ? '#E0E0E0' : '#24CCA7' }}>
             <strong>Доход</strong>
           </p>
           <label htmlFor="small-radius-switch">
@@ -54,7 +54,7 @@ class SwitchToggle extends Component {
               }
             />
           </label>
-          <p style={{ color: this.state.expense ? '#FF6596' : '' }}>
+          <p style={{ color: this.state.checked ? '#FF6596' : '#E0E0E0' }}>
             <strong>Расход</strong>
           </p>
         </div>
