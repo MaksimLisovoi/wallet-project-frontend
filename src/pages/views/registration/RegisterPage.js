@@ -12,6 +12,7 @@ import PinkStain from '../../../icons/pinkStain/pinkStain';
 import Girl from '../../../icons/girlMain/girl';
 import Envelope from '../../../icons/envelopeData/envelope';
 import Lock from '../../../icons/lock/lock';
+import LockConfirmPassword from '../../../icons/lock/lockConfirmPassword';
 import Name from '../../../icons/name/name';
 import PasswordStrengthMeter from './PasswordStrengthMeter.js';
 import s from './registration.module.css';
@@ -111,7 +112,7 @@ const RegisterPage = () => {
                 {touched.confirmPassword && errors.confirmPassword ? (
                   <div className={s.error}>{errors.confirmPassword}</div>
                 ) : null}
-                <Lock />
+                <LockConfirmPassword />
               </label>
               <label htmlFor="name" className={s.namPh}>
                 <Field

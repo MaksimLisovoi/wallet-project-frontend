@@ -14,7 +14,7 @@ import BlueStain from '../../../icons/blueStain/blueStain';
 import PinkStain from '../../../icons/pinkStain/pinkStain';
 import MainPhoto from '../../../icons/mainPhotoComp/mainPhotoComp';
 import Envelope from '../../../icons/envelopeData/envelope';
-import Lock from '../../../icons/lock/lock';
+import LockConfirmPassword from '../../../icons/lock/lockConfirmPassword';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -81,7 +81,7 @@ const LoginPage = () => {
                 {formik.errors.password}
               </div>
             ) : null}
-            <Lock />
+            <LockConfirmPassword />
           </label>
 
           {/* <NavLink exact to="/login"> */}
