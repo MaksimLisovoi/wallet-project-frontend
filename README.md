@@ -1,6 +1,6 @@
 # <img src="вставить банер" >
 
-# ![Wallet](./wallet.png) Wallet API
+# ![Wallet](./wallet.png) Wallet
 
 Wallet application to control your finances
 
