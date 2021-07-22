@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
@@ -144,9 +144,6 @@ const RegisterPage = () => {
         >
           <span className={s.text}>Вход</span>
         </NavLink>
-        {/* <button type="button" className={s.enter}>
-          <span className={s.text}>Вход</span>
-        </button> */}
       </div>
     </>
   );

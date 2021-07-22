@@ -83,18 +83,10 @@ const LoginPage = () => {
             ) : null}
             <LockConfirmPassword />
           </label>
-
-          {/* <NavLink exact to="/login"> */}
           <button type="submit" className={s.enter}>
             <span className={s.text}>Вход</span>
           </button>
-          {/* </NavLink> */}
-
-          {/* <NavLink exact to="/register"> */}
-
-          {/* </NavLink> */}
         </form>
-        {/* onClick по клику поменять историю, history.push 'register' */}
         <NavLink
           to={{
             pathname: '/register',
