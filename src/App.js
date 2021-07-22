@@ -1,11 +1,7 @@
 import React, { Suspense, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import s from './styles/base.module.css';
-
 import Container from './components/Container';
-// import AuthNav from './components/AuthNav';
-import AppBar from './components/AppBar';
-
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from './redux/auth/auth-operations';
@@ -36,9 +32,6 @@ export default function App() {
   return (
     <Container>
       <div className={s.container}>
-        {/* <AuthNav /> */}
-        {/* <AppBar /> */}
-
         <Suspense fallback={Spinner}>
           <Switch>
             <PublicRoute path="/register" restricted redirectTo="/home">
@@ -59,25 +52,6 @@ export default function App() {
             <PrivateRoute path="/currency" redirectTo="/login">
               <CurrencyView />
             </PrivateRoute>
-
-            {/* <PublicRoute path="/register" restricted redirectTo="/home">
-              <RegisterPage />
-            </PublicRoute>
-            <PublicRoute path="/login" restricted redirectTo="/home">
-              <LoginPage />
-            </PublicRoute>
-            <PrivateRoute path="/" redirectTo="/login">
-              <HomePageView />
-            </PrivateRoute>
-            <PrivateRoute path="/home" redirectTo="/login">
-              <HomePageView />
-            </PrivateRoute>
-            <PrivateRoute path="/diagram" redirectTo="/login">
-              <DiagramView />
-            </PrivateRoute>
-            <PrivateRoute path="/currency" redirectTo="/login">
-              <CurrencyView />
-            </PrivateRoute> */}
           </Switch>
         </Suspense>
       </div>
