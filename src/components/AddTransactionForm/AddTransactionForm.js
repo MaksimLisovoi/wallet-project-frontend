@@ -50,6 +50,11 @@ export default function AddTransactionForm() {
     dispatch(isModalAddTransactionClose());
   };
 
+  const handleClose = e => {
+    e.preventDefault();
+    dispatch(isModalAddTransactionClose());
+  };
+
   return (
     <div className={style.container}>
       <h2 className={style.title}>Добавить транзакцию</h2>
@@ -95,7 +100,7 @@ export default function AddTransactionForm() {
               >
                 ДОБАВИТЬ
               </button>
-              <button type="submit" className={style.cancel}>
+              <button className={style.cancel} onClick={handleClose}>
                 ОТМЕНА
               </button>
             </div>

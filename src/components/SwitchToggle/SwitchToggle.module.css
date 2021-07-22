@@ -27,3 +27,21 @@
   font-size: 35px;
   color: white;
 }
+
+.plus {
+  position: fixed;
+  display: flex;
+  transform: translate(-50%, -160%);
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.minus {
+  position: fixed;
+  display: flex;
+  transform: translate(-50%, -1100%);
+  width: 20px;
+  height: 2px;
+  margin: 0;
+}

@@ -2,6 +2,8 @@ import React, { Component, useState } from 'react';
 import Switch from 'react-switch';
 import TransCategory from '../SelectTransacCategory/TransCategory';
 import style from './SwitchToggle.module.css';
+import plus from '../BtnAddTransc/+.png';
+import minus from './minus.png';
 
 class SwitchToggle extends Component {
   constructor() {
@@ -37,10 +39,18 @@ class SwitchToggle extends Component {
               uncheckedIcon={<div className={style.uncheckedIcon}>Off</div>}
               checkedIcon={<div className={style.checkedIcon}>On</div>}
               uncheckedHandleIcon={
-                <div className={style.uncheckedHandleIcon}>&#43;</div>
+                <div className={style.uncheckedHandleIcon}>
+                  <span>
+                    <img src={plus} className={style.plus}></img>
+                  </span>
+                </div>
               }
               checkedHandleIcon={
-                <div className={style.uncheckedHandleIcon}>&#8722;</div>
+                <div className={style.uncheckedHandleIcon}>
+                  <span>
+                    <img src={minus} className={style.minus}></img>
+                  </span>
+                </div>
               }
             />
           </label>
