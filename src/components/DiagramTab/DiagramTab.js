@@ -161,7 +161,7 @@ export default function DiagramTab() {
             У Вас нет транзакций в этом месяце
           </h3>
         ) : (
-          <Chart chartData={dataForChart} />
+          <Chart chartData={dataForChart} sumMinus={overallMinus} />
         )}
         <Table
           chartData={dataForChart}
