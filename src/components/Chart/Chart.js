@@ -2,26 +2,32 @@ import React from 'react';
 import styles from './Chart.module.css';
 import { Doughnut } from 'react-chartjs-2';
 
-//--- Добавить баланс в центр пончика !
-
-//Опции для Диаграммы больше можно узнать --> https://www.chartjs.org/docs/latest/
-
-const optionsForChart = {
-  plugins: {
-    title: {
-      display: false,
-      text: 'Просто диаграмма',
+const Chart = ({ chartData, sumMinus }) => {
+  let optionsForChart = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          afterLabel: i => {
+            const sum = i.dataset.data.reduce(
+              (acc, value) => Number.parseInt(acc) + Number.parseInt(value),
+              0,
+            );
+            const percent = ((i.parsed * 100) / sum).toFixed(2);
+            return percent + '%';
+          },
+        },
+        padding: 15,
+        bodyAlign: 'center',
+      },
     },
-    legend: {
-      display: false,
-      position: 'bottom',
-    },
-  },
-};
+  };
 
-const Chart = ({ chartData }) => {
   return (
     <div className={styles.chart}>
+      <span className={styles.label_sum}>₴ {sumMinus}</span>
       <Doughnut data={chartData} options={optionsForChart} />
     </div>
   );
