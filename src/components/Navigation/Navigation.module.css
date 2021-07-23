@@ -25,6 +25,7 @@
 
 .activeLink {
   font-weight: bold;
+  border-radius: 6px;
   filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
 }
 
@@ -65,56 +66,75 @@
   }
 }
 
-.logoHome { 
-
+.logoHome {
   background-image: url('./data/home.svg');
   background-repeat: no-repeat;
-background-size: contain;  
+  background-size: contain;
+  height: 38px;
+  width: 38px;
+  border-radius: 6px;
+  transition-duration: 250ms;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoHome:hover,
+.logoHome:focus {
+  background-color: #fff;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logoStatistic {
+  background-image: url('./data/statistic.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 38px;
+  width: 38px;
+  border-radius: 6px;
+}
 
-background-image: url('./data/statistic.svg');
-background-repeat: no-repeat;
-background-size: contain;
+.logoStatistic:hover,
+.logoStatistic:focus {
+  background-color: #fff;
 }
 
 .logoCurrency {
- 
-background-image: url('./data/currency.svg');
-background-repeat: no-repeat;
-background-size: contain;  
+  background-image: url('./data/currency.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 38px;
+  width: 38px;
+  border-radius: 6px;
+}
+
+.logoCurrency:hover,
+.logoCurrency:focus {
+  background-color: #fff;
 }
 
 @media screen and (min-width: 768px) {
   .navigation {
-    flex-direction:column;
-    
+    flex-direction: column;
   }
-  .navigationTable{
-     justify-content: flex-start;
+  .navigationTable {
+    justify-content: flex-start;
   }
 
   .logoHome {
-  width: 24px;
-  height: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .logoStatistic {
+    width: 24px;
+    height: 24px;
+  }
+
+  .logoCurrency {
+    width: 24px;
+    height: 24px;
+  }
+
+  .link:hover {
+    color: #4a56e2;
+  }
 }
-
-.logoStatistic {
-  width: 24px;
-height: 24px;
-
-}
-
-.logoCurrency {
-  width: 24px;
-height: 24px;
-
-}
-
-.link:hover {
-  color:  #4A56E2;
-}
-}
-
-
