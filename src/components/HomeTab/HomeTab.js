@@ -69,42 +69,6 @@ const HomeTab = () => {
           )}
         </>
       )}
-      {/* 
-      {tableScreen <= 767 && (
-        <ul className={styles.list}>
-          {sortedData.map(transaction => (
-            <li className={styles.item} key={transaction._id.$oid}>
-              <MobileHomeTabItem transaction={transaction} />
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {tableScreen >= 767 && (
-        <div className={styles.table__wrapper}>
-          <table cellPadding="16" className={styles.table}>
-            <thead className={styles.thead}>
-              <tr className={styles.trow}>
-                <th className={styles.th}>Дата</th>
-                <th className={styles.th}>Тип</th>
-                <th className={styles.th}>Категория</th>
-                <th className={styles.th}>Комментарий</th>
-                <th className={styles.th}>Сумма</th>
-                <th className={styles.th}>Баланс</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {sortedData.map(transaction => (
-                <TabletHomeTabItem
-                  transaction={transaction}
-                  key={transaction._id.$oid}
-                />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )} */}
     </div>
   );
 };

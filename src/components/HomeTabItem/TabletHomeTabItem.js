@@ -16,7 +16,7 @@ const HomeTabItem = ({ transaction }) => {
 
   return (
     <>
-      <tr>
+      <tr className={styles.tablet__row}>
         <td className={styles.td__date}>{formatedDate}</td>
         <td className={styles.td__tablet}>{modernType}</td>
         <td className={styles.td__tablet}>{category}</td>
