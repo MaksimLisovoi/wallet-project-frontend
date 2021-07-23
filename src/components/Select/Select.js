@@ -39,7 +39,7 @@ export default function Select({ mainSelect, allSelects }) {
         value={value}
         onChange={handleChange}
       >
-        <option value="current">{mainSelect}</option>
+        {/* <option value="current">{mainSelect}</option> */}
 
         {allSelects.name.map(i => (
           <option key={uuidv4()} value={i.value}>
