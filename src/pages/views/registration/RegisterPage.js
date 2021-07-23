@@ -1,6 +1,7 @@
 import { React } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getError } from '../../../redux/auth/auth-selectors';
 import * as Yup from 'yup';
 
 import authOperations from '../../../redux/auth/auth-operations';
@@ -48,11 +49,13 @@ const RegisterPage = () => {
   const handleSubmit = async (values, { resetForm }) => {
     const { email, password, name } = values;
     await dispatch(authOperations.register({ email, password, name }));
-    dispatch(authOperations.logIn({ email, password }));
     resetForm({});
   };
+  const stateError = useSelector(getError);
+
   return (
     <>
+      {stateError && alert('Такой пользователь уже существует')}
       <BlueStain />
       <PinkStain />
       <Girl />
