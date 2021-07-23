@@ -25,7 +25,7 @@ export default function BtnAddTransc() {
         onClick={() => ModalAddTransactionOpen(true)}
       >
         <span>
-          <img src={plus} className={s.plus}></img>
+          <img src={plus} alt={'Plus'} className={s.plus}></img>
         </span>
       </button>
       <Modal

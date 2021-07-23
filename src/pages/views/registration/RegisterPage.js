@@ -1,10 +1,10 @@
 import { React } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getError } from '../../../redux/auth/auth-selectors';
+import { useDispatch } from 'react-redux';
+// import { getError } from '../../../redux/auth/auth-selectors';
 import * as Yup from 'yup';
 
-import authOperations from '../../../redux/auth/auth-operations';
+import * as authOperations from '../../../redux/auth/auth-operations';
 import { Formik, Form, Field } from 'formik';
 
 import Logos from '../../../components/Logos/Logos';
@@ -51,7 +51,7 @@ const RegisterPage = () => {
     await dispatch(authOperations.register({ email, password, name }));
     resetForm({});
   };
-  const stateError = useSelector(getError);
+  // const stateError = useSelector(getError);
 
   return (
     <>

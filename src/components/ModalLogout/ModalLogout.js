@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import styles from './ModalLogout.module.css';
 import { getModalLogout } from '../../redux/global/global-selectors';
 import { isModalLogoutClose } from '../../redux/global/global-action';
-import operations from '../../redux/auth/auth-operations';
+import * as operations from '../../redux/auth/auth-operations';
 
 Modal.setAppElement('#root');
 

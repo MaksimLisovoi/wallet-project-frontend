@@ -7,8 +7,8 @@ import minus from './minus.png';
 
 function SwitchToggle({ updateSwitcher }) {
   const [checked, setChecked] = useState(false);
-  const [expense, setExpense] = useState(false);
-
+  // const [expense, setExpense] = useState(false);
+  const expense = false;
   const handleChange = checked => {
     setChecked(checked);
   };
