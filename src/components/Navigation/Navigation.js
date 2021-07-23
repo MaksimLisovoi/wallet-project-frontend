@@ -1,9 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import { useMediaQuery } from 'react-responsive';
-import { getisAuthenticated } from '../../redux/auth/auth-selectors';
+// import { getisAuthenticated } from '../../redux/auth/auth-selectors';
 
 // import LoginPage from '../../pages/views/login/LoginPage';
 
@@ -15,7 +15,7 @@ import style from './Navigation.module.css';
 
 export default function Navigation() {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: 768 });
-  const isAuthenticated = useSelector(getisAuthenticated);
+  // const isAuthenticated = useSelector(getisAuthenticated);
   return (
     <nav className={style.navigation}>
       {/* <NavLink

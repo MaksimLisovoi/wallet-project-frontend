@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import * as Yup from 'yup';
-import authOperations from '../../../redux/auth/auth-operations';
+import * as authOperations from '../../../redux/auth/auth-operations';
 
 import s from './login.module.css';
 
