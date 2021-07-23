@@ -52,10 +52,9 @@ const RegisterPage = () => {
     resetForm({});
   };
   const stateError = useSelector(getError);
-
+  console.log(stateError);
   return (
     <>
-      {stateError && alert('Такой пользователь уже существует')}
       <BlueStain />
       <PinkStain />
       <Girl />
