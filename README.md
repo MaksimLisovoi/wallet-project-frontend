@@ -1,4 +1,4 @@
-# <img src="вставить банер" >
+# <img src="./banner.jpg" >
 
 # ![Wallet](./wallet.png) Wallet
 
