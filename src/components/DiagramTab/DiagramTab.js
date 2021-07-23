@@ -22,7 +22,7 @@ export default function DiagramTab() {
 
   useEffect(() => {
     dispatch(fetchStatictic(date));
-  }, [date]);
+  }, [date, dispatch]);
 
   useEffect(() => {
     trasformDataForChart(statistic);

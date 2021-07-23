@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import SwitchToggle from '../SwitchToggle/SwitchToggle';
 import style from './AddTransactionForm.module.css';
@@ -7,7 +7,9 @@ import {
   addNewTransaction,
   fetchBalance,
   fetchTransactions,
+  fetchStatictic,
 } from '../../redux/global/global-operation';
+import { statisticDate } from '../../redux/global/global-selectors';
 import { isModalAddTransactionClose } from '../../redux/global/global-action';
 
 export default function AddTransactionForm() {
@@ -15,6 +17,7 @@ export default function AddTransactionForm() {
   const [category, setCategory] = useState('Доход');
 
   const dispatch = useDispatch();
+  const dateStatistic = useSelector(statisticDate);
 
   const currentDate = new Date()
     .toLocaleDateString()
@@ -53,6 +56,7 @@ export default function AddTransactionForm() {
     ]);
     await dispatch(fetchTransactions());
     await dispatch(fetchBalance());
+    await dispatch(fetchStatictic(dateStatistic));
     await dispatch(isModalAddTransactionClose());
   };
 
