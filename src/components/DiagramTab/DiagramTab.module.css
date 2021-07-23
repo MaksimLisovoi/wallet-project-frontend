@@ -4,6 +4,7 @@
 
 .diagram_tab_heading {
   font-family: 'Poppins';
+  font-family: 'PT Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
@@ -13,6 +14,7 @@
 
 .error_message {
   height: 280px;
+  width: 280px;
   display: flex;
   align-items: center;
 }
@@ -20,6 +22,10 @@
 @media (min-width: 768px) {
   .diagram_tab_container {
     display: flex;
+  }
+  .error_message {
+    height: 320px;
+    width: 320px;
   }
 }
 

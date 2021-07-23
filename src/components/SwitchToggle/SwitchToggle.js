@@ -1,20 +1,18 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import Switch from 'react-switch';
 import TransCategory from '../SelectTransacCategory/TransCategory';
 import style from './SwitchToggle.module.css';
 import plus from '../BtnAddTransc/+.png';
 import minus from './minus.png';
 
-class SwitchToggle extends Component {
-  constructor() {
-    super();
-    this.state = { checked: false };
-    this.handleChange = this.handleChange.bind(this);
-  }
+function SwitchToggle({ updateSwitcher }) {
+  const [checked, setChecked] = useState(false);
+  const [expense, setExpense] = useState(false);
 
-  handleChange(checked) {
-    this.setState({ checked });
-  }
+  const handleChange = checked => {
+    setChecked(checked);
+  };
+
 
   render() {
     return (
@@ -68,13 +66,20 @@ class SwitchToggle extends Component {
             //   backdropFilter: 'blur(50px)',
             //   borderRadius: '20px',
             // }}
+
           />
-        ) : (
-          ''
-        )}
-      </>
-    );
-  }
+        </label>
+        <p style={{ color: expense ? '#FF6596' : '' }}>
+          <strong>Расход</strong>
+        </p>
+      </div>
+      {checked === true ? (
+        <TransCategory updateCategory={updateSwitcher} />
+      ) : (
+        ''
+      )}
+    </>
+  );
 }
 
 export default SwitchToggle;

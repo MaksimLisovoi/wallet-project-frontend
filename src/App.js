@@ -1,19 +1,16 @@
 import React, { Suspense, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import s from './styles/base.module.css';
-
 import Container from './components/Container';
-// import AuthNav from './components/AuthNav';
-import AppBar from './components/AppBar';
-
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from './redux/auth/auth-operations';
 
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivateRoute';
 
 import Spinner from './components/Spinner/Spinner';
+import { isLoading } from './redux/global/global-selectors';
 
 const RegisterPage = lazy(() =>
   import('./pages/views/registration/RegisterPage'),
@@ -28,18 +25,15 @@ const CurrencyView = lazy(() => import('./pages/views/currency'));
 
 export default function App() {
   const dispatch = useDispatch();
-
+  const Loading = useSelector(isLoading);
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
   }, [dispatch]);
-
+  console.log(Loading);
   return (
     <Container>
       <div className={s.container}>
-        {/* <AuthNav /> */}
-        {/* <AppBar /> */}
-
-        <Suspense fallback={Spinner}>
+        <Suspense fallback={<Spinner />}>
           <Switch>
             <PublicRoute path="/register" restricted redirectTo="/home">
               <RegisterPage />
@@ -59,25 +53,6 @@ export default function App() {
             <PrivateRoute path="/currency" redirectTo="/login">
               <CurrencyView />
             </PrivateRoute>
-
-            {/* <PublicRoute path="/register" restricted redirectTo="/home">
-              <RegisterPage />
-            </PublicRoute>
-            <PublicRoute path="/login" restricted redirectTo="/home">
-              <LoginPage />
-            </PublicRoute>
-            <PrivateRoute path="/" redirectTo="/login">
-              <HomePageView />
-            </PrivateRoute>
-            <PrivateRoute path="/home" redirectTo="/login">
-              <HomePageView />
-            </PrivateRoute>
-            <PrivateRoute path="/diagram" redirectTo="/login">
-              <DiagramView />
-            </PrivateRoute>
-            <PrivateRoute path="/currency" redirectTo="/login">
-              <CurrencyView />
-            </PrivateRoute> */}
           </Switch>
         </Suspense>
       </div>

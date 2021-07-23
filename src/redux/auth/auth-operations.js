@@ -19,9 +19,9 @@ const register = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/signup', credentials);
     console.log(response);
-
     token.set(response.data.token);
     dispatch(authActions.registerSuccess(response.data));
+    dispatch(logIn(credentials));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
   }
@@ -30,7 +30,10 @@ const register = credentials => async dispatch => {
 const logIn = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
-    const response = await axios.post('/users/login', credentials);
+    const response = await axios.post('/users/login', {
+      email: credentials.email,
+      password: credentials.password,
+    });
     console.log(response);
     token.set(response.data.token);
     dispatch(authActions.loginSuccess(response.data));
