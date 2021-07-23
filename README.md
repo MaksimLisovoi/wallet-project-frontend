@@ -1,5 +1,3 @@
-# <img src="./banner.jpg" > 
-#![banner](./banner.jpg)
 
 # ![Wallet](./wallet.png) Wallet
 
