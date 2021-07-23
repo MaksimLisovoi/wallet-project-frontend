@@ -33,7 +33,7 @@ export default function Navigation() {
         className={style.link}
         activeClassName={style.activeLink}
       >
-        <svg className={style.logoHome} height="38" width="38">
+        <svg className={style.logoHome}>
           <use href="#home"></use>
         </svg>
         {isDesktopOrLaptop && (
@@ -47,7 +47,7 @@ export default function Navigation() {
         className={style.link}
         activeClassName={style.activeLink}
       >
-        <svg className={style.logoStatistic} height="38" width="38">
+        <svg className={style.logoStatistic}>
           <use href="#statistic"></use>
         </svg>
         {isDesktopOrLaptop && (
@@ -62,7 +62,7 @@ export default function Navigation() {
           className={style.link}
           activeClassName={style.activeLink}
         >
-          <svg className={style.logoCurrency} height="38" width="38">
+          <svg className={style.logoCurrency}>
             <use href="#currency"></use>
           </svg>
         </NavLink>
