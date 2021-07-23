@@ -52,7 +52,7 @@ const RegisterPage = () => {
     resetForm({});
   };
   const stateError = useSelector(getError);
-  console.log(stateError);
+
   return (
     <>
       <BlueStain />
