@@ -31,8 +31,8 @@
 }
 
 .list_container {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
 }
 
 .list_overall_container {
@@ -54,17 +54,19 @@
 .table_list_labels {
   list-style-type: none;
   margin: 0;
-  margin-right: 20px;
+  margin-left: 16px;
+  flex-grow: 2;
   text-align: left;
 }
 
 .table_list_sum {
   list-style-type: none;
-  margin: 0;
   margin-right: 20px;
 }
 
 .table_list_item {
+  display: flex;
+  justify-content: space-between;
   padding-top: 15px;
   padding-bottom: 15px;
   height: 54px;
@@ -112,9 +114,9 @@
     width: 350px;
   }
 
-  .table_list_labels {
-    margin-right: 70px;
-  }
+  /* .table_list_labels {
+    margin-right: 75px;
+  } */
 }
 
 @media (min-width: 1280px) {

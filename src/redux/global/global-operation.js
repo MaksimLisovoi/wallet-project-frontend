@@ -25,16 +25,17 @@ export const fetchStatictic =
   ({ month, year }) =>
   async dispatch => {
     if (month && year) {
+      dispatch(actions.errorUnset(false));
+      dispatch(actions.statisticUnset());
       dispatch(actions.fetchStaticticRequest());
-      axios
+      await axios
         .get(`/transactions/statistic?month=${month}&year=${year}`)
         .then(({ data }) => {
           dispatch(actions.fetchStaticticSuccess(data.data));
-          dispatch(actions.errorUnset(false));
         })
         .catch(error => {
           dispatch(actions.fetchStaticticError(error));
-          dispatch(actions.statisticUnset());
+          // dispatch(actions.statisticUnset());
         });
     }
   };

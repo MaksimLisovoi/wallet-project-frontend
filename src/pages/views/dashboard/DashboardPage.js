@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useMediaQuery } from 'react-responsive';
-import Container from '../../../components/Container';
+// import Container from '../../../components/Container';
 import HomePageView from '../../../pages/views/homepage';
 import AuthNav from '../../../components/AuthNav';
 import { fetchTransactions } from '../../../redux/global/global-operation';

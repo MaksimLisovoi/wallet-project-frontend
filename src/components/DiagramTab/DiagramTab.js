@@ -5,7 +5,6 @@ import styles from './DiagramTab.module.css';
 import {
   getStatictic,
   statisticDate,
-  errorState,
 } from '../../redux/global/global-selectors';
 import { fetchStatictic } from '../../redux/global/global-operation';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,23 +14,20 @@ export default function DiagramTab() {
   const [overallPlus, setOverallPlus] = useState(0);
   const [overallMinus, setOverallMinus] = useState(0);
 
+  const dispatch = useDispatch();
   // Селектор на забор всех транзакций из Store
   const statistic = useSelector(getStatictic);
   // Селектор на забор даты Store
   const date = useSelector(statisticDate);
-  // Селектор на забор error Store
-  const error = useSelector(errorState);
+
+  useEffect(() => {
+    dispatch(fetchStatictic(date));
+  }, [date]);
 
   useEffect(() => {
     trasformDataForChart(statistic);
     overallSum(statistic);
   }, [statistic]);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchStatictic(date));
-  }, [date]);
 
   // Функция которая берёт сумму всех доходов и расходов.
   const overallSum = data => {
@@ -154,9 +150,9 @@ export default function DiagramTab() {
 
   return (
     <div className={styles.diagramPosition}>
-      <h2 className={styles.diagram_tab_heading}>Statistics</h2>
+      <h2 className={styles.diagram_tab_heading}>Статистика</h2>
       <div className={styles.diagram_tab_container}>
-        {error ? (
+        {statistic.length === 0 ? (
           <h3 className={styles.error_message}>
             У Вас нет транзакций в этом месяце
           </h3>

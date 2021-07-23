@@ -3,8 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import Select from '../Select/Select';
 import styles from './Table.module.css';
 
-//---Нужно доделать линию внизу каждой <li>
-
 const monthSelects = {
   name: [
     { nameOption: 'Январь', value: 0 },
@@ -46,34 +44,28 @@ const Table = ({ chartData, sumPlus, sumMinus }) => {
       <div className={styles.list_container}>
         <ul className={styles.table_list_color}>
           {chartData.labels &&
-            chartData.datasets[0].backgroundColor.map(i => (
-              <li key={uuidv4()} className={styles.table_list_item}>
-                <div
-                  style={{
-                    backgroundColor: `${i}`,
-                    height: `24px`,
-                    width: `24px`,
-                    borderRadius: `2px`,
-                  }}
-                ></div>
-              </li>
-            ))}
-        </ul>
-        <ul className={styles.table_list_labels}>
-          {chartData.labels &&
-            chartData.labels.map(i => (
-              <li key={uuidv4()} className={styles.table_list_item}>
-                {i}
-              </li>
-            ))}
-        </ul>
-        <ul className={styles.table_list_sum}>
-          {chartData.labels &&
-            chartData.datasets[0].data.map(i => (
-              <li key={uuidv4()} className={styles.table_list_item}>
-                {i}
-              </li>
-            ))}
+            chartData.datasets[0].backgroundColor.map((item, index) => {
+              if (chartData.datasets[0].data[index] !== '0') {
+                return (
+                  <li key={uuidv4()} className={styles.table_list_item}>
+                    <div
+                      style={{
+                        backgroundColor: `${item}`,
+                        height: `24px`,
+                        width: `24px`,
+                        borderRadius: `2px`,
+                      }}
+                    ></div>
+                    <div className={styles.table_list_labels}>
+                      {chartData.labels[index]}
+                    </div>
+                    <div className={styles.table_list_sum}>
+                      {chartData.datasets[0].data[index]}
+                    </div>
+                  </li>
+                );
+              }
+            })}
         </ul>
       </div>
       <div className={styles.list_overall_container}>

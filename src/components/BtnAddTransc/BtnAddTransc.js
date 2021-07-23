@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 import s from './BtnAddTransc.module.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +18,6 @@ export default function BtnAddTransc() {
   const ModalAddTransactionOpen = () => dispatch(isModalAddTransactionOpen());
   const modalAddTransaction = useSelector(getisModalAddTransaction);
 
-  // const [modaIsOpen, setModalisOpen] = useState(false);
   return (
     <div>
       <button
