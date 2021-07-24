@@ -1,12 +1,12 @@
 // import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { useFormik } from 'formik';
+//import { useFormik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 
-import * as Yup from 'yup';
 import * as authOperations from '../../../redux/auth/auth-operations';
-
+import SchemaValidation from './SignUpSchema';
 import s from './login.module.css';
 
 import Logos from '../../../components/Logos/Logos';
@@ -18,27 +18,16 @@ import LockConfirmPassword from '../../../icons/lock/lockConfirmPassword';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .email()
-        .required('Введите свой адрес электронной почты'),
+  const initialValues = {
+    email: '',
+    password: '',
+  };
 
-      password: Yup.string('Введите пароль')
-        .min(6, 'Пароль должен состоять не менее чем из 6 символов')
-        .max(12, 'Пароль должен содержать до 12 символов')
-        .required('Требуется пароль'),
-    }),
-    onSubmit: (values, { resetForm }) => {
-      const { email, password, name } = values;
-      dispatch(authOperations.logIn({ email, password, name }));
-      resetForm({});
-    },
-  });
+  const handleSubmit = (values, { resetForm }) => {
+    const { email, password } = values;
+    dispatch(authOperations.logIn({ email, password }));
+    resetForm({});
+  };
   return (
     <>
       <BlueStain />
@@ -48,45 +37,59 @@ const LoginPage = () => {
         <div className={s.contForHead}>
           <Logos />
         </div>
-        <form onSubmit={formik.handleSubmit}>
-          <label htmlFor="email" className={s.posRelative}>
-            <input
-              id="email"
-              name="email"
-              type="text"
-              placeholder="E-mail"
-              className={s.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className={s.textStyleError}>{formik.errors.email}</div>
-            ) : null}
-            <Envelope />
-          </label>
-          <label htmlFor="password" className={s.posRelative}>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Пароль"
-              className={s.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.password}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div className={s.textStyleErrorPass}>
-                {formik.errors.password}
-              </div>
-            ) : null}
-            <LockConfirmPassword />
-          </label>
-          <button type="submit" className={s.enter}>
-            <span className={s.text}>Вход</span>
-          </button>
-        </form>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validationSchema={SchemaValidation}
+        >
+          {({
+            isSubmitting,
+            errors,
+            touched,
+            values,
+            handleChange,
+            handleBlur,
+          }) => (
+            <Form>
+              <label htmlFor="email" className={s.posRelative}>
+                <input
+                  id="email"
+                  name="email"
+                  type="text"
+                  placeholder="E-mail"
+                  className={s.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
+                {touched.email && errors.email ? (
+                  <div className={s.textStyleError}>{errors.email}</div>
+                ) : null}
+                <Envelope />
+              </label>
+              <label htmlFor="password" className={s.posRelative}>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Пароль"
+                  className={s.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                />
+                {touched.password && errors.password ? (
+                  <div className={s.textStyleErrorPass}>{errors.password}</div>
+                ) : null}
+                <LockConfirmPassword />
+              </label>
+              <button type="submit" className={s.enter}>
+                <span className={s.text}>Вход</span>
+              </button>
+            </Form>
+          )}
+        </Formik>
+
         <NavLink
           to={{
             pathname: '/register',
