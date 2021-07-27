@@ -20,6 +20,9 @@ import {
   isModalAddTransactionOpen,
   isModalAddTransactionClose,
   valueSelect,
+  deleteRequest,
+  deleteSuccess,
+  deleteError,
 } from './global-action';
 
 const transactionsReducer = createReducer([], {
@@ -28,6 +31,8 @@ const transactionsReducer = createReducer([], {
     ...state,
     payload.data.transaction,
   ],
+  [deleteSuccess]: (state, { payload }) =>
+    state.filter(elem => elem._id !== payload),
 });
 
 const loadingReducer = createReducer(false, {
@@ -43,6 +48,9 @@ const loadingReducer = createReducer(false, {
   [fetchStaticticRequest]: () => true,
   [fetchStaticticSuccess]: () => false,
   [fetchStaticticError]: () => false,
+  [deleteRequest]: () => true,
+  [deleteSuccess]: () => false,
+  [deleteError]: () => false,
 });
 
 const balanceReducer = createReducer(0, {

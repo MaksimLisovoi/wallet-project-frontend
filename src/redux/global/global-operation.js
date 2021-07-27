@@ -56,3 +56,12 @@ export const addNewTransaction = transaction => async dispatch => {
     .then(({ data }) => dispatch(actions.addNewTransactionSuccess(data)))
     .catch(error => dispatch(actions.addNewTransactionError(error.message)));
 };
+
+export const deleteTransaction = id => dispatch => {
+  dispatch(actions.deleteRequest());
+  // console.log(id);
+  axios
+    .delete(`/transactions/${id}`)
+    .then(() => dispatch(actions.deleteSuccess(id)))
+    .catch(error => dispatch(actions.deleteError(error.message)));
+};
