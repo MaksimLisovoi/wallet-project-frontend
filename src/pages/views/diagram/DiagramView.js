@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import Header from '../../../components/Header/Header';
+// import Header from '../../../components/Header/Header';
 import Navigation from '../../../components/Navigation';
 import Balance from '../../../components/Balance';
 import Currency from '../../../components/Currency/Currensy';
@@ -14,7 +14,7 @@ const DiagramView = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className={styles.diagramView}>
         <Navigation />
         <Balance />

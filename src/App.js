@@ -3,13 +3,13 @@ import { Switch } from 'react-router-dom';
 import s from './styles/base.module.css';
 import Container from './components/Container';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as authOperations from './redux/auth/auth-operations';
-
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivateRoute';
-
 import Spinner from './components/Spinner/Spinner';
+import Header from "./components/Header/Header"
+import {getisAuthenticated} from "./redux/auth/auth-selectors"
 
 const RegisterPage = lazy(() =>
   import('./pages/views/registration/RegisterPage'),
@@ -29,8 +29,11 @@ export default function App() {
     dispatch(authOperations.getCurrentUser());
   }, [dispatch]);
 
+  const isAuth = useSelector(getisAuthenticated)
+
   return (
     <Container>
+     {isAuth&& <Header/>}
       <div className={s.container}>
         <Suspense fallback={<Spinner />}>
           <Switch>
