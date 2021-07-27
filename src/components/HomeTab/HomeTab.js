@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import GetTableScreen from '../../helpers/getTableScreen';
@@ -53,6 +53,7 @@ const HomeTab = () => {
                     <th className={styles.th}>Комментарий</th>
                     <th className={styles.th}>Сумма</th>
                     <th className={styles.th}>Баланс</th>
+                    <th className={styles.th}>Удаление</th>
                   </tr>
                 </thead>
 

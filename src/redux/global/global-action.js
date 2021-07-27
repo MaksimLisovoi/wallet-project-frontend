@@ -56,3 +56,8 @@ export const isModalAddTransactionClose = createAction(
 
 // --- Екшены на взятие value из Select`а
 export const valueSelect = createAction('global/valueSelect');
+
+// --- Екшены на удаление
+export const deleteRequest = createAction('global/deleteRequest');
+export const deleteSuccess = createAction('global/deleteSuccess');
+export const deleteError = createAction('global/deleteError');

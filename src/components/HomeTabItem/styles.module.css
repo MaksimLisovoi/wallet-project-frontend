@@ -94,6 +94,13 @@ th {
   color: #ff6596;
 }
 
+.redTrash {
+  width: 30px;
+  height: 30px;
+  background-image: url('../../icons/svg/red-trash.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 @media (min-width: 768px) {
   .text__wrapper {
     width: 688px;
