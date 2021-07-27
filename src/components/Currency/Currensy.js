@@ -23,7 +23,7 @@ export default function Currency() {
 
   useEffect(() => {
     getCurrency();
-  });
+  }, []);
 
   const currencyFilter = currency.filter(el => {
     return el.ccy !== 'RUR';
