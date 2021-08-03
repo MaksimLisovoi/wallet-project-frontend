@@ -3,12 +3,9 @@ import dateFormat from 'dateformat';
 import { useDispatch } from 'react-redux';
 import App from './ModalDeleteTransaction';
 
-//console.log(deleteTransaction);
-
 const HomeTabItem = ({ transaction }) => {
   const { date, type, category, comments, sum, balance, _id } = transaction;
 
-  // console.log(_id);
   const formatedDate = dateFormat(date, 'dd.mm.yy');
   const sumStyle = [styles.td__sum];
   let modernType = '+';
