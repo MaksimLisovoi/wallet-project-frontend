@@ -112,3 +112,296 @@ th {
     width: 700px;
   }
 }
+
+/* СТили для модалки */
+.positionBtn {
+  text-align: center;
+  padding-right: 0;
+  padding-left: 0;
+}
+.modalContent {
+  width: 320px;
+  height: 260px;
+  padding-top: 100px;
+  padding-left: 20px;
+  border-radius: 20px;
+  outline: none;
+  background-color: #ffff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.btnAdd {
+  width: 44px;
+  height: 44px;
+  background-color: #24cca7;
+  border: none;
+  border-radius: 50% 50% 50% 50%;
+  position: fixed;
+  bottom: 25px;
+  transform: translateX(-50%);
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+  outline: none;
+  z-index: 2;
+}
+
+@media (min-width: 320px) {
+  .btnAdd {
+    left: 45%;
+  }
+
+  .modalContent {
+    width: 320px;
+    height: 350px;
+    padding-top: 100px;
+    padding-left: 20px;
+    border-radius: 20px;
+    background-color: #ffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+@media (min-width: 768px) {
+  .btnAdd {
+    right: 0px;
+  }
+
+  .modalContent {
+    position: absolute;
+    width: 540px;
+    height: 260px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 90px;
+    text-align: center;
+  }
+  .positionBtn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.buttonCloseNo {
+  margin-top: 20px;
+
+  border: none;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #24cca7;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #000;
+  margin-right: 15px;
+}
+
+.buttonCloseNo:hover {
+  background: #24cca7;
+  color: #ffffff;
+}
+.buttonCloseYes {
+  margin-top: 20px;
+
+  width: 200px;
+  height: 50px;
+
+  border-radius: 20px;
+  border: 1px solid #ff6596;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: black;
+  margin-right: 15px;
+}
+
+.buttonCloseYes:hover {
+  background: #ff6596;
+  color: #ffffff;
+}
+
+/*! Стили для модалки */
+
+.positionBtn {
+  text-align: center;
+  padding-right: 0;
+  padding-left: 0;
+}
+.modalContent {
+  width: 320px;
+  height: 260px;
+  padding-top: 100px;
+  padding-left: 20px;
+  border-radius: 20px;
+  outline: none;
+  background-color: #ffff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.btnAdd {
+  width: 44px;
+  height: 44px;
+  background-color: #24cca7;
+  border: none;
+  border-radius: 50% 50% 50% 50%;
+  position: fixed;
+  bottom: 25px;
+  transform: translateX(-50%);
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+  outline: none;
+  z-index: 2;
+}
+
+@media (min-width: 320px) {
+  .btnAdd {
+    left: 45%;
+  }
+
+  .modalContent {
+    width: 320px;
+    height: 350px;
+    padding-top: 100px;
+    padding-left: 20px;
+    border-radius: 20px;
+    background-color: #ffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+@media (min-width: 768px) {
+  .btnAdd {
+    right: 0px;
+  }
+
+  .modalContent {
+    position: absolute;
+    width: 540px;
+    height: 260px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 90px;
+    text-align: center;
+  }
+  .positionBtn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.buttonCloseNo {
+  margin-top: 20px;
+
+  border: none;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #24cca7;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #000;
+  margin-right: 15px;
+}
+
+.buttonCloseNo:hover {
+  background: #24cca7;
+  color: #ffffff;
+}
+.buttonCloseYes {
+  margin-top: 20px;
+
+  width: 200px;
+  height: 50px;
+
+  border-radius: 20px;
+  border: 1px solid #ff6596;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: black;
+  margin-right: 15px;
+}
+
+.buttonCloseYes:hover {
+  background: #ff6596;
+  color: #ffffff;
+}
