@@ -93,7 +93,6 @@ th {
 .td__sum.expense {
   color: #ff6596;
 }
-
 .redTrash {
   width: 30px;
   height: 30px;
@@ -101,6 +100,7 @@ th {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 @media (min-width: 768px) {
   .text__wrapper {
     width: 688px;

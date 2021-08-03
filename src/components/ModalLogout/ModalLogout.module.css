@@ -133,6 +133,7 @@
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  outline: none;
 
   color: black;
   margin-right: 15px;

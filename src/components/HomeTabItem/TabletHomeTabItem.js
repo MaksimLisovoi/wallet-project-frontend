@@ -2,12 +2,19 @@ import React, { useCallback } from 'react';
 import styles from './styles.module.css';
 import dateFormat from 'dateformat';
 import RedTrashIcon from './RedTrashIcon';
-import { useDispatch } from 'react-redux';
-import { deleteTransaction } from '../../redux/global/global-operation';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  deleteTransaction,
+  fetchBalance,
+  fetchStatictic,
+} from '../../redux/global/global-operation';
+import { statisticDate } from '../../redux/global/global-selectors';
+
 //console.log(deleteTransaction);
 
 const HomeTabItem = ({ transaction }) => {
   const dispatch = useDispatch();
+  const dateStatistic = useSelector(statisticDate);
   // console.log(transaction);
   const { date, type, category, comments, sum, balance, _id } = transaction;
 
@@ -20,10 +27,11 @@ const HomeTabItem = ({ transaction }) => {
     sumStyle.push(styles.expense);
     modernType = '-';
   }
-  const deleteContact = useCallback(
-    id => dispatch(deleteTransaction(id)),
-    [dispatch],
-  );
+  const deleteContact = async id => {
+    await dispatch(deleteTransaction(id));
+    await dispatch(fetchStatictic(dateStatistic));
+    await dispatch(fetchBalance());
+  };
 
   return (
     <>
