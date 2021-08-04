@@ -2,14 +2,7 @@ import React, { useCallback } from 'react';
 import styles from './styles.module.css';
 import dateFormat from 'dateformat';
 
-import { useDispatch, useSelector } from 'react-redux';
-// import {
-//   deleteTransaction,
-//   fetchBalance,
-//   fetchStatictic,
-// } from '../../redux/global/global-operation';
 import App from './DeleteTransactionModal';
-import { statisticDate } from '../../redux/global/global-selectors';
 
 const HomeTabItem = ({ transaction }) => {
   const { date, type, category, comments, sum, balance, _id } = transaction;
