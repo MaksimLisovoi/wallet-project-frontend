@@ -1,24 +1,19 @@
 import React, { useCallback } from 'react';
 import styles from './styles.module.css';
 import dateFormat from 'dateformat';
-import RedTrashIcon from './RedTrashIcon';
+
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  deleteTransaction,
-  fetchBalance,
-  fetchStatictic,
-} from '../../redux/global/global-operation';
+// import {
+//   deleteTransaction,
+//   fetchBalance,
+//   fetchStatictic,
+// } from '../../redux/global/global-operation';
+import App from './DeleteTransactionModal';
 import { statisticDate } from '../../redux/global/global-selectors';
 
-//console.log(deleteTransaction);
-
 const HomeTabItem = ({ transaction }) => {
-  const dispatch = useDispatch();
-  const dateStatistic = useSelector(statisticDate);
-  // console.log(transaction);
   const { date, type, category, comments, sum, balance, _id } = transaction;
 
-  // console.log(_id);
   const formatedDate = dateFormat(date, 'dd.mm.yy');
   const sumStyle = [styles.td__sum];
   let modernType = '+';
@@ -27,11 +22,6 @@ const HomeTabItem = ({ transaction }) => {
     sumStyle.push(styles.expense);
     modernType = '-';
   }
-  const deleteContact = async id => {
-    await dispatch(deleteTransaction(id));
-    await dispatch(fetchStatictic(dateStatistic));
-    await dispatch(fetchBalance());
-  };
 
   return (
     <>
@@ -43,9 +33,9 @@ const HomeTabItem = ({ transaction }) => {
         <td className={sumStyle.join(' ')}>{sum}</td>
         <td className={styles.td__tablet}>{balance}</td>
         <td className={styles.td__tablet}>
-          <button onClick={() => deleteContact(_id)} className={styles.btn}>
-            <RedTrashIcon />
-          </button>
+          <div>
+            <App transaction={transaction} />
+          </div>
         </td>
       </tr>
     </>

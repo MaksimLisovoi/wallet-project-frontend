@@ -1,19 +1,12 @@
 import React from 'react';
 import styles from './styles.module.css';
 import dateFormat from 'dateformat';
-import RedTrashIcon from '../HomeTabItem/RedTrashIcon';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  deleteTransaction,
-  fetchBalance,
-  fetchStatictic,
-} from '../../redux/global/global-operation';
-import { statisticDate } from '../../redux/global/global-selectors';
+
+import App from '../HomeTabItem/DeleteTransactionModal';
+
 //! Мои добавления =============================================================
 
 const MobileHomeTabItem = ({ transaction }) => {
-  const dispatch = useDispatch();
-  const dateStatistic = useSelector(statisticDate);
   const { date, type, category, comments, sum, balance, _id } = transaction;
 
   const formatedDate = dateFormat(date, 'dd.mm.yy');
@@ -27,11 +20,6 @@ const MobileHomeTabItem = ({ transaction }) => {
     wrapperStyle.push(styles.expense);
     modernType = '-';
   }
-  const deleteContact = async id => {
-    await dispatch(deleteTransaction(id));
-    await dispatch(fetchStatictic(dateStatistic));
-    await dispatch(fetchBalance());
-  };
 
   return (
     <>
@@ -65,12 +53,9 @@ const MobileHomeTabItem = ({ transaction }) => {
             <tr className={styles.trow}>
               <td className={styles.thead}>Удалить</td>
               <td className={styles.theadIcon}>
-                <button
-                  onClick={() => deleteContact(_id)}
-                  className={styles.btn}
-                >
-                  <RedTrashIcon />
-                </button>
+                <div>
+                  <App transaction={transaction} />
+                </div>
               </td>
             </tr>
           </tbody>
