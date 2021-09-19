@@ -2,8 +2,12 @@ import React from 'react';
 import styles from './styles.module.css';
 import dateFormat from 'dateformat';
 
+import App from '../HomeTabItem/DeleteTransactionModal';
+
+//! Мои добавления =============================================================
+
 const MobileHomeTabItem = ({ transaction }) => {
-  const { date, type, category, comments, sum, balance } = transaction;
+  const { date, type, category, comments, sum, balance, _id } = transaction;
 
   const formatedDate = dateFormat(date, 'dd.mm.yy');
 
@@ -45,6 +49,14 @@ const MobileHomeTabItem = ({ transaction }) => {
             <tr className={styles.trow}>
               <td className={styles.thead}>Баланс</td>
               <td className={styles.tdata}>{balance}</td>
+            </tr>
+            <tr className={styles.trow}>
+              <td className={styles.thead}>Удалить</td>
+              <td className={styles.theadIcon}>
+                <div>
+                  <App transaction={transaction} />
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>

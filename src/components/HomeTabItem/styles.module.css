@@ -93,7 +93,6 @@ th {
 .td__sum.expense {
   color: #ff6596;
 }
-
 .redTrash {
   width: 30px;
   height: 30px;
@@ -101,6 +100,7 @@ th {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 @media (min-width: 768px) {
   .text__wrapper {
     width: 688px;
@@ -112,6 +112,7 @@ th {
     width: 700px;
   }
 }
+
 
 /* СТили для модалки */
 .positionBtn {
@@ -261,6 +262,7 @@ th {
 
 /*! Стили для модалки */
 
+
 .positionBtn {
   text-align: center;
   padding-right: 0;
@@ -396,6 +398,9 @@ th {
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+
+  outline: none;
+
 
   color: black;
   margin-right: 15px;

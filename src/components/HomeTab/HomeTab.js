@@ -53,7 +53,7 @@ const HomeTab = () => {
                     <th className={styles.th}>Комментарий</th>
                     <th className={styles.th}>Сумма</th>
                     <th className={styles.th}>Баланс</th>
-                    <th className={styles.th}>Удаление</th>
+                    <th className={styles.th}>Удалить</th>
                   </tr>
                 </thead>
 
