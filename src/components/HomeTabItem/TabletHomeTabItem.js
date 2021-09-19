@@ -1,8 +1,9 @@
-import React, { useCallback } from 'react';
 import styles from './styles.module.css';
 import dateFormat from 'dateformat';
 
-import App from './DeleteTransactionModal';
+import { useDispatch } from 'react-redux';
+import App from './ModalDeleteTransaction';
+
 
 const HomeTabItem = ({ transaction }) => {
   const { date, type, category, comments, sum, balance, _id } = transaction;
