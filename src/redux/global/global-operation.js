@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as actions from './global-action';
 
-axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com';
+axios.defaults.baseURL = 'https://wallet-team-project.onrender.com';
 
 export const fetchTransactions = () => async dispatch => {
   dispatch(actions.fetchTransactionsRequest());

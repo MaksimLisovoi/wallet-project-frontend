@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Ellipsis } from 'react-spinners-css';
 import style from './Currency.module.css';
+import axios from 'axios';
 
 export default function Currency() {
   const [currency, setCurrency] = useState([]);
@@ -9,10 +10,11 @@ export default function Currency() {
 
   async function getCurrency() {
     try {
-      const data = await fetch(
-        'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
+      const data = await axios.get(
+        'https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5',
       );
       const result = await data.json();
+      console.log(result);
       setIsLoading(true);
       setCurrency(result);
     } catch (e) {

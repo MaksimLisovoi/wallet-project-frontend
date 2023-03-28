@@ -17,7 +17,6 @@ export default function App({ transaction }) {
     [dispatch],
   );
   const { _id } = transaction;
-  console.log(_id);
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -39,7 +38,7 @@ export default function App({ transaction }) {
         className={styles.modalContent}
         contentLabel="Example Modal"
       >
-        <h3>Вы действительно хотите удалить транзакцию</h3>
+        <h3>Вы действительно хотите удалить транзакцию?</h3>
         <div className={styles.positionBtn}>
           <button onClick={closeModal} className={styles.buttonCloseNo}>
             НЕТ

@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as authActions from './auth-action';
 import { isModalLogoutClose } from '../global/global-action';
 
-axios.defaults.baseURL = 'https://wallet-team-project.herokuapp.com';
+axios.defaults.baseURL = 'https://wallet-team-project.onrender.com';
 
 const token = {
   set(token) {

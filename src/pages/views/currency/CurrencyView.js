@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../../components/Header/Header';
-import Currency from '../../../components/Currency/Currensy';
+import Currency from '../../../components/Currency/Currenсy';
 import Navigation from '../../../components/Navigation';
 
 const CurrencyView = () => {
