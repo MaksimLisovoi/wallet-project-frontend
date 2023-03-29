@@ -15,7 +15,8 @@ export default function ModalLogout() {
 
   const onLogout = useCallback(() => {
     dispatch(operations.logOut());
-  }, [dispatch]);
+    ModalLogoutClose();
+  }, [ModalLogoutClose, dispatch]);
 
   const modalLogout = useSelector(getModalLogout);
 

@@ -29,9 +29,14 @@ export default function Navigation() {
 
       <NavLink
         to="/home"
-        exact
-        className={style.link}
-        activeClassName={style.activeLink}
+        // className={style.link}
+        // activeclassname={style.activeLink}
+        className={({ isActive }) => {
+          const linkClasses = [style.link];
+          if (isActive) linkClasses.push(style.active);
+
+          return linkClasses.join(' '); // returns "registerButton" or "registerButton active"
+        }}
       >
         <svg className={style.logoHome}>
           <use href="#home"></use>
@@ -43,9 +48,12 @@ export default function Navigation() {
 
       <NavLink
         to="/diagram"
-        exact
-        className={style.link}
-        activeClassName={style.activeLink}
+        className={({ isActive }) => {
+          const linkClasses = [style.link];
+          if (isActive) linkClasses.push(style.active);
+
+          return linkClasses.join(' '); // returns "registerButton" or "registerButton active"
+        }}
       >
         <svg className={style.logoStatistic}>
           <use href="#statistic"></use>
@@ -58,9 +66,12 @@ export default function Navigation() {
       {!isDesktopOrLaptop && (
         <NavLink
           to="/currency"
-          exact
-          className={style.link}
-          activeClassName={style.activeLink}
+          className={({ isActive }) => {
+            const linkClasses = [style.link];
+            if (isActive) linkClasses.push(style.active);
+
+            return linkClasses.join(' '); // returns "registerButton" or "registerButton active"
+          }}
         >
           <svg className={style.logoCurrency}>
             <use href="#currency"></use>

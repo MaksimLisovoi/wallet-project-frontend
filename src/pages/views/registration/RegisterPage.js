@@ -7,9 +7,6 @@ import { Formik, Form, Field } from 'formik';
 import SignupSchema from './RegisterSchema';
 
 import Logos from '../../../components/Logos/Logos';
-import BlueStain from '../../../icons/blueStain/blueStain';
-import PinkStain from '../../../icons/pinkStain/pinkStain';
-import Girl from '../../../icons/girlMain/girl';
 import Envelope from '../../../icons/envelopeData/envelope';
 import Lock from '../../../icons/lock/lock';
 import LockConfirmPassword from '../../../icons/lock/lockConfirmPassword';
@@ -34,9 +31,6 @@ const RegisterPage = () => {
 
   return (
     <>
-      <BlueStain />
-      <PinkStain />
-      <Girl />
       <div className={s.container}>
         <div className={s.headRegistr}>
           <Logos />

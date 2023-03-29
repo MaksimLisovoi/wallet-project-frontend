@@ -47,7 +47,7 @@ button {
 
 .out_icon {
   font-family: 'PT Sans', sans-serif;
-  margin-right: 10px;
+
   width: 18px;
   height: 18px;
   background-image: url('./data/exit.svg');
@@ -55,6 +55,8 @@ button {
   background-size: contain;
   border: none;
 }
+
+
 
 .out {
   display: flex;
@@ -71,6 +73,9 @@ button {
   }
   .user_name_2 {
     display: block;
+  }
+  .out_icon {
+    margin-right: 10px;
   }
 }
 /* ==================================== */

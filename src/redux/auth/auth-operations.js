@@ -1,10 +1,10 @@
 import axios from 'axios';
-import * as authActions from './auth-action';
-import { isModalLogoutClose } from '../global/global-action';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://wallet-team-project.onrender.com';
 
-const token = {
+export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
@@ -13,67 +13,87 @@ const token = {
   },
 };
 
-export const register = credentials => async dispatch => {
-  dispatch(authActions.registerRequest());
+export const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
 
-  try {
-    const response = await axios.post('/users/signup', credentials);
-    console.log(response);
-    token.set(response.data.token);
-    dispatch(authActions.registerSuccess(response.data));
-    dispatch(logIn(credentials));
-  } catch (error) {
-    dispatch(authActions.registerError(error.message));
-  }
-};
+      token.set(data.token);
+      console.log(data);
+      toast.success(`User ${data.name} has successfully registered`);
+      return data;
+    } catch (e) {
+      toast.error(e.message);
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
 
-export const logIn = credentials => async dispatch => {
-  dispatch(authActions.loginRequest());
-  try {
-    const response = await axios.post('/users/login', {
-      email: credentials.email,
-      password: credentials.password,
-    });
-    console.log(response);
-    token.set(response.data.token);
-    dispatch(authActions.loginSuccess(response.data));
-  } catch (error) {
-    dispatch(authActions.loginError(error.message));
-  }
-};
+export const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/users/login', credentials);
+      token.set(data.token);
+      console.log(data);
+      toast.success(`User ${data.user.name} has successfully Logged In`);
+      return data;
+    } catch (e) {
+      toast.error(e.message);
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
 
-export const logOut = () => async dispatch => {
-  dispatch(authActions.logoutRequest());
-
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
-
     token.unset();
-
-    dispatch(authActions.logoutSuccess());
-    dispatch(isModalLogoutClose());
-  } catch (error) {
-    dispatch(authActions.logoutError(error.message));
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
   }
-};
+});
 
-export const getCurrentUser = () => async (dispatch, getState) => {
-  const {
-    auth: { token: persistedToken },
-  } = getState();
-  if (!persistedToken) {
-    return;
-  }
-  token.set(persistedToken);
-  dispatch(authActions.getCurrentUserRequest());
+export const getCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    console.log(persistedToken);
 
-  try {
-    const response = await axios.get('/users/current');
+    if (!token) return;
 
-    dispatch(authActions.getCurrentUserSuccess(response.data));
-  } catch (error) {
-    dispatch(authActions.getCurrentUserError(error.message));
-  }
-};
+    console.log('Refreshing user!');
+
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get('users/current');
+      console.log(data);
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
+// export const getCurrentUser = () => async (dispatch, getState) => {
+//   const {
+//     auth: { token: persistedToken },
+//   } = getState();
+//   if (!persistedToken) {
+//     return;
+//   }
+//   token.set(persistedToken);
+//   dispatch(authActions.getCurrentUserRequest());
+
+//   try {
+//     const response = await axios.get('/users/current');
+
+//     dispatch(authActions.getCurrentUserSuccess(response.data));
+//   } catch (error) {
+//     dispatch(authActions.getCurrentUserError(error.message));
+//   }
+// };
 
 // export default { register, logIn, logOut, getCurrentUser, logOut };

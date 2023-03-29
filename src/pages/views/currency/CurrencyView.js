@@ -6,8 +6,6 @@ import Navigation from '../../../components/Navigation';
 const CurrencyView = () => {
   return (
     <>
-      <Header />
-      <Navigation />
       <Currency />
     </>
   );
