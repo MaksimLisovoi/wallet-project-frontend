@@ -44,6 +44,7 @@ const Table = ({ chartData, sumPlus, sumMinus }) => {
       <div className={styles.list_container}>
         <ul className={styles.table_list_color}>
           {chartData.labels &&
+            // eslint-disable-next-line array-callback-return
             chartData.datasets[0].backgroundColor.map((item, index) => {
               if (chartData.datasets[0].data[index] !== '0') {
                 return (

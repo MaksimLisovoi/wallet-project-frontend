@@ -34,6 +34,7 @@ export default function DiagramTab() {
     let overallPlus = 0;
     let overallMinus = 0;
     if (data) {
+      // eslint-disable-next-line array-callback-return
       data.map(({ type, sum }) => {
         switch (type) {
           case '+':
@@ -63,6 +64,7 @@ export default function DiagramTab() {
     let sumLeisure = 0;
     let sumOther = 0;
     if (data) {
+      // eslint-disable-next-line array-callback-return
       data.map(({ category, sum }) => {
         if (!labels.includes(category)) {
           labels.push(category);
