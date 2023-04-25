@@ -2,7 +2,7 @@
 import { NavLink } from 'react-router-dom';
 
 //import { useFormik } from 'formik';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import * as authOperations from '../../../redux/auth/auth-operations';

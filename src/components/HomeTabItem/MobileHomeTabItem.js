@@ -7,7 +7,7 @@ import App from '../HomeTabItem/DeleteTransactionModal';
 //! Мои добавления =============================================================
 
 const MobileHomeTabItem = ({ transaction }) => {
-  const { date, type, category, comments, sum, balance, _id } = transaction;
+  const { date, type, category, comments, sum, balance } = transaction;
 
   const formatedDate = dateFormat(date, 'dd.mm.yy');
 

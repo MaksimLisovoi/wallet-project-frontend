@@ -1,14 +1,11 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import s from './styles/base.module.css';
-import Container from './components/Container';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as authOperations from './redux/auth/auth-operations';
 import { RestrictedRoute } from './components/RestrictedRoute';
 import { PrivateRoute } from './components/PrivateRoute';
 import Spinner from './components/Spinner/Spinner';
-import Header from './components/Header/Header';
 import { getisAuthenticated } from './redux/auth/auth-selectors';
 import { Layout } from './components/Layout/Layout';
 import { LayoutMain } from './components/Layout/LayoutMain';
@@ -20,7 +17,7 @@ const LoginPage = lazy(() => import('./pages/views/login/LoginPage'));
 const DashboardPage = lazy(() =>
   import('./pages/views/dashboard/DashboardPage'),
 );
-const HomePageView = lazy(() => import('./pages/views/homepage'));
+
 const DiagramView = lazy(() => import('./pages/views/diagram'));
 const CurrencyView = lazy(() => import('./pages/views/currency'));
 
