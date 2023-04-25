@@ -32,6 +32,8 @@ export default function Currency() {
           'https://api.monobank.ua/bank/currency',
         );
 
+        console.log(data);
+
         // const courses = data.slice(0, 2);
 
         setIsLoading(true);

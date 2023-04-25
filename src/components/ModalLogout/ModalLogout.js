@@ -11,11 +11,16 @@ Modal.setAppElement('#root');
 export default function ModalLogout() {
   const dispatch = useDispatch();
 
-  const ModalLogoutClose = () => dispatch(isModalLogoutClose());
+  useCallback(() => {}, []);
+
+  const ModalLogoutClose = useCallback(() => {
+    dispatch(isModalLogoutClose());
+  }, [dispatch]);
 
   const onLogout = useCallback(() => {
     dispatch(operations.logOut());
-  }, [dispatch]);
+    ModalLogoutClose();
+  }, [ModalLogoutClose, dispatch]);
 
   const modalLogout = useSelector(getModalLogout);
 

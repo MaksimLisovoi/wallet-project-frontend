@@ -2,17 +2,13 @@
 import { NavLink } from 'react-router-dom';
 
 //import { useFormik } from 'formik';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import * as authOperations from '../../../redux/auth/auth-operations';
 import SchemaValidation from './SignUpSchema';
 import s from './login.module.css';
-
 import Logos from '../../../components/Logos/Logos';
-import BlueStain from '../../../icons/blueStain/blueStain';
-import PinkStain from '../../../icons/pinkStain/pinkStain';
-import MainPhoto from '../../../icons/mainPhotoComp/mainPhotoComp';
 import Envelope from '../../../icons/envelopeData/envelope';
 import LockConfirmPassword from '../../../icons/lock/lockConfirmPassword';
 
@@ -30,9 +26,6 @@ const LoginPage = () => {
   };
   return (
     <>
-      <BlueStain />
-      <PinkStain />
-      <MainPhoto />
       <div className={s.container}>
         <div className={s.contForHead}>
           <Logos />

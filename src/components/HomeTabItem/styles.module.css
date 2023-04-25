@@ -15,6 +15,7 @@ th {
 
 .table {
   min-width: 280px;
+  width: 100%;
   border-collapse: collapse;
 
   background-color: #fff;
@@ -94,8 +95,8 @@ th {
   color: #ff6596;
 }
 .redTrash {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   background-image: url('../../icons/svg/red-trash.svg');
   background-repeat: no-repeat;
   background-size: contain;
