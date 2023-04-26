@@ -1,0 +1,191 @@
+.head {
+  margin-bottom: 30px;
+  height: 16px;
+}
+.error {
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  color: red;
+  font-weight: bold;
+}
+.errorLock {
+  position: absolute;
+  top: 90%;
+  left: 20%;
+  color: red;
+  font-weight: bold;
+}
+.errorEmail {
+  position: absolute;
+  top: 90%;
+  left: 10%;
+  color: red;
+  font-weight: bold;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  width: 150px;
+  margin-left: auto;
+}
+.email,
+.password {
+  width: 280px;
+  height: 34px;
+  border: 0 solid #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding-left: 30px;
+  outline: 0;
+  /* position: relative; */
+  /* Gray 5 */
+}
+.envelopePos,
+.passwordPhoto,
+.confPasswordPh,
+.namPh {
+  position: relative;
+}
+
+.password {
+  width: 280px;
+  height: 34px;
+  border: 0 solid #fff;
+  border-bottom: 1px solid #e0e0e0;
+  margin-top: 40px;
+  margin-bottom: 1px;
+  padding-left: 30px;
+}
+.enter {
+  margin-top: 20px;
+  padding-top: 10px;
+  display: inline-block;
+
+  border: none;
+  outline: none;
+  width: 280px;
+  height: 50px;
+  border: 1px solid #4a56e2;
+  border-radius: 20px;
+  color: #ffffff;
+}
+
+.text {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #4a56e2;
+}
+.textStyleError {
+  color: red;
+  font-weight: bold;
+}
+
+.registration {
+  border: none;
+  outline: none;
+
+  width: 280px;
+  height: 50px;
+  margin-top: 20px;
+
+  background: #24cca7;
+
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.textRegistration {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.strongPasswordText {
+  text-align: end;
+}
+.wrraper {
+  /* display: flex; */
+  flex-direction: column;
+  /* width: 250px; */
+  margin: auto;
+}
+
+/*? Адаптивка началась */
+@media (max-width: 767px) {
+  .container {
+    /* justify-content: unset; */
+    display: inline-block;
+    /* width: 320px;
+    height: 568px;
+    padding-left: 0px;
+    padding-right: 0px;
+    left: 10%; */
+    /* ! */
+    width: 320px;
+    height: 568px;
+    background-color: #ffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+  .wrraper {
+    /* display: flex; */
+    flex-direction: column;
+    /* width: 0px; */
+    margin: auto;
+  }
+  .headRegistr {
+    padding-top: 36px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    background-color: #ffffff;
+    position: absolute;
+    left: 20%;
+    top: 35%;
+    z-index: 50;
+    width: 540px;
+    border-radius: 20px;
+    height: 616px;
+  }
+  .headRegistr {
+    padding-top: 36px;
+    padding-bottom: 50px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    background-color: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    bottom: 10%;
+    z-index: 50;
+    width: 540px;
+    border-radius: 20px;
+    height: 616px;
+  }
+  .headRegistr {
+    padding-top: 36px;
+    padding-bottom: 50px;
+  }
+}

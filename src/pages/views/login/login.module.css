@@ -1,0 +1,151 @@
+.head {
+  margin-bottom: 30px;
+  height: 16px;
+}
+.formContainer {
+  flex-direction: column;
+  margin-left: auto;
+}
+.email {
+  width: 280px;
+  height: 34px;
+  border: 0 solid #fff;
+  padding-left: 30px;
+  border-bottom: 1px solid #e0e0e0;
+  outline: 0;
+  /* Gray 5 */
+}
+.password {
+  width: 280px;
+  height: 34px;
+  padding-left: 30px;
+  border: 0 solid #fff;
+  outline: 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-top: 50px;
+}
+.enter {
+  margin-top: 20px;
+
+  border: none;
+  outline: none;
+  width: 280px;
+  height: 50px;
+  background: #24cca7;
+  border-radius: 20px;
+}
+
+.text {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.registration {
+  display: inline-block;
+  border: none;
+  outline: none;
+
+  width: 280px;
+  height: 50px;
+  margin-top: 20px;
+  padding-top: 13px;
+
+  background: #ffffff;
+  border: 1px solid #4a56e2;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.textRegistration {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a56e2;
+}
+.textStyleError {
+  color: red;
+  font-weight: bold;
+  position: absolute;
+}
+.textStyleErrorPass {
+  color: red;
+  font-weight: bold;
+  position: absolute;
+  left: 30%;
+}
+.posRelative {
+  position: relative;
+}
+
+/* Адаптивку пробую сделать ============================================== */
+
+@media (max-width: 767px) {
+  .container {
+    width: 320px;
+    height: 568px;
+    background-color: #ffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+
+@media (min-width: 320px) {
+  .contForHead {
+    padding-top: 90px;
+    padding-bottom: 25px;
+    /* padding: 0, 0; */
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 540px;
+    height: 468px;
+    margin-top: 50px;
+    margin-left: 100px;
+
+    background: #ffffff;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 100;
+  }
+  .head {
+    margin-top: 40px;
+  }
+  .contForHead {
+    padding-top: 90px;
+    padding-bottom: 25px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    width: 540px;
+    height: 468px;
+    margin-top: 50px;
+    margin-left: 100px;
+
+    background: #ffffff;
+    border-radius: 20px;
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    z-index: 100;
+  }
+}

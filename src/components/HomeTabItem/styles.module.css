@@ -1,0 +1,413 @@
+td,
+th {
+  word-wrap: break-word;
+}
+.table__wrapper {
+  border-left: 5px solid #24cca7;
+  border-radius: 10px;
+  overflow: hidden;
+  padding-right: 20px;
+}
+
+.table__wrapper.expense {
+  border-left: 5px solid #ff6596;
+}
+
+.table {
+  min-width: 280px;
+  width: 100%;
+  border-collapse: collapse;
+
+  background-color: #fff;
+}
+
+.trow:not(:last-child) {
+  border-bottom: 1px solid #dcdcdf;
+}
+.tablet__row:not(:last-child) {
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+.thead {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: left;
+  padding-left: 20px;
+
+  color: #000000;
+}
+
+.trow > .tdata {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  padding-right: 20px;
+
+  color: #000000;
+}
+
+.trow > .tsum {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  padding-right: 20px;
+  color: #24cca7;
+}
+
+.tsum.expense {
+  color: #ff6596;
+}
+
+.td__tablet {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.13;
+  color: #000000;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.td__date {
+  composes: td__tablet;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.td__sum {
+  composes: td__tablet;
+
+  color: #24cca7;
+}
+
+.td__sum.expense {
+  color: #ff6596;
+}
+.redTrash {
+  width: 25px;
+  height: 25px;
+  background-image: url('../../icons/svg/red-trash.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (min-width: 768px) {
+  .text__wrapper {
+    width: 688px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .text__wrapper {
+    width: 700px;
+  }
+}
+
+
+/* СТили для модалки */
+.positionBtn {
+  text-align: center;
+  padding-right: 0;
+  padding-left: 0;
+}
+.modalContent {
+  width: 320px;
+  height: 260px;
+  padding-top: 100px;
+  padding-left: 20px;
+  border-radius: 20px;
+  outline: none;
+  background-color: #ffff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.btnAdd {
+  width: 44px;
+  height: 44px;
+  background-color: #24cca7;
+  border: none;
+  border-radius: 50% 50% 50% 50%;
+  position: fixed;
+  bottom: 25px;
+  transform: translateX(-50%);
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+  outline: none;
+  z-index: 2;
+}
+
+@media (min-width: 320px) {
+  .btnAdd {
+    left: 45%;
+  }
+
+  .modalContent {
+    width: 320px;
+    height: 350px;
+    padding-top: 100px;
+    padding-left: 20px;
+    border-radius: 20px;
+    background-color: #ffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+@media (min-width: 768px) {
+  .btnAdd {
+    right: 0px;
+  }
+
+  .modalContent {
+    position: absolute;
+    width: 540px;
+    height: 260px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 90px;
+    text-align: center;
+  }
+  .positionBtn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.buttonCloseNo {
+  margin-top: 20px;
+
+  border: none;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #24cca7;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #000;
+  margin-right: 15px;
+}
+
+.buttonCloseNo:hover {
+  background: #24cca7;
+  color: #ffffff;
+}
+.buttonCloseYes {
+  margin-top: 20px;
+
+  width: 200px;
+  height: 50px;
+
+  border-radius: 20px;
+  border: 1px solid #ff6596;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: black;
+  margin-right: 15px;
+}
+
+.buttonCloseYes:hover {
+  background: #ff6596;
+  color: #ffffff;
+}
+
+/*! Стили для модалки */
+
+
+.positionBtn {
+  text-align: center;
+  padding-right: 0;
+  padding-left: 0;
+}
+.modalContent {
+  width: 320px;
+  height: 260px;
+  padding-top: 100px;
+  padding-left: 20px;
+  border-radius: 20px;
+  outline: none;
+  background-color: #ffff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.btnAdd {
+  width: 44px;
+  height: 44px;
+  background-color: #24cca7;
+  border: none;
+  border-radius: 50% 50% 50% 50%;
+  position: fixed;
+  bottom: 25px;
+  transform: translateX(-50%);
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+  outline: none;
+  z-index: 2;
+}
+
+@media (min-width: 320px) {
+  .btnAdd {
+    left: 45%;
+  }
+
+  .modalContent {
+    width: 320px;
+    height: 350px;
+    padding-top: 100px;
+    padding-left: 20px;
+    border-radius: 20px;
+    background-color: #ffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+@media (min-width: 768px) {
+  .btnAdd {
+    right: 0px;
+  }
+
+  .modalContent {
+    position: absolute;
+    width: 540px;
+    height: 260px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 90px;
+    text-align: center;
+  }
+  .positionBtn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.buttonCloseNo {
+  margin-top: 20px;
+
+  border: none;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #24cca7;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #000;
+  margin-right: 15px;
+}
+
+.buttonCloseNo:hover {
+  background: #24cca7;
+  color: #ffffff;
+}
+.buttonCloseYes {
+  margin-top: 20px;
+
+  width: 200px;
+  height: 50px;
+
+  border-radius: 20px;
+  border: 1px solid #ff6596;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  outline: none;
+
+
+  color: black;
+  margin-right: 15px;
+}
+
+.buttonCloseYes:hover {
+  background: #ff6596;
+  color: #ffffff;
+}

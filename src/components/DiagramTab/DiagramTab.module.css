@@ -1,0 +1,38 @@
+.diagram_tab_container {
+  display: block;
+}
+
+.diagram_tab_heading {
+  font-family: 'Poppins';
+  font-family: 'PT Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: left;
+}
+
+.error_message {
+  height: 280px;
+  width: 280px;
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .diagram_tab_container {
+    display: flex;
+  }
+  .error_message {
+    height: 320px;
+    width: 320px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .diagramPosition {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

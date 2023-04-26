@@ -1,0 +1,11 @@
+.name {
+  height: 20px;
+  width: 25px;
+  position: absolute;
+  /* top: 0%; */
+  left: 0;
+  bottom: 15%;
+  background-image: url('../svg/name.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}

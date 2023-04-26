@@ -1,0 +1,49 @@
+.text {
+  display: none;
+}
+@media (min-width: 768px) {
+  .size {
+    width: 273px;
+    position: absolute;
+    top: 5%;
+    left: 20%;
+  }
+  .text {
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    margin-top: 20px;
+    margin-left: 40px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+    min-width: 100%;
+    left: 80%;
+    top: 30%;
+    color: #000000;
+  }
+}
+
+@media (min-width: 1280px) {
+  .size {
+    width: 452px;
+    position: absolute;
+    bottom: 15%;
+    top: 40%;
+    left: 5%;
+  }
+  .text {
+    display: contents;
+    z-index: 1;
+    margin-top: 20px;
+    margin-left: 40px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+    color: #000000;
+  }
+}

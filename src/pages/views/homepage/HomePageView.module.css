@@ -1,0 +1,17 @@
+@media screen and (min-width: 768px) {
+  .homePage, .diagramView {
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .homeTabPosition, .diagramView {
+    position: absolute;
+  }
+  
+}
+
+
+
+
+
